@@ -52,6 +52,9 @@ dependencies {
     compile "org.springframework:spring-tx:$springVersion"
     
     compile group: 'org.springframework', name: 'spring-orm', version:"$springVersion"
+    
+      compile project(':JPADogSitting')
+    
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-junit:2.0.0.0'

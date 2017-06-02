@@ -49,5 +49,4 @@ dependencies {
   compile "org.hibernate:hibernate-core:$hibernateVersion"
   compile "org.hibernate:hibernate-c3p0:$hibernateVersion"
   
-  compile project(':JPADogSitting')
 }
