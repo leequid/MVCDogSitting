@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Sitter {
@@ -25,11 +26,21 @@ public class Sitter {
 	public String getSizePreference() {
 		return sizePreference;
 	}
-	@OneToMany(mappedBy="sitter")
+	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment
 	private List<Appointment> appointments;
 
 	public List<Appointment> getAppointments() {
 		return appointments;
+	}
+	@OneToOne(mappedBy="sitter") //mapped OneToOne with user
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public void setAppointments(List<Appointment> appointments) {

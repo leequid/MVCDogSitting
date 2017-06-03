@@ -20,7 +20,7 @@ public class Dog {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
+	@ManyToOne							//mapped ManyToOne to user
 	@JoinColumn(name="dog_user_id")
 	private User user;
 	
