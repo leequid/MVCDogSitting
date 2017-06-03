@@ -102,7 +102,7 @@ public class User {
 		this.sitter = sitter;
 	}
 
-	public boolean isActiveSitter() {
+	public boolean getActiveSitter() {
 		return activeSitter;
 	}
 
