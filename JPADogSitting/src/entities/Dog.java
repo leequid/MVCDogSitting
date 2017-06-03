@@ -41,8 +41,8 @@ public class Dog {
 
 	private String name;
 	
-	@Column(name="dog_user_id")
-	private int dogUserId;
+//	@Column(name="dog_user_id")
+//	private int dogUserId;
 	
 	public User getUser() {
 		return user;
@@ -65,13 +65,13 @@ public class Dog {
 		this.name = name;
 	}
 
-	public int getDogUserId() {
-		return dogUserId;
-	}
-
-	public void setDogUserId(int dogUserId) {
-		this.dogUserId = dogUserId;
-	}
+//	public int getDogUserId() {
+//		return dogUserId;
+//	}
+//
+//	public void setDogUserId(int dogUserId) {
+//		this.dogUserId = dogUserId;
+//	}
 
 	public int getWeight() {
 		return weight;
@@ -93,10 +93,10 @@ public class Dog {
 		return id;
 	}
 
-	@Override
-	public String toString() {
-		return "Dog [id=" + id + ", name=" + name + ", dogUserId=" + dogUserId + ", weight=" + weight + ", imageUrl="
-				+ imageUrl + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Dog [id=" + id + ", name=" + name + ", dogUserId=" + dogUserId + ", weight=" + weight + ", imageUrl="
+//				+ imageUrl + "]";
+//	}
 	
 }

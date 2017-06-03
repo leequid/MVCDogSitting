@@ -20,7 +20,7 @@ public class User {
 	private int id;
 	
 	@OneToOne
-	@JoinColumn(name="contact_id")
+	@JoinColumn(name="contact_id") 
 	private Contact contact;   			//maps one to one with contact table
 	
 	@Column(name="user_name")
@@ -53,16 +53,16 @@ public class User {
 		this.dogs = dogs;
 	}
 
-	@Column(name="contact_id")
-	private int contactId;
-	
-	public int getContactId() {
-		return contactId;
-	}
-
-	public void setContactId(int contactId) {
-		this.contactId = contactId;
-	}
+//	@Column(name="contact_id") 
+//	private int contactId;
+//	
+//	public int getContactId() {
+//		return contactId;
+//	}
+//
+//	public void setContactId(int contactId) {
+//		this.contactId = contactId;
+//	}
 	
 	@Column(name="sitter")
 	private boolean activeSitter;
@@ -111,11 +111,11 @@ public class User {
 		return id;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", contact=" + contact + ", userName=" + userName + ", password=" + password
-				+ ", contactId=" + contactId + ", activeSitter=" + activeSitter + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", contact=" + contact + ", userName=" + userName + ", password=" + password
+//				+ ", contactId=" + contactId + ", activeSitter=" + activeSitter + "]";
+//	}
 	
 	
 }

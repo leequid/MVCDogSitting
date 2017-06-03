@@ -21,11 +21,11 @@ public class Appointment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="sitter_id")
-	private int sitterId;
-	
-	@Column(name="user_id")
-	private int userId;
+//	@Column(name="sitter_id")
+//	private int sitterId;
+//	
+//	@Column(name="user_id")
+//	private int userId;
 	
 	@ManyToMany(mappedBy="appointments")    // mapped many to many to dogs
 	private List<Dog> dogs;
@@ -65,21 +65,21 @@ public class Appointment {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
-	public int getSitterId() {
-		return sitterId;
-	}
-
-	public void setSitterId(int sitterId) {
-		this.sitterId = sitterId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+//	public int getSitterId() {
+//		return sitterId;
+//	}
+//
+//	public void setSitterId(int sitterId) {
+//		this.sitterId = sitterId;
+//	}
+//
+//	public int getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
 
 	public Date getDate() {
 		return date;
@@ -93,9 +93,9 @@ public class Appointment {
 		return id;
 	}
 
-	@Override
-	public String toString() {
-		return "Appointment [id=" + id + ", sitterId=" + sitterId + ", userId=" + userId + ", date=" + date + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "Appointment [id=" + id + ", sitterId=" + sitterId + ", userId=" + userId + ", date=" + date + "]";
+//	}
+//	
 }
