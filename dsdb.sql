@@ -117,12 +117,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `dog_appointment` ;
 
 CREATE TABLE IF NOT EXISTS `dog_appointment` (
-  `id` INT NOT NULL AUTO_INCREMENT,
   `dog_id` INT NOT NULL,
   `appointment_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
   INDEX `appointment_id_idx` (`appointment_id` ASC),
   INDEX `dog_id_idx` (`dog_id` ASC),
+  PRIMARY KEY (`dog_id`, `appointment_id`),
   CONSTRAINT `dog_id`
     FOREIGN KEY (`dog_id`)
     REFERENCES `dog` (`id`)
@@ -241,12 +240,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `dog_appointment` (`id`, `dog_id`, `appointment_id`) VALUES (1, 3, 1);
-INSERT INTO `dog_appointment` (`id`, `dog_id`, `appointment_id`) VALUES (2, 4, 1);
-INSERT INTO `dog_appointment` (`id`, `dog_id`, `appointment_id`) VALUES (3, 6, 2);
-INSERT INTO `dog_appointment` (`id`, `dog_id`, `appointment_id`) VALUES (4, 5, 3);
-INSERT INTO `dog_appointment` (`id`, `dog_id`, `appointment_id`) VALUES (5, 3, 4);
-INSERT INTO `dog_appointment` (`id`, `dog_id`, `appointment_id`) VALUES (6, 4, 4);
+INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (3, 1);
+INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (4, 1);
+INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (6, 2);
+INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (5, 3);
+INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (3, 4);
+INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (4, 4);
 
 COMMIT;
 
