@@ -1,12 +1,13 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Sitter {
@@ -23,6 +24,16 @@ public class Sitter {
 
 	public String getSizePreference() {
 		return sizePreference;
+	}
+	@OneToMany(mappedBy="sitter")
+	private List<Appointment> appointments;
+
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
 	}
 
 	public void setSizePreference(String sizePreference) {

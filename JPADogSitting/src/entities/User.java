@@ -2,12 +2,15 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,12 +27,15 @@ public class User {
 	private Contact contact;   			//maps one to one with contact table
 	
 	@Column(name="user_name")
-	private String userName;
+	private String userName;  
 	
 	private String password;
 	
 	@OneToMany(mappedBy="user")
 	private List<Dog> dogs;
+
+	@OneToMany(mappedBy="user")						//mapped oneToMany to appointments
+	private List<Appointment> appointments;
 	
 	public Contact getContact() {
 		return contact;
