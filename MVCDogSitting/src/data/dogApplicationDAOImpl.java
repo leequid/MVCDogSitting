@@ -19,32 +19,50 @@ public class dogApplicationDAOImpl implements dogApplicationDAO {
 
 	@Override
 	public Dog createDog(Dog dog) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(dog);
+		em.flush();
+		return dog;
 	}
 
 	@Override
 	public boolean deleteDog(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Dog d = em.find(Dog.class, id);
+		if (d == null) {
+			return false;
+		} else {
+			em.remove(d);
+			return true;
+		}
 	}
 
 	@Override
 	public Dog updateDog(int id, Dog dog) {
-		// TODO Auto-generated method stub
-		return null;
+		Dog d = em.find(Dog.class, id);
+		d.setAppointments(dog.getAppointments());
+		d.setImageUrl(dog.getImageUrl());
+		d.setWeight(dog.getWeight());
+		d.setName(dog.getName());
+		d.setUser(dog.getUser());
+		d.setDogUserId(d.getDogUserId());
+		return dog;
 	}
 
 	@Override
 	public User createUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(user);
+		em.flush();
+		return user;
 	}
 
 	@Override
 	public boolean deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		User u = em.find(User.class, id);
+		if (u == null) {
+			return false;
+		} else {
+			em.remove(u);
+			return true;
+		}
 	}
 
 	@Override
@@ -55,7 +73,10 @@ public class dogApplicationDAOImpl implements dogApplicationDAO {
 		u.setDogs(user.getDogs());
 		u.setPassword(user.getPassword());
 		u.setSitter(user.getSitter());
-		u.setActiveSitter(user.get)
+		u.setActiveSitter(user.getActiveSitter());
+		u.setAppointments(user.getAppointments());
+		return user;
+		
 	}
 
 	@Override
