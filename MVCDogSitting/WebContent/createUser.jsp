@@ -10,7 +10,7 @@
 <title>Register New User</title>
 </head>
 <body>
-	<form:form action="login.do" method="POST" modelAttribute="user">
+	<form:form action="createUser.do" method="POST" modelAttribute="user">
 		<label>Enter email: <form:input path="email" /></label>
 		<br />
 		<label>Create password: <form:password path="password" /></label>
