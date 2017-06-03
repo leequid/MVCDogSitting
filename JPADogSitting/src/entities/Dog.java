@@ -1,11 +1,16 @@
 package entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,10 +20,25 @@ public class Dog {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
+	@ManyToOne							//mapped ManyToOne to user
 	@JoinColumn(name="dog_user_id")
 	private User user;
 	
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE})		//mapped many to many with appointment
+	@JoinTable(name="dog_appointment",
+		joinColumns=@JoinColumn(name="dog_id"),
+		inverseJoinColumns=@JoinColumn(name="appointment_id")
+	)
+	private List<Appointment> appointments;  
+	
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+
 	private String name;
 	
 	@Column(name="dog_user_id")

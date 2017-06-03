@@ -1,12 +1,16 @@
 package entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,6 +27,41 @@ public class Appointment {
 	@Column(name="user_id")
 	private int userId;
 	
+	@ManyToMany(mappedBy="appointments")    // mapped many to many to dogs
+	private List<Dog> dogs;
+	
+	public List<Dog> getDogs() {
+		return dogs;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="user_id")		//mapped ManytoOne to user
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name="sitter_id")		//mapped ManytoOne to sitter
+	private Sitter sitter;
+	
+	public void setDogs(List<Dog> dogs) {
+		this.dogs = dogs;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Sitter getSitter() {
+		return sitter;
+	}
+
+	public void setSitter(Sitter sitter) {
+		this.sitter = sitter;
+	}
+
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
