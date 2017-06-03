@@ -12,9 +12,11 @@
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="email">Email:</form:label>
 		<form:input path="email" />
+		<form:errors path="email" />
 		<br />
 		<form:label path="password">Password:</form:label>
 		<form:input path="password" />
+		<form:errors path="password" />
 		<input type="submit" value="Login" />
 	</form:form>
 </body>
