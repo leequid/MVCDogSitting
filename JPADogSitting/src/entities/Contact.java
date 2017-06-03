@@ -17,6 +17,28 @@ public class Contact {
 	
 	private String state;
 	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@Column(name="zipcode")
 	private String zipCode;
 	
@@ -70,8 +92,8 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [id=" + id + ", street=" + street + ", state=" + state + ", zipCode=" + zipCode + ", email="
-				+ email + ", phone=" + phone + "]";
+		return "Contact [id=" + id + ", street=" + street + ", state=" + state + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", zipCode=" + zipCode + ", email=" + email + ", phone=" + phone + "]";
 	}
 	
 	
