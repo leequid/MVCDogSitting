@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `zipcode` VARCHAR(10) NULL,
   `email` VARCHAR(60) NULL,
   `phone` VARCHAR(15) NULL,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -53,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_name` VARCHAR(50) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `sitter` TINYINT(1) NOT NULL,
-  `contact_id` INT NOT NULL,
+  `contact_id` INT NULL,
   `sitter_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `contact_id_idx` (`contact_id` ASC),
@@ -101,7 +103,8 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `sitter_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `date` DATETIME NOT NULL,
+  `date` DATE NOT NULL,
+  `time` TIME NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `user_id_idx` (`user_id` ASC),
   INDEX `sitter_id_idx` (`sitter_id` ASC),
@@ -158,10 +161,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-1233-2323');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-444-4555');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123=-123-23-32');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '1233-221-1-1-1');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-1233-2323', 'Eric', 'Lee');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-444-4555', 'Michael', 'Roschenwimmer');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123=-123-23-32', 'Miles', 'Grandin');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '1233-221-1-1-1', 'Ryan', 'Grillo');
 
 COMMIT;
 
@@ -210,10 +213,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`) VALUES (1, 1, 2, '2016-02-12 12:22:00');
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`) VALUES (2, 1, 4, '2016-02-12 13:12:00');
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`) VALUES (3, 2, 3, '2016-02-12 13:12:00');
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`) VALUES (4, 2, 2, '2016-02-12 13:12:00');
+INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (1, 1, 2, '2016-02-12 12:22:00', DEFAULT);
+INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (2, 1, 4, '2016-02-12 13:12:00', DEFAULT);
+INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (3, 2, 3, '2016-02-12 13:12:00', DEFAULT);
+INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (4, 2, 2, '2016-02-12 13:12:00', DEFAULT);
 
 COMMIT;
 
