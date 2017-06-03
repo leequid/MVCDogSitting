@@ -13,10 +13,10 @@ import entities.User;
 
 @Transactional
 @Repository
-public class dogApplicationDAOImpl implements dogApplicationDAO{
+public class dogApplicationDAOImpl implements dogApplicationDAO {
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public Dog createDog(Dog dog) {
 		// TODO Auto-generated method stub
@@ -49,26 +49,39 @@ public class dogApplicationDAOImpl implements dogApplicationDAO{
 
 	@Override
 	public User updateUser(int id, User user) {
-		// TODO Auto-generated method stub
-		return null;
+		User u = em.find(User.class, id);
+		u.setContact(user.getContact());
+		u.setContactId(user.getContactId());
+		u.setDogs(user.getDogs());
+		u.setPassword(user.getPassword());
+		u.setSitter(user.getSitter());
+		u.setActiveSitter(user.get)
 	}
 
 	@Override
 	public Appointment createAppointment(Appointment a) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(a);
+		em.flush();
+		return a;
 	}
 
 	@Override
 	public boolean cancleAppointment(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Appointment a = em.find(Appointment.class, id);
+		if (a == null) {
+			return false;
+		} else {
+			em.remove(a);
+			return true;
+		}
 	}
 
 	@Override
 	public Appointment reschedule(int id, Appointment a) {
-		// TODO Auto-generated method stub
-		return null;
+		Appointment appointment = em.find(Appointment.class, id);
+		appointment.setDate(a.getDate()); 
+		return appointment;
+
 	}
 
 	@Override
@@ -86,6 +99,7 @@ public class dogApplicationDAOImpl implements dogApplicationDAO{
 		c.setState(contact.getState());
 		c.setStreet(contact.getStreet());
 		c.setZipCode(contact.getZipCode());
+	
 		return c;
 	}
 
