@@ -10,10 +10,9 @@
      <class>entities.Dog</class> 
      <class>entities.User</class> 
      <class>entities.Sitter</class> 
-     <class>entities.Appointment</class> 
-     <class>entities.DogAppointment</class> 
+     <class>entities.Appointment</class>  
      <class>entities.Contact</class> 
-     <class>entities.UserHasSitter</class> 
+   
     
     <properties>
       <property name="javax.persistence.jdbc.url"
