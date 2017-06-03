@@ -18,6 +18,17 @@ public class User {
 	
 	private String password;
 	
+	@Column(name="contact_id")
+	private int contactId;
+	
+	public int getContactId() {
+		return contactId;
+	}
+
+	public void setContactId(int contactId) {
+		this.contactId = contactId;
+	}
+
 	private boolean sitter;
 
 	public String getUserName() {
@@ -50,7 +61,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", sitter=" + sitter + "]";
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", contactId=" + contactId
+				+ ", sitter=" + sitter + "]";
 	}
 	
 	

@@ -14,36 +14,19 @@ public class Sitter {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+//	@Column(name="size_pref")
+//	@Enumerated(EnumType.STRING)
+//	public SizePreference sizePreference;
+	
 	@Column(name="size_pref")
-	@Enumerated(EnumType.STRING)
-	public SizePreference sizePreference;
-	
-	private String email;
-	
-	private String phone;
+	private String sizePreference;
 
-	public SizePreference getSizePreference() {
+	public String getSizePreference() {
 		return sizePreference;
 	}
 
-	public void setSizePreference(SizePreference sizePreference) {
+	public void setSizePreference(String sizePreference) {
 		this.sizePreference = sizePreference;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	public int getId() {
@@ -52,8 +35,7 @@ public class Sitter {
 
 	@Override
 	public String toString() {
-		return "Sitter [id=" + id + ", sizePreference=" + sizePreference + ", email=" + email + ", phone=" + phone
-				+ "]";
+		return "Sitter [id=" + id + ", sizePreference=" + sizePreference + "]";
 	}
 	
 	
