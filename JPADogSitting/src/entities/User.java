@@ -19,23 +19,18 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	
 		
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="contact_id") 
-	private Contact contact;   			//maps one to one with contact table
+	private Contact contact;   			//maps one to one with contact table bi-directional
 	
 	@Column(name="user_name")
 	private String userName;  
 	
 	private String password;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user")		//maps bidirectional OneToMany to dogs
 	private List<Dog> dogs;
-
-	@OneToMany(mappedBy="user")						//mapped oneToMany to appointments
-	private List<Appointment> appointments;
 	
 	public Contact getContact() {
 		return contact;
@@ -56,17 +51,6 @@ public class User {
 		this.dogs = dogs;
 	}
 
-//	@Column(name="contact_id") 
-//	private int contactId;
-//	
-//	public int getContactId() {
-//		return contactId;
-//	}
-//
-//	public void setContactId(int contactId) {
-//		this.contactId = contactId;
-//	}
-	
 	@Column(name="sitter")
 	private boolean activeSitter;
 
@@ -84,14 +68,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Appointment> getAppointments() {
-		return appointments;
-	}
-
-	public void setAppointments(List<Appointment> appointments) {
-		this.appointments = appointments;
 	}
 
 	public Sitter getSitter() {
@@ -114,11 +90,11 @@ public class User {
 		return id;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", contact=" + contact + ", userName=" + userName + ", password=" + password
-//				+ ", contactId=" + contactId + ", activeSitter=" + activeSitter + "]";
-//	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", activeSitter=" + activeSitter
+				+ "]";
+	}
 	
 	
 }

@@ -16,7 +16,7 @@ public class Contact {
 	
 	private String street;
 	
-	@OneToOne(mappedBy="contact")
+	@OneToOne(mappedBy="contact") //bi directional oneToOne with user
 	private User user;
 	
 	private String state;
