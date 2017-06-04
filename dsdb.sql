@@ -34,18 +34,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sitter`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `sitter` ;
-
-CREATE TABLE IF NOT EXISTS `sitter` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `size_pref` VARCHAR(20) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user` ;
@@ -55,19 +43,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_name` VARCHAR(50) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `sitter` TINYINT(1) NOT NULL,
-  `contact_id` INT NULL,
-  `sitter_id` INT NULL,
+  `contact_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `contact_id_idx` (`contact_id` ASC),
-  INDEX `fk_user_sitter1_idx` (`sitter_id` ASC),
-  CONSTRAINT `contact_id`
+  INDEX `fk_user_contact1_idx` (`contact_id` ASC),
+  CONSTRAINT `fk_user_contact1`
     FOREIGN KEY (`contact_id`)
     REFERENCES `contact` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_sitter1`
-    FOREIGN KEY (`sitter_id`)
-    REFERENCES `sitter` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -81,12 +62,31 @@ DROP TABLE IF EXISTS `dog` ;
 CREATE TABLE IF NOT EXISTS `dog` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `user_id` INT NOT NULL,
   `weight` INT NULL,
   `img_url` VARCHAR(100) NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_dog_user_idx` (`user_id` ASC),
-  CONSTRAINT `dog_user_id`
+  INDEX `fk_dog_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_dog_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sitter`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sitter` ;
+
+CREATE TABLE IF NOT EXISTS `sitter` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `size_pref` VARCHAR(20) NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `user_id`),
+  INDEX `fk_sitter_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_sitter_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
     ON DELETE NO ACTION
@@ -101,45 +101,21 @@ DROP TABLE IF EXISTS `appointment` ;
 
 CREATE TABLE IF NOT EXISTS `appointment` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `sitter_id` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  `date` DATE NOT NULL,
-  `time` TIME NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `user_id_idx` (`user_id` ASC),
-  INDEX `sitter_id_idx` (`sitter_id` ASC),
-  CONSTRAINT `user_id`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `sitter_id`
-    FOREIGN KEY (`sitter_id`)
-    REFERENCES `sitter` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `dog_appointment`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `dog_appointment` ;
-
-CREATE TABLE IF NOT EXISTS `dog_appointment` (
+  `start_date` DATETIME NOT NULL,
+  `end_date` DATETIME NULL,
   `dog_id` INT NOT NULL,
-  `appointment_id` INT NOT NULL,
-  INDEX `appointment_id_idx` (`appointment_id` ASC),
-  INDEX `dog_id_idx` (`dog_id` ASC),
-  PRIMARY KEY (`dog_id`, `appointment_id`),
-  CONSTRAINT `dog_id`
+  `sitter_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `dog_id`),
+  INDEX `fk_appointment_dog1_idx` (`dog_id` ASC),
+  INDEX `fk_appointment_sitter1_idx` (`sitter_id` ASC),
+  CONSTRAINT `fk_appointment_dog1`
     FOREIGN KEY (`dog_id`)
     REFERENCES `dog` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `appointment_id`
-    FOREIGN KEY (`appointment_id`)
-    REFERENCES `appointment` (`id`)
+  CONSTRAINT `fk_appointment_sitter1`
+    FOREIGN KEY (`sitter_id`)
+    REFERENCES `sitter` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -170,25 +146,14 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `sitter`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `dsdb`;
-INSERT INTO `sitter` (`id`, `size_pref`) VALUES (1, 'small');
-INSERT INTO `sitter` (`id`, `size_pref`) VALUES (2, 'big');
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `sitter_id`) VALUES (1, 'Eric', '1', true, 1, 1);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `sitter_id`) VALUES (2, 'Mike', '2', false, 2, NULL);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `sitter_id`) VALUES (3, 'Miles', '3', false, 3, NULL);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `sitter_id`) VALUES (4, 'Ryan', '4', true, 4, 2);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (1, 'Eric', '1', true, 1);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (2, 'Mike', '2', false, 2);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (3, 'Miles', '3', false, 3);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (4, 'Ryan', '4', true, 4);
 
 COMMIT;
 
@@ -198,12 +163,23 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `dog` (`id`, `name`, `user_id`, `weight`, `img_url`) VALUES (1, 'a', 1, 25, NULL);
-INSERT INTO `dog` (`id`, `name`, `user_id`, `weight`, `img_url`) VALUES (2, 'b', 1, 35, NULL);
-INSERT INTO `dog` (`id`, `name`, `user_id`, `weight`, `img_url`) VALUES (3, 'c', 2, 23, NULL);
-INSERT INTO `dog` (`id`, `name`, `user_id`, `weight`, `img_url`) VALUES (4, 'd', 2, 12, NULL);
-INSERT INTO `dog` (`id`, `name`, `user_id`, `weight`, `img_url`) VALUES (5, 'e', 3, 1, NULL);
-INSERT INTO `dog` (`id`, `name`, `user_id`, `weight`, `img_url`) VALUES (6, 'f', 4, 50, NULL);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (1, 'a', 25, NULL, 1);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (2, 'b', 35, NULL, 1);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (3, 'c', 23, NULL, 2);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (4, 'd', 12, NULL, 2);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (5, 'e', 1, NULL, 3);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (6, 'f', 50, NULL, 4);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `sitter`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `dsdb`;
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (1, 'small', 1);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (2, 'big', 4);
 
 COMMIT;
 
@@ -213,25 +189,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (1, 1, 2, '2016-02-12 12:22:00', DEFAULT);
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (2, 1, 4, '2016-02-12 13:12:00', DEFAULT);
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (3, 2, 3, '2016-02-12 13:12:00', DEFAULT);
-INSERT INTO `appointment` (`id`, `sitter_id`, `user_id`, `date`, `time`) VALUES (4, 2, 2, '2016-02-12 13:12:00', DEFAULT);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `dog_appointment`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `dsdb`;
-INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (3, 1);
-INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (4, 1);
-INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (6, 2);
-INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (5, 3);
-INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (3, 4);
-INSERT INTO `dog_appointment` (`dog_id`, `appointment_id`) VALUES (4, 4);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (1, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 1);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (2, '2016-02-12 13:12:00', NULL, 4, 1);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (3, '2016-02-12 13:12:00', NULL, 6, 1);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (4, '2016-02-12 13:12:00', NULL, 5, 2);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (5, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 2);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2);
 
 COMMIT;
 
