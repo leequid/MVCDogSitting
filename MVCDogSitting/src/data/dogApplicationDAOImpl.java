@@ -62,7 +62,6 @@ public class dogApplicationDAOImpl implements dogApplicationDAO {
         u.setPassword(user.getPassword());
         u.setSitter(user.getSitter());
         u.setActiveSitter(user.getActiveSitter());
-        u.setAppointments(user.getAppointments());
         return user;
         
     }
