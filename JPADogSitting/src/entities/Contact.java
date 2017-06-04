@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Contact {
@@ -14,6 +15,9 @@ public class Contact {
 	private int id;
 	
 	private String street;
+	
+	@OneToOne(mappedBy="contact")
+	private User user;
 	
 	private String state;
 	
