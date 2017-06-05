@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -21,7 +21,7 @@ public class Dog {
 	private int id;
 	
 	@ManyToOne							//mapped ManyToOne to user
-	@JoinColumn(name="dog_user_id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@OneToMany(mappedBy="dog")		//mapped one to many with appointment
@@ -30,6 +30,13 @@ public class Dog {
 	public List<Appointment> getAppointments() {
 		return appointments;
 	}
+	
+	@ManyToMany
+	@JoinTable(name="appointment",			// Maps ManyToMany to sitter
+		joinColumns=@JoinColumn(name="dog_id"),
+		inverseJoinColumns=@JoinColumn(name="sitter_id")
+	)
+	private List<Sitter> sitters;
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
@@ -39,6 +46,14 @@ public class Dog {
 		
 	public User getUser() {
 		return user;
+	}
+
+	public List<Sitter> getSitters() {
+		return sitters;
+	}
+
+	public void setSitters(List<Sitter> sitters) {
+		this.sitters = sitters;
 	}
 
 	public void setUser(User user) {

@@ -10,9 +10,9 @@
 </head>
 <body>
 	<form:form action="login.do" method="POST" modelAttribute="user">
-		<form:label path="username">User Name:</form:label>
-		<form:input path="username" />
-		<form:errors path="username" />
+		<form:label path="userName">User Name:</form:label>
+		<form:input path="userName" />
+		<form:errors path="userName" />
 		<br />
 		<form:label path="password">Password:</form:label>
 		<form:input path="password" />

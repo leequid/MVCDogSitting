@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import data.AuthenticationDAOImpl;
+import data.AuthenticationDAO;
 import entities.User;
+
 
 @Controller
 public class LoginController {
 	@Autowired
-	private AuthenticationDAOImpl authDao;
+	private AuthenticationDAO authDao;
 
-	@RequestMapping(path = "login", method = RequestMethod.GET)
+	@RequestMapping(path = "start.do", method = RequestMethod.GET)
 	public ModelAndView login() {
 		User u = new User();
 		ModelAndView mv = new ModelAndView("login.jsp", "user", u);
@@ -30,17 +31,18 @@ public class LoginController {
 		User existingUser = authDao.validUserName(user);
 
 		if (existingUser == null) {
-			mv.addObject("error", "User Name is invalid!");
-			mv.setViewName("login.do");
+			errors.rejectValue("userName", "login.userName", "Provided user name is not valid");
+			mv.setViewName("login.jsp");
 			return mv;
+			
 		} else {
 			if (authDao.validPassword(existingUser, user.getPassword())) {
 				mv.addObject("user", existingUser);
 				mv.setViewName("profile.jsp"); // page name to be confirmed
 				return mv;
 			} else {
-				mv.addObject("error", "Password is invalid!");
-				mv.setViewName("login.do");
+				errors.rejectValue("password", "login.password", "User name and password don't match");
+				mv.setViewName("login.jsp");
 				return mv;
 			}
 		}

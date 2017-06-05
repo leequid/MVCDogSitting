@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,13 +26,24 @@ public class Sitter {
 	public List<Appointment> getAppointments() {
 		return appointments;
 	}
-	@OneToOne(mappedBy="sitter") //mapped OneToOne with user
+	@OneToOne //mapped OneToOne with user
+	@JoinColumn(name="user_id") 
 	private User user;
 	
 	public User getUser() {
 		return user;
 	}
+	public List<Dog> getDogs() {
+		return dogs;
+	}
 
+	public void setDogs(List<Dog> dogs) {
+		this.dogs = dogs;
+	}
+	@ManyToMany(mappedBy="sitters")
+	private List<Dog> dogs;
+	
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="size_pref")
 	public SizePreference sizePreference;
