@@ -13,17 +13,10 @@ import entities.Dog;
 import entities.User;
 
 @Controller
-<<<<<<< HEAD:MVCDogSitting/src/controllers/DogAppController.java
+@SessionAttributes("User")
 public class DogAppController {
 
-=======
-@SessionAttributes("User")
-<<<<<<< HEAD:MVCDogSitting/src/controllers/DogAppController.java
-public class DogController {
->>>>>>> 9b52f51aaf9dcd3f82ea1b77beab1fd328471208:MVCDogSitting/src/controllers/DogController.java
-=======
-public class DogAppController {
->>>>>>> aaf2dbc3747fa2c5d9002862244f552836302c42:MVCDogSitting/src/controllers/DogAppController.java
+
 	
 	@Autowired
 	private DogApplicationDAO dao;
