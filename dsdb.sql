@@ -82,7 +82,7 @@ DROP TABLE IF EXISTS `sitter` ;
 
 CREATE TABLE IF NOT EXISTS `sitter` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `size_pref` VARCHAR(20) NULL,
+  `size_pref` ENUM('TOY', 'SMALL', 'MEDIUM', 'LARGE', 'GIANT') NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_sitter_user1_idx` (`user_id` ASC),

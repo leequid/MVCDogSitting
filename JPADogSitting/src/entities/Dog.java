@@ -2,16 +2,16 @@ package entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Dog {
@@ -24,11 +24,7 @@ public class Dog {
 	@JoinColumn(name="dog_user_id")
 	private User user;
 	
-	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE})		//mapped many to many with appointment
-	@JoinTable(name="dog_appointment",
-		joinColumns=@JoinColumn(name="dog_id"),
-		inverseJoinColumns=@JoinColumn(name="appointment_id")
-	)
+	@OneToMany(mappedBy="dog")		//mapped one to many with appointment
 	private List<Appointment> appointments;  
 	
 	public List<Appointment> getAppointments() {
@@ -40,10 +36,7 @@ public class Dog {
 	}
 
 	private String name;
-	
-//	@Column(name="dog_user_id")
-//	private int dogUserId;
-	
+		
 	public User getUser() {
 		return user;
 	}
@@ -65,14 +58,6 @@ public class Dog {
 		this.name = name;
 	}
 
-//	public int getDogUserId() {
-//		return dogUserId;
-//	}
-//
-//	public void setDogUserId(int dogUserId) {
-//		this.dogUserId = dogUserId;
-//	}
-
 	public int getWeight() {
 		return weight;
 	}
@@ -93,10 +78,9 @@ public class Dog {
 		return id;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Dog [id=" + id + ", name=" + name + ", dogUserId=" + dogUserId + ", weight=" + weight + ", imageUrl="
-//				+ imageUrl + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Dog [id=" + id + ", name=" + name + ", weight=" + weight + ", imageUrl=" + imageUrl + "]";
+	}
 	
 }

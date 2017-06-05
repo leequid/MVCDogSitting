@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,18 +17,8 @@ public class Sitter {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-//	@Column(name="size_pref")
-//	@Enumerated(EnumType.STRING)
-//	public SizePreference sizePreference;
-	
-	@Column(name="size_pref")
-	private String sizePreference;
 
-	public String getSizePreference() {
-		return sizePreference;
-	}
-	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment
+	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment bi-directional
 	private List<Appointment> appointments;
 
 	public List<Appointment> getAppointments() {
@@ -39,6 +31,10 @@ public class Sitter {
 		return user;
 	}
 
+	@Enumerated(EnumType.STRING)
+	@Column(name="size_pref")
+	public SizePreference sizePreference;
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -47,7 +43,11 @@ public class Sitter {
 		this.appointments = appointments;
 	}
 
-	public void setSizePreference(String sizePreference) {
+	public SizePreference getSizePreference() {
+		return sizePreference;
+	}
+
+	public void setSizePreference(SizePreference sizePreference) {
 		this.sizePreference = sizePreference;
 	}
 

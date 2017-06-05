@@ -21,39 +21,15 @@ public class Appointment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-//	@Column(name="sitter_id")
-//	private int sitterId;
-//	
-//	@Column(name="user_id")
-//	private int userId;
-	
-	@ManyToMany(mappedBy="appointments")    // mapped many to many to dogs
-	private List<Dog> dogs;
-	
-	public List<Dog> getDogs() {
-		return dogs;
-	}
+	@ManyToOne
+	@JoinColumn(name="dog_id") // mapped many to one to dog
+	private Dog dog;
 
 	@ManyToOne
-	@JoinColumn(name="user_id")		//mapped ManytoOne to user
-	private User user;
-
-	@ManyToOne
-	@JoinColumn(name="sitter_id")		//mapped ManytoOne to sitter
+	@JoinColumn(name="sitter_id")		//mapped ManytoOne to sitter bi-directional
 	private Sitter sitter;
+
 	
-	public void setDogs(List<Dog> dogs) {
-		this.dogs = dogs;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Sitter getSitter() {
 		return sitter;
 	}
@@ -65,21 +41,13 @@ public class Appointment {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
-//	public int getSitterId() {
-//		return sitterId;
-//	}
-//
-//	public void setSitterId(int sitterId) {
-//		this.sitterId = sitterId;
-//	}
-//
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
+	public Dog getDog() {
+		return dog;
+	}
+
+	public void setDog(Dog dog) {
+		this.dog = dog;
+	}
 
 	public Date getDate() {
 		return date;
@@ -93,9 +61,11 @@ public class Appointment {
 		return id;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Appointment [id=" + id + ", sitterId=" + sitterId + ", userId=" + userId + ", date=" + date + "]";
-//	}
-//	
+	@Override
+	public String toString() {
+		return "Appointment [id=" + id + ", date=" + date + "]";
+	}
+
+	
+	
 }
