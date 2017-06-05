@@ -13,30 +13,30 @@ import entities.User;
 public class AuthenticationDAOImpl implements AuthenticationDAO {
 	@PersistenceContext
 	private EntityManager em;
-
+	
 	@Override
 	public User validUserName(User user) {
-
+		
 		String query = "SELECT u FROM User u WHERE u.userName = :uName";
+		System.out.println("validUserName method");
 		User u = em.createQuery(query, User.class).setParameter("uName", user.getUserName()).getSingleResult();
-
+		
 		if (u == null) {
 			return null;
-		} else {
+		}
+		else {
 			return u;
 		}
-
+		
 	}
 
 	@Override
 	public boolean validPassword(User dbUser, String password) {
-
-		if (dbUser.getPassword().equals(password)) {
-			return true;
-		} else {
-			return false;
-		}
+		
+		if (dbUser.getPassword().equals(password)) {return true;}
+		else {return false;}
 
 	}
+
 
 }
