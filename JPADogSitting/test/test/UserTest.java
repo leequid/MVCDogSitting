@@ -10,9 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Appointment;
-
-public class AppointmentTest {
+public class UserTest {
 	private EntityManager em = null;
     
 	
@@ -33,10 +31,6 @@ public class AppointmentTest {
         boolean pass = true;
         assertEquals(pass, true);
     }
-    @Test
-    public void check_if_appointment_has_dog_object_mapped_correctly() {
-    	String expectedDogName = "a";
-    	assertEquals(em.find(Appointment.class, 1).getDog().getName(), expectedDogName);
-    }
-     
+    
 }
+
