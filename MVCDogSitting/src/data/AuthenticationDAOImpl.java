@@ -1,5 +1,7 @@
 package data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,14 +20,14 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 	public User validUserName(User user) {
 		
 		String query = "SELECT u FROM User u WHERE u.userName = :uName";
-		System.out.println("validUserName method");
-		User u = em.createQuery(query, User.class).setParameter("uName", user.getUserName()).getSingleResult();
+		List<User> users = em.createQuery(query, User.class).setParameter("uName", user.getUserName()).getResultList();
 		
-		if (u == null) {
+		if (users.isEmpty()) {
 			return null;
 		}
 		else {
-			return u;
+			System.out.println(users.get(0));
+			return users.get(0);
 		}
 		
 	}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.AuthenticationDAO;
+import entities.Contact;
 import entities.User;
 
 
@@ -47,5 +48,17 @@ public class LoginController {
 			}
 		}
 
+	}
+	
+	@RequestMapping(path = "createUser.do", method = RequestMethod.POST) 
+	public ModelAndView createNewUser(User user, Contact contact, Errors errors) {
+		ModelAndView mv = new ModelAndView();
+		User u = authDao.validUserName(user);
+		if (u != null) {
+			errors.rejectValue("userName", "user.userName", "User name already taken; pick another");
+		}
+		
+		return null;
+		
 	}
 }
