@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -30,7 +31,17 @@ public class Sitter {
 	public User getUser() {
 		return user;
 	}
+	public List<Dog> getDogs() {
+		return dogs;
+	}
 
+	public void setDogs(List<Dog> dogs) {
+		this.dogs = dogs;
+	}
+	@ManyToMany(mappedBy="sitters")
+	private List<Dog> dogs;
+	
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="size_pref")
 	public SizePreference sizePreference;
