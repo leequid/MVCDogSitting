@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +25,15 @@ public class LoginController {
 
 	@Autowired
 	private DogApplicationDAO dao;
+	
+	@ModelAttribute("user")
+	  public User initUser() {
+	    return new User();
+	  }
 
 	@RequestMapping(path = "start.do", method = RequestMethod.GET)
-	public ModelAndView login() {
+	public ModelAndView login(@ModelAttribute("user") User user) {
+		System.err.println(user);
 		User u = new User();
 		ModelAndView mv = new ModelAndView("createUser.jsp", "user", u);
 		return mv;
@@ -69,6 +76,7 @@ public class LoginController {
 			User temp = dao.createUser(user);
 			mv.addObject("contactId", temp.getContact().getId());
 			mv.addObject("contact", new Contact());
+			mv.addObject("user", temp);
 			mv.setViewName("contact.jsp");
 			return mv;
 		}
@@ -86,24 +94,35 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path = "editProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToEditPage(@RequestParam(name = "userId") Integer id) {
+	public ModelAndView goToEditPage(@ModelAttribute("user")User user) {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("user", dao.showUser(id));
+		mv.addObject("user", dao.showUser(user.getId()));
 		mv.setViewName("editProfile.jsp");
 		return mv;
 		
 	}
 	
 	@RequestMapping(path = "updateProfile.do", method = RequestMethod.POST)
-	public ModelAndView updateProfile(@RequestParam(name = "userId") Integer id, Contact contact) {
+	public ModelAndView updateProfile(@ModelAttribute("user")User user, Contact contact) {
 		ModelAndView mv = new ModelAndView();
-		User temp = dao.showUser(id);
-		System.out.println(id);
-		int contactId = temp.getContact().getId();
-		dao.updateContact(contactId, contact);
-		mv.addObject("user", dao.showUser(id));
+		System.out.println(user.getId());
+		dao.updateContact(user.getContact().getId(), contact);
+		mv.addObject("user", dao.showUser(user.getId()));
 		mv.setViewName("profile.jsp");
+		return mv;
+		
+	}
+	
+	@RequestMapping(path = "viewSitters.do", method = RequestMethod.GET)
+	public ModelAndView viewSitters(@ModelAttribute("user")User user) {
+		ModelAndView mv = new ModelAndView();
+//		
+//		dao.
+//		
+//		dao.updateContact(user.getContact().getId(), contact);
+//		mv.addObject("user", dao.showUser(user.getId()));
+//		mv.setViewName("profile.jsp");
 		return mv;
 		
 	}

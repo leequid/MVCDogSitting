@@ -22,8 +22,8 @@
 	<label>Email: <input type="text" value="${user.contact.email}" name="email"/></label>
 	<label>Phone Number: <input type="text" value="${user.contact.phone}" name="phone"/></label>
 	
-	<input type="hidden" value="${user.id}" name="userId"/>
-	<%-- <input type="hidden" value="${user.contact.id} name="contactId"/> --%>
+<%-- 	<input type="hidden" value="${user.id}" name="userId"/>
+ --%>	<%-- <input type="hidden" value="${user.contact.id} name="contactId"/> --%>
 	<input type="submit" value="Update Profile"/>
 
 </form:form>

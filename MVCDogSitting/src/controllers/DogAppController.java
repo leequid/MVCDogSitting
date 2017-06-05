@@ -62,20 +62,20 @@ public class DogAppController {
 		return mv;
 	}
 
-	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUser(@ModelAttribute("newUser") User user) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("register.jsp");
-		dao.createUser(user); // not complete. not sure which JSP to send to
-		return mv;
-	}
-
-	@RequestMapping(path = "updateUser.do", method = RequestMethod.POST)
-	public ModelAndView updateUser(User user, int id) {
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		mv.addObject("UserObject", dao.updateUser(id, user)); // not complete
-		return mv;
-	}
+//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
+//	public ModelAndView createUser(@ModelAttribute("newUser") User user) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("register.jsp");
+//		dao.createUser(user); // not complete. not sure which JSP to send to
+//		return mv;
+//	}
+//
+//	@RequestMapping(path = "updateUser.do", method = RequestMethod.POST)
+//	public ModelAndView updateUser(User user, int id) {
+//		ModelAndView mv = new ModelAndView("profile.jsp");
+//		mv.addObject("UserObject", dao.updateUser(id, user)); // not complete
+//		return mv;
+//	}
 
 	@RequestMapping(path = "showUser.do", method = RequestMethod.GET)
 	public ModelAndView showUser(int id) {
@@ -113,23 +113,23 @@ public class DogAppController {
 		dao.cancelAppointment(id); // not complete
 		return mv;
 	}
-
-	@RequestMapping(path = "createContact.do", method = RequestMethod.POST)
-	public ModelAndView createContact(Contact contact) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("register.jsp");
-		dao.createContact(contact); // not complete. not sure which JSP to send
-									// to
-		return mv;
-	}
-
-	@RequestMapping(path = "updateContact.do", method = RequestMethod.POST)
-	public ModelAndView updateContact(int id, Contact contact) {
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		mv.addObject("ContactObject", dao.updateContact(id, contact)); // not
-																		// complete
-		return mv;
-	}
+//
+//	@RequestMapping(path = "createContact.do", method = RequestMethod.POST)
+//	public ModelAndView createContact(Contact contact) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("register.jsp");
+//		dao.createContact(contact); // not complete. not sure which JSP to send
+//									// to
+//		return mv;
+//	}
+//
+//	@RequestMapping(path = "updateContact.do", method = RequestMethod.POST)
+//	public ModelAndView updateContact(int id, Contact contact) {
+//		ModelAndView mv = new ModelAndView("profile.jsp");
+//		mv.addObject("ContactObject", dao.updateContact(id, contact)); // not
+//																		// complete
+//		return mv;
+//	}
 }
 
 // @ModelAttribute("user") <----- needs to be added to LoginController
