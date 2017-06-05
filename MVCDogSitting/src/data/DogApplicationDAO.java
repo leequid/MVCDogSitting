@@ -5,7 +5,7 @@ import entities.Contact;
 import entities.Dog;
 import entities.User;
 
-public interface dogApplicationDAO {
+public interface DogApplicationDAO {
 public Dog createDog(Dog dog);
 public User showUser(int id);
 public boolean deleteDog(int id);
