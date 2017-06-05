@@ -92,6 +92,18 @@ public class Dog {
 	public int getId() {
 		return id;
 	}
+	
+
+	public Dog(String name, int weight, String imageUrl) {
+		super();
+		this.name = name;
+		this.weight = weight;
+		this.imageUrl = imageUrl;
+	}
+
+	public Dog() {
+		super();
+	}
 
 	@Override
 	public String toString() {
