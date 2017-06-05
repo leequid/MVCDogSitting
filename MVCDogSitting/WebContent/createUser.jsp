@@ -11,7 +11,7 @@
 </head>
 <body>
 	<form:form action="createUser.do" method="POST" modelAttribute="user">
-		<label>Enter your email: <form:input path="email" /></label>
+		<%-- <label>Enter your email: <form:input path="email" /></label>
 		<br />
 		<label>First Name: <form:input path="firstName" /></label>
 		<br />
@@ -27,7 +27,7 @@
 		<br />
 		<label>Phone Number: <form:input path="phone" /></label>
 		<br />
-		<hr>
+		<hr> --%>
 		<label>Enter a User Name: <form:input path="userName" /></label>
 		<br />
 		<label>Create password: <form:password path="password" /></label>

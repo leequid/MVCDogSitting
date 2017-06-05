@@ -27,6 +27,24 @@ public class Contact {
 	@Column(name="last_name")
 	private String lastName;
 	
+	private String city;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -96,9 +114,31 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [id=" + id + ", street=" + street + ", state=" + state + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", zipCode=" + zipCode + ", email=" + email + ", phone=" + phone + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Contact [id=");
+		builder.append(id);
+		builder.append(", street=");
+		builder.append(street);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append(", state=");
+		builder.append(state);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", city=");
+		builder.append(city);
+		builder.append(", zipCode=");
+		builder.append(zipCode);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append("]");
+		return builder.toString();
 	}
+
 	
 	
 }

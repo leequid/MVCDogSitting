@@ -22,7 +22,7 @@ public class LoginController {
 	@RequestMapping(path = "start.do", method = RequestMethod.GET)
 	public ModelAndView login() {
 		User u = new User();
-		ModelAndView mv = new ModelAndView("login.jsp", "user", u);
+		ModelAndView mv = new ModelAndView("createUser.jsp", "user", u);
 		return mv;
 	}
 
@@ -54,6 +54,8 @@ public class LoginController {
 	public ModelAndView createNewUser(User user, Contact contact, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		User u = authDao.validUserName(user);
+		System.out.println(user);
+		System.out.println(contact);
 		if (u != null) {
 			errors.rejectValue("userName", "user.userName", "User name already taken; pick another");
 		}
