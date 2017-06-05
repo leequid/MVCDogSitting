@@ -84,7 +84,7 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     @Override
     public Appointment reschedule(int id, Appointment a) {
         Appointment appointment = em.find(Appointment.class, id);
-        appointment.setDate(a.getDate()); 
+//        appointment.setDate(a.getDate()); 
         return appointment;
     }
     @Override

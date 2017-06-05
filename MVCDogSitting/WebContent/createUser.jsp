@@ -11,13 +11,26 @@
 </head>
 <body>
 	<form:form action="createUser.do" method="POST" modelAttribute="user">
-		<label>Enter email: <form:input path="email" /></label>
+		<label>Enter your email: <form:input path="email" /></label>
+		<br />
+		<label>First Name: <form:input path="firstName" /></label>
+		<br />
+		<label>Last Name: <form:input path="lastName" /></label>
+		<br />
+		<label>Street Address: <form:password path="password" /></label>
+		<br />
+		<label>City: <form:input path="city" /></label>
+		<br />
+		<label>State: <form:input path="state" /></label>
+		<br />
+		<label>ZipCode: <form:input path="zipcode" /></label>
+		<br />
+		<label>Phone Number: <form:input path="phone" /></label>
+		<br />
+		<hr>
+		<label>Enter a User Name: <form:input path="userName" /></label>
 		<br />
 		<label>Create password: <form:password path="password" /></label>
-		<br />
-		<label>Enter first name: <form:input path="firstName" /></label>
-		<br />
-		<label>Enter last name: <form:input path="lastName" /></label>
 		<br />
 		<input type="submit" value="Register" />
 	</form:form>
