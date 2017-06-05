@@ -179,8 +179,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (1, 'small', 1);
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (2, 'big', 4);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (1, 'SMALL', 1);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (2, 'LARGE', 4);
 
 COMMIT;
 
