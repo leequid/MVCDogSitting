@@ -19,5 +19,9 @@
 		<input type="hidden" name="userId" value="${user.id}" /> <input
 			type="submit" value="Edit Profile" name="editButton" />
 	</form>
+	<form action="viewSitters.do">
+		<input type="hidden" name="userId" value="${user.id}" /> <input
+			type="submit" value="Edit Profile" name="editButton" />
+	</form>
 </body>
 </html>

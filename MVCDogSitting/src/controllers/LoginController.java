@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.AuthenticationDAO;
@@ -16,6 +17,7 @@ import entities.Contact;
 import entities.User;
 
 @Controller
+@SessionAttributes("user")
 public class LoginController {
 	@Autowired
 	private AuthenticationDAO authDao;
@@ -81,5 +83,28 @@ public class LoginController {
 		mv.setViewName("profile.jsp");
 		return mv;
 
+	}
+	
+	@RequestMapping(path = "editProfile.do", method = RequestMethod.GET)
+	public ModelAndView goToEditPage(@RequestParam(name = "userId") Integer id) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("user", dao.showUser(id));
+		mv.setViewName("editProfile.jsp");
+		return mv;
+		
+	}
+	
+	@RequestMapping(path = "updateProfile.do", method = RequestMethod.POST)
+	public ModelAndView updateProfile(@RequestParam(name = "userId") Integer id, Contact contact) {
+		ModelAndView mv = new ModelAndView();
+		User temp = dao.showUser(id);
+		System.out.println(id);
+		int contactId = temp.getContact().getId();
+		dao.updateContact(contactId, contact);
+		mv.addObject("user", dao.showUser(id));
+		mv.setViewName("profile.jsp");
+		return mv;
+		
 	}
 }

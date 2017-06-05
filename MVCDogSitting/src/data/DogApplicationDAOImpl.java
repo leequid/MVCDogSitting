@@ -101,7 +101,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     public Contact updateContact(int id, Contact contact) {
         Contact c = em.find(Contact.class, id);
         
-        
         c.setFirstName(contact.getFirstName());
         c.setLastName(contact.getLastName());
         c.setEmail(contact.getEmail());
