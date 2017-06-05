@@ -18,4 +18,5 @@ public boolean cancleAppointment(int id);
 public Appointment reschedule(int id, Appointment a);
 public Contact createContact(Contact contact);
 public Contact updateContact(int id, Contact contact);
+public Dog showDog(int id);
 }

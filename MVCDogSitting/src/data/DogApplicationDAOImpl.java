@@ -108,4 +108,8 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     public User showUser(int id) {
         return em.find(User.class, id);
     }
+	@Override
+	public Dog showDog(int id) {
+		return em.find(Dog.class, id);
+	}
 }
