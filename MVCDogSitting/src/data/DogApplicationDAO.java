@@ -12,9 +12,9 @@ public Dog updateDog(int id, Dog dog);
 public Dog showDog(int id);
 public boolean deleteDog(int id);
 
-public User showUser(int id);
 public User createUser(User user);
 public User updateUser(int id, User user);
+public User showUser(int id);
 public boolean deleteUser(int id);
 
 public Appointment createAppointment(Appointment a);
