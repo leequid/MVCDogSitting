@@ -43,7 +43,8 @@ public class SitterTest {
     }
     @Test
     public void check_if_sitter_has_appointment_id_accessible() {
-    	assertEquals(em.find(Sitter.class, 1).getAppointments().get(0).getStartDate(), "77");
+    	System.out.println(em.find(Sitter.class, 1).getSizePreference());
+    	assertEquals(em.find(Sitter.class, 1).getAppointments().get(0).getStartDate().toString(), "2016-02-12");
     }
 }
 
