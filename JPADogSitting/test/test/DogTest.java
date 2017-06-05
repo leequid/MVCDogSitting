@@ -10,10 +10,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.Appointment;
+import entities.Dog;
+
 public class DogTest {
 	private EntityManager em = null;
     
-	
 	
 	@Before
     public void setup() {
@@ -31,6 +33,20 @@ public class DogTest {
         boolean pass = true;
         assertEquals(pass, true);
     }
-    
+    @Test
+    public void check_if_dog_has_user() {
+   	  String expectedUserName = "Eric";
+   	 assertEquals(em.find(Dog.class,  1).getUser().getUserName(), expectedUserName);
+    }
+    @Test
+    public void check_if_dog_has_user_contactId() {
+    	int expectedContactId = 1;
+    	assertEquals(em.find(Dog.class,  1).getUser().getContact().getId(), expectedContactId);
+    }
+    @Test
+    public void check_if_dog_has_user_contact_firstname() {
+    	String expectedFirstName = "Eric";
+    	assertEquals(em.find(Dog.class,  1).getUser().getContact().getFirstName(), expectedFirstName);
+    }
 }
 
