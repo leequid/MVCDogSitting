@@ -22,7 +22,7 @@ public class LoginController {
 
 	@Autowired
 	private DogApplicationDAO dao;
-	
+
 	@RequestMapping(path = "start.do", method = RequestMethod.GET)
 	public ModelAndView login() {
 		User u = new User();
@@ -65,7 +65,6 @@ public class LoginController {
 			return mv;
 		} else {
 			User temp = dao.createUser(user);
-			
 			mv.addObject("contactId", temp.getContact().getId());
 			mv.addObject("contact", new Contact());
 			mv.setViewName("contact.jsp");
@@ -74,13 +73,13 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "createContact.do", method = RequestMethod.POST)
-	public ModelAndView createContact(@RequestParam(name="id") Integer id, Contact contact, Errors errors) {
+	public ModelAndView createContact(@RequestParam(name = "id") Integer id, Contact contact, Errors errors) {
 		ModelAndView mv = new ModelAndView();
-		dao.updateContact(id, contact);
-		
+		Contact temp = dao.updateContact(id, contact);
+		mv.addObject("user", temp.getUser());
+		System.out.println(temp.getUser().getId());
+		mv.setViewName("profile.jsp");
 		return mv;
-		
-		
-		
+
 	}
 }
