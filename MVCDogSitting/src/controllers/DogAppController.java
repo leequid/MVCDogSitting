@@ -14,7 +14,7 @@ import entities.User;
 
 @Controller
 @SessionAttributes("User")
-public class DogController {
+public class DogAppController {
 	
 	@Autowired
 	private DogApplicationDAO dao;
