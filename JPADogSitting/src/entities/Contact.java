@@ -29,6 +29,13 @@ public class Contact {
 	
 	private String city;
 	
+	@Column(name="zipcode")
+	private String zipCode;
+	
+	private String email;
+	
+	private String phone;
+	
 	public User getUser() {
 		return user;
 	}
@@ -61,12 +68,6 @@ public class Contact {
 		this.lastName = lastName;
 	}
 
-	@Column(name="zipcode")
-	private String zipCode;
-	
-	private String email;
-	
-	private String phone;
 
 	public String getStreet() {
 		return street;
@@ -119,8 +120,6 @@ public class Contact {
 		builder.append(id);
 		builder.append(", street=");
 		builder.append(street);
-		builder.append(", user=");
-		builder.append(user);
 		builder.append(", state=");
 		builder.append(state);
 		builder.append(", firstName=");

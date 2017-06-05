@@ -94,16 +94,10 @@ public class User {
 		StringBuilder builder = new StringBuilder();
 		builder.append("User [id=");
 		builder.append(id);
-		builder.append(", contact=");
-		builder.append(contact);
 		builder.append(", userName=");
 		builder.append(userName);
 		builder.append(", password=");
 		builder.append(password);
-		builder.append(", dogs=");
-		builder.append(dogs);
-		builder.append(", sitter=");
-		builder.append(sitter);
 		builder.append(", activeSitter=");
 		builder.append(activeSitter);
 		builder.append("]");
