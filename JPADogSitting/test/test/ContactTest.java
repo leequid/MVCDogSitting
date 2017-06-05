@@ -10,6 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.Appointment;
+import entities.Contact;
+
 public class ContactTest {
 	private EntityManager em = null;
     
@@ -31,6 +34,10 @@ public class ContactTest {
         boolean pass = true;
         assertEquals(pass, true);
     }
-    
+    @Test
+    public void check_if_contact_has_info() {
+   	 String expectedLastName = "Lee";
+   	 assertEquals(em.find(Contact.class,  1).getLastName(), expectedLastName);
+    }
 }
 

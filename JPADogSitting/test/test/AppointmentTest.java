@@ -35,8 +35,12 @@ public class AppointmentTest {
     }
     @Test
     public void check_if_appointment_has_dog_object_mapped_correctly() {
-    	String expectedDogName = "a";
+    	String expectedDogName = "c";
     	assertEquals(em.find(Appointment.class, 1).getDog().getName(), expectedDogName);
     }
-     
+     @Test
+     public void check_if_appointment_has_sitter_object_mapped() {
+    	 int expectedSitterid = 1;
+    	 assertEquals(em.find(Appointment.class,  1).getSitter().getId(), expectedSitterid);
+     }
 }

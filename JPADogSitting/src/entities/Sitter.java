@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,7 +26,8 @@ public class Sitter {
 	public List<Appointment> getAppointments() {
 		return appointments;
 	}
-	@OneToOne(mappedBy="sitter") //mapped OneToOne with user
+	@OneToOne //mapped OneToOne with user
+	@JoinColumn(name="user_id") 
 	private User user;
 	
 	public User getUser() {

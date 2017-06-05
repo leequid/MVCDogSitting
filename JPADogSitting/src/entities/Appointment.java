@@ -38,34 +38,44 @@ public class Appointment {
 		this.sitter = sitter;
 	}
 
+	@Column(name="start_date")
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	private Date startDate;
+
+	@Column(name="end_date")
+	@Temporal(TemporalType.DATE)
+	private Date endDate;
 
 	public Dog getDog() {
 		return dog;
+	}
+	public int getId() {
+		return id;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Appointment [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
 
 	public void setDog(Dog dog) {
 		this.dog = dog;
 	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	@Override
-	public String toString() {
-		return "Appointment [id=" + id + ", date=" + date + "]";
-	}
-
-	
 	
 }

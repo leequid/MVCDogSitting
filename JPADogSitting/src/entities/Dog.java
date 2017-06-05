@@ -21,7 +21,7 @@ public class Dog {
 	private int id;
 	
 	@ManyToOne							//mapped ManyToOne to user
-	@JoinColumn(name="dog_user_id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@OneToMany(mappedBy="dog")		//mapped one to many with appointment

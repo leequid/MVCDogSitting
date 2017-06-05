@@ -35,8 +35,7 @@ public class User {
 	public Contact getContact() {
 		return contact;
 	}
-	@OneToOne
-	@JoinColumn(name="sitter_id")    // mapped OneToOne with sitter
+	@OneToOne(mappedBy="user") // mapped OneToOne with sitter
 	private Sitter sitter;
 
 	public void setContact(Contact contact) {
