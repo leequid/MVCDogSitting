@@ -9,7 +9,7 @@ import entities.Dog;
 import entities.User;
 @Transactional
 @Repository
-public class dogApplicationDAOImpl implements dogApplicationDAO {
+public class DogApplicationDAOImpl implements DogApplicationDAO {
     @PersistenceContext
     private EntityManager em;
     @Override
