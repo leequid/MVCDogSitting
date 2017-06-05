@@ -14,7 +14,8 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     private EntityManager em;
     @Override
     public Dog createDog(Dog dog) {
-        em.persist(dog);
+        dog.setUser(em.find(User.class, 1));//hard coded until session is added
+    	em.persist(dog);
         em.flush();
         return dog;
     }
@@ -72,7 +73,7 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
         return a;
     }
     @Override
-    public boolean cancleAppointment(int id) {
+    public boolean cancelAppointment(int id) {
         Appointment a = em.find(Appointment.class, id);
         if (a == null) {
             return false;
