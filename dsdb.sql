@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `phone` VARCHAR(15) NULL,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -63,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `dog` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `weight` INT NULL,
-  `img_url` VARCHAR(100) NOT NULL,
+  `img_url` VARCHAR(300) NULL DEFAULT 'https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg',
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_dog_user1_idx` (`user_id` ASC),
@@ -137,10 +138,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-1233-2323', 'Eric', 'Lee');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-444-4555', 'Michael', 'Roschenwimmer');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123=-123-23-32', 'Miles', 'Grandin');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '1233-221-1-1-1', 'Ryan', 'Grillo');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-1233-2323', 'Eric', 'Lee', 'Aurora');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-444-4555', 'Michael', 'Roschenwimmer', 'Denver');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123=-123-23-32', 'Miles', 'Grandin', 'Highlands Ranch');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '1233-221-1-1-1', 'Ryan', 'Grillo', NULL);
 
 COMMIT;
 
@@ -163,12 +164,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (1, 'a', 25, DEFAULT, 1);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (2, 'b', 35, DEFAULT, 1);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (3, 'c', 23, DEFAULT, 2);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (4, 'd', 12, DEFAULT, 2);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (5, 'e', 1, DEFAULT, 3);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (6, 'f', 50, DEFAULT, 4);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (1, 'a', 25, 'https://www.rover.com/blog/wp-content/uploads/2014/12/Bilbo-Baggins-Hobbit-Pug-600x340.jpg', 1);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (2, 'b', 35, 'https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Natural-Dog-Law-2-To-dogs%2C-energy-is-everything.jpg?itok=Z-ujUOUr', 1);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (3, 'c', 23, 'http://www.cdc.gov/features/dog-bite-prevention/dog-bite-prevention_456px.jpg', 2);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (4, 'd', 12, 'https://www.what-dog.net/Images/faces2/scroll0014.jpg', 2);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (5, 'e', 1, 'https://i.ytimg.com/vi/nomNd-1zBl8/maxresdefault.jpg', 3);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (6, 'f', 50, 'https://static-cdn.jtvnw.net/jtv_user_pictures/hsdogdog-profile_image-5550ade194780dfc-300x300.jpeg', 4);
 
 COMMIT;
 
@@ -178,8 +179,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (1, 'small', 1);
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (2, 'big', 4);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (1, 'SMALL', 1);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`) VALUES (2, 'LARGE', 4);
 
 COMMIT;
 
@@ -197,4 +198,3 @@ INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2);
 
 COMMIT;
-
