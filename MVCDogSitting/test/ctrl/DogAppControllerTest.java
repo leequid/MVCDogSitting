@@ -21,11 +21,13 @@ import org.springframework.web.servlet.ModelAndView;
 import controllers.DogAppController;
 import data.DogApplicationDAO;
 import entities.Dog;
+import entities.Sitter;
+import entities.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "../WEB-INF/test-context.xml" })
 @WebAppConfiguration
-@Transactional                               // you will need this if you are using DAO methods with transactions
+@Transactional                               
 public class DogAppControllerTest {
     @Autowired
     private WebApplicationContext wac;
@@ -57,6 +59,32 @@ public class DogAppControllerTest {
         } catch (Exception e) {
             fail(e.toString());
         }
+    }
+    @Test
+    public void test_get_show_sitter_returns_sitter_view_and_model() {
+    	try {
+    		MvcResult response = mockMvc.perform(get("/showSitter.do?id=1")).andExpect(status().isOk()).andReturn();
+    		ModelAndView mv = response.getModelAndView();
+    		ModelMap map = mv.getModelMap();
+    		Sitter s = (Sitter) map.get("sitter");
+    		assertEquals("profile.jsp", mv.getViewName());
+    		assertEquals(1, s.getId());
+    	} catch (Exception e) {
+    		fail(e.toString());
+    	}
+    }
+    @Test
+    public void test_get_show_user_returns_user_view_and_model() {
+    	try {
+    		MvcResult response = mockMvc.perform(get("/showUser.do?id=1")).andExpect(status().isOk()).andReturn();
+    		ModelAndView mv = response.getModelAndView();
+    		ModelMap map = mv.getModelMap();
+    		User u = (User) map.get("user");
+    		assertEquals("profile.jsp", mv.getViewName());
+    		assertEquals("Eric", u.getUserName());
+    	} catch (Exception e) {
+    		fail(e.toString());
+    	}
     }
 //    @Test
 //    public void test_get_film_returns_film_view_and_model() {

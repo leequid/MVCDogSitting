@@ -16,6 +16,7 @@ import data.DogApplicationDAO;
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
+import entities.Sitter;
 import entities.User;
 
 @Controller
@@ -32,11 +33,6 @@ public class DogAppController {
 	Dog createDog() {
 		return new Dog();
 	}
-
-	// @ModelAttribute("user") <----- needs to be added to LoginController
-	// User user() {
-	// return new User();
-	// }
 
 	// still needs to be fixed
 	@RequestMapping(path = "createDog.do", method = RequestMethod.POST)
@@ -67,31 +63,23 @@ public class DogAppController {
 		Dog dog = dao.showDog(id);
 		model.addAttribute("dog", dog);
 		return "profile.jsp";
+	}
+	//****Passed Junit Testing****
+	@RequestMapping(path= "showSitter.do",  method = RequestMethod.GET)
+	public String showSitter(@RequestParam("id") Integer id, Model model) {
+		Sitter sitter = dao.showSitter(id);
+		model.addAttribute("sitter", sitter);
+		return "profile.jsp";
+	}
+
+//		*** Passed Junit Testing *****
+	@RequestMapping(path= "showUser.do",  method = RequestMethod.GET)
+	public String showUser(@RequestParam("id") Integer id, Model model) {
+		User user = dao.showUser(id);
+		model.addAttribute("user", user);
+		return "profile.jsp";
 		
 	}
-
-//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-//	public ModelAndView createUser(@ModelAttribute("newUser") User user) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("register.jsp");
-//		dao.createUser(user); // not complete. not sure which JSP to send to
-//		return mv;
-//	}
-//
-//	@RequestMapping(path = "updateUser.do", method = RequestMethod.POST)
-//	public ModelAndView updateUser(User user, int id) {
-//		ModelAndView mv = new ModelAndView("profile.jsp");
-//		mv.addObject("UserObject", dao.updateUser(id, user)); // not complete
-//		return mv;
-//	}
-
-	@RequestMapping(path = "showUser.do", method = RequestMethod.GET)
-	public ModelAndView showUser(int id) {
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		dao.showUser(id); // not complete
-		return mv;
-	}
-
 	@RequestMapping(path = "deleteUser.do", method = RequestMethod.POST)
 	public ModelAndView deleteUser(int id) {
 		ModelAndView mv = new ModelAndView("profile.jsp");
@@ -121,36 +109,5 @@ public class DogAppController {
 		dao.cancelAppointment(id); // not complete
 		return mv;
 	}
-//
-//	@RequestMapping(path = "createContact.do", method = RequestMethod.POST)
-//	public ModelAndView createContact(Contact contact) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("register.jsp");
-//		dao.createContact(contact); // not complete. not sure which JSP to send
-//									// to
-//		return mv;
-//	}
-//
-//	@RequestMapping(path = "updateContact.do", method = RequestMethod.POST)
-//	public ModelAndView updateContact(int id, Contact contact) {
-//		ModelAndView mv = new ModelAndView("profile.jsp");
-//		mv.addObject("ContactObject", dao.updateContact(id, contact)); // not
-//																		// complete
-//		return mv;
-//	}
+
 }
-
-// @ModelAttribute("user") <----- needs to be added to LoginController
-// User user() {
-// return new User();
-// }
-
-// still needs to be fixed
-
-// @RequestMapping(path = "GetFilm.do", method = RequestMethod.GET)
-// public String show(@RequestParam("id") Integer id, Model model) {
-// Film film = filmDAO.show(id);
-// model.addAttribute("film", film);
-// return "film.jsp";
-// }
-// String name, int weight, String imageUrl
