@@ -122,12 +122,12 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-GRANT USAGE ON *.* TO admin;
- DROP USER admin;
+GRANT USAGE ON *.* TO admin@localhost;
+ DROP USER admin@localhost;
 SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-CREATE USER 'admin' IDENTIFIED BY 'admin';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
 
-GRANT ALL ON * TO 'admin';
+GRANT ALL ON * TO 'admin'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
