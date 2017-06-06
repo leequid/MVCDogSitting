@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `dog` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `weight` INT NULL,
-  `img_url` VARCHAR(100) NULL,
+  `img_url` VARCHAR(300) NULL DEFAULT 'https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg',
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_dog_user1_idx` (`user_id` ASC),
@@ -164,12 +164,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (1, 'a', 25, NULL, 1);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (2, 'b', 35, NULL, 1);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (3, 'c', 23, NULL, 2);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (4, 'd', 12, NULL, 2);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (5, 'e', 1, NULL, 3);
-INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (6, 'f', 50, NULL, 4);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (1, 'a', 25, 'https://www.rover.com/blog/wp-content/uploads/2014/12/Bilbo-Baggins-Hobbit-Pug-600x340.jpg', 1);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (2, 'b', 35, 'https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Natural-Dog-Law-2-To-dogs%2C-energy-is-everything.jpg?itok=Z-ujUOUr', 1);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (3, 'c', 23, 'http://www.cdc.gov/features/dog-bite-prevention/dog-bite-prevention_456px.jpg', 2);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (4, 'd', 12, 'https://www.what-dog.net/Images/faces2/scroll0014.jpg', 2);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (5, 'e', 1, 'https://i.ytimg.com/vi/nomNd-1zBl8/maxresdefault.jpg', 3);
+INSERT INTO `dog` (`id`, `name`, `weight`, `img_url`, `user_id`) VALUES (6, 'f', 50, 'https://static-cdn.jtvnw.net/jtv_user_pictures/hsdogdog-profile_image-5550ade194780dfc-300x300.jpeg', 4);
 
 COMMIT;
 
