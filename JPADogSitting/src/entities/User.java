@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -25,8 +26,10 @@ public class User {
 	private Contact contact;   			//maps one to one with contact table bi-directional
 	
 	@Column(name="user_name")
+	@Size(min=2, max=100)
 	private String userName;  
 	
+	@Size(min=4, max=100)
 	private String password;
 	
 	@OneToMany(mappedBy="user")		//maps bidirectional OneToMany to dogs
