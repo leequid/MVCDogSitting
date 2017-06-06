@@ -11,7 +11,8 @@
 </head>
 <body>
 	<c:forEach var="sitter" items="${sitters}">
-		<p>${sitter}</p>
+		<p>${sitter.user.contact.firstName} ${sitter.user.contact.lastName}</p>
+		<p>${sitter.user.contact.street} ${sitter.user.contact.city}, ${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 		<form action="setAppointment.do">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Set Appointment"/>
