@@ -4,23 +4,22 @@ package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.ui.Model;
 
 import data.DogApplicationDAO;
 import entities.Appointment;
-import entities.Contact;
 import entities.Dog;
 import entities.Sitter;
 import entities.User;
 
 @Controller
-@SessionAttributes("User")
+@SessionAttributes("user")
 public class DogAppController {
 
 	@Autowired
@@ -34,12 +33,20 @@ public class DogAppController {
 		return new Dog();
 	}
 
-	// still needs to be fixed
+	 //still needs to be fixed
 	@RequestMapping(path = "createDog.do", method = RequestMethod.POST)
-	public ModelAndView createNewDog(@ModelAttribute("newDog") Dog dog) {
+	public ModelAndView createNewDog(Dog dog, @ModelAttribute("user") User user) {
+		dog.setUser(user);
+		dog.setImageUrl(null);
+		dao.createDog(dog);
+		System.out.println("********" + dog.getImageUrl());
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("profile.jsp");
-		dao.createDog(dog);
+		User newUser = dao.showUser(user.getId());
+		for (Dog d : newUser.getDogs()) {
+			System.out.println(d);
+		}
+		mv.addObject("user", newUser);
 		return mv;
 	}
 

@@ -14,7 +14,7 @@
 <p>Dog Owner: ${appointment.dog.user.contact.firstName} ${appointment.dog.user.contact.lastName}</p>
 <p>Sitter: ${appointment.sitter.user.contact.firstName} ${appointment.sitter.user.contact.lastName}
 prefers ${appointment.sitter.sizePreference} dogs</p>
-<p>Dog: ${appointment.dog.name}</p>
+<p>Dog: ${appointment.dog.name} <img src="${appointment.dog.imageUrl}" height="150em" width="200em"/></p>
 <p>Start Date and Time: ${appointment.startDate}</p>
 <p>End Date and Time: ${appointment.endDate}</p>
 

@@ -27,5 +27,13 @@
 	<input type="submit" value="Update Profile"/>
 
 </form:form>
+ <form:form action="createDog.do" method="POST" modelAttribute="newDog">
+	
+	<label>Dog's Name: <input type="text" name="name"/></label>
+	<label>Weight: <input type="text" name="weight"/></label>
+	<label>Image URL: <input type="text" name="imageUrl"/></label>
+	<input type="submit" value="Add Dog"/>
+
+</form:form> 
 </body>
 </html>
