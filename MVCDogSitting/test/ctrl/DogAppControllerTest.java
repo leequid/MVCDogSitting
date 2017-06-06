@@ -46,19 +46,12 @@ public class DogAppControllerTest {
         wac = null;
     }
     @Test
-    public void test_get_film_returns_film_view_and_model() {
+    public void test_get_show_dog_returns_dog_view_and_model() {
         try {
-            // Use MockMVC to create a request to the test servlet and get a
-            // response
             MvcResult response = mockMvc.perform(get("/showDog.do?id=1")).andExpect(status().isOk()).andReturn();
-            // Extract the returned ModelAndView from the response
             ModelAndView mv = response.getModelAndView();
-            // Extract the Model from the ModelAndView
             ModelMap map = mv.getModelMap();
-            // Cast the Object value paired to the "film" key to a Film object
-           // Film f = (Film) map.get("film");
             Dog d = (Dog) map.get("dog");
-            // Check the values with JUnit tests
             assertEquals("profile.jsp", mv.getViewName());
             assertEquals("a", d.getName());
         } catch (Exception e) {
