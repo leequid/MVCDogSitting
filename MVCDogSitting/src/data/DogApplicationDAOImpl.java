@@ -20,7 +20,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     private EntityManager em;
     @Override
     public Dog createDog(Dog dog) {
-      //  dog.setUser(em.find(User.class, dog.getUser().getId()));
     	em.persist(dog);
         em.flush();
         return dog;

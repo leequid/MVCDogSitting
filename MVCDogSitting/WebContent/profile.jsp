@@ -11,9 +11,9 @@
 </head>
 <body>
 
-	<p>${user.contact.firstName}</p>
-	<p>${user.contact.lastName}</p>
+	<p>${user.contact.firstName} ${user.contact.lastName}</p>
 	<p>User Name: ${user.userName}</p>
+	<p>Address: ${user.contact.street} ${user.contact.city}, ${user.contact.state} ${user.contact.zipCode}</p>
 
 	<table>
 		<thead>

@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `dog` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `weight` INT NULL,
-  `img_url` VARCHAR(300) NULL DEFAULT 'https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg',
+  `img_url` VARCHAR(300) NOT NULL DEFAULT 'https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg',
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_dog_user1_idx` (`user_id` ASC),
