@@ -48,7 +48,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     	user.setContact(c);
         em.persist(user);
         em.flush();
-        System.out.println("***" + user);
         return user;
     }
     @Override

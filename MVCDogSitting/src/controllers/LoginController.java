@@ -1,10 +1,15 @@
 package controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import data.AuthenticationDAO;
 import data.DogApplicationDAO;
+import entities.Appointment;
 import entities.Contact;
+import entities.Dog;
 import entities.Sitter;
 import entities.User;
 
@@ -136,8 +143,53 @@ public class LoginController {
 	public ModelAndView goToSetAppointment(@RequestParam(name = "sitterId") Integer id) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("sitter", dao.showSitter(id));
-		mv.setViewName("appointment.jsp");
+		mv.setViewName("createAppointment.jsp");
 		return mv;
+	}
+	
+	@RequestMapping(path = "makeAppointment.do", method = RequestMethod.POST)
+	public ModelAndView makeAppointment(@ModelAttribute User user, 
+			@RequestParam(name="weight") Integer weight, 
+			@RequestParam(name="name") String name, 
+			@RequestParam(name="startDate") String startDate, 
+			@RequestParam(name="endDate") String endDate,
+			@RequestParam(name="sitterId") Integer sitterId) {
+		ModelAndView mv = new ModelAndView();
+		Dog dog = new Dog();
+		dog.setName(name);
+		dog.setWeight(weight);
+		dog.setUser(user);
+		Dog persistedDog = dao.createDog(dog);
 		
+		Appointment appt = new Appointment();
+		
+		Sitter s = dao.showSitter(sitterId);
+		appt.setSitter(s);
+		
+		Date parsedStartDate = new Date();
+		try {
+		    SimpleDateFormat format =
+		        new SimpleDateFormat("yyyy-MM-dd");
+		    parsedStartDate = format.parse(startDate);
+		}
+		catch(ParseException pe) {
+		    throw new IllegalArgumentException();
+		}
+		appt.setStartDate(parsedStartDate);
+		
+		Date parsedEndDate = new Date();
+		try {
+		    SimpleDateFormat format =
+		        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		    parsedEndDate = format.parse(endDate);
+		}
+		catch(ParseException pe) {
+		    throw new IllegalArgumentException();
+		}
+		appt.setEndDate(parsedEndDate);
+		appt.setDog(persistedDog);
+		mv.addObject("appointment", dao.createAppointment(appt));
+		mv.setViewName("viewAppointment.jsp");
+		return mv;
 	}
 }
