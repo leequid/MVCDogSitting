@@ -38,20 +38,20 @@ public class Appointment {
 	}
 
 	@Column(name="start_date")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 	
-	@Column(name="start_date")
-	@Temporal(TemporalType.TIME)
-	private Time startTime;
+//	@Column(name="start_date")
+//	@Temporal(TemporalType.TIME)
+//	private Time startTime;
 
 	@Column(name="end_date")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 	
-	@Column(name="end_date")
-	@Temporal(TemporalType.TIME)
-	private Date endTime;
+//	@Column(name="end_date")
+//	@Temporal(TemporalType.TIME)
+//	private Date endTime;
 	
 	
 
