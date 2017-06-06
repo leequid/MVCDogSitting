@@ -197,4 +197,8 @@ INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (5, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 2);
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2);
 
+<<<<<<< HEAD
 COMMIT;
+=======
+COMMIT;
+>>>>>>> 8baa8ac8ae230d2b8aebb0bb36c81289e628c60e
