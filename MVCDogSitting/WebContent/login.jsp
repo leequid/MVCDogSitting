@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
+<p>Please login or create an account to continue</p>
 <body>
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
@@ -17,7 +18,11 @@
 		<form:label path="password">Password:</form:label>
 		<form:input path="password" />
 		<form:errors path="password" />
+		<input type="hidden" value="${sitter.id}" name ="sitterId"/>
 		<input type="submit" value="Login" />
 	</form:form>
+	
+	<a href="goToCreateUser.do">Create New Account</a>
+	
 </body>
 </html>
