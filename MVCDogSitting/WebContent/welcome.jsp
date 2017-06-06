@@ -12,11 +12,9 @@
 <body>
 <section>
   <div class="grid-row row">
-    <div class="col">Grid Column 1</div>
-    <div class="col">Grid Column 2</div>
-    <div class="col">Grid Column 3</div>
-    <div class="col">Grid Column 4</div>
-    <div class="col">Grid Column 5</div>
+    <div class="col"><a href="welcome.jsp">Home</a></div>
+    <div class="col"><a href="goToLogin.do">Login</a></div>
+    <div class="col"><a href="profile.jsp">Profile</a></div>
   </div>
 </section>
 
