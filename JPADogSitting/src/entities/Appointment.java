@@ -1,7 +1,7 @@
 package entities;
 
+import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,10 +40,36 @@ public class Appointment {
 	@Column(name="start_date")
 	@Temporal(TemporalType.DATE)
 	private Date startDate;
+	
+	@Column(name="start_date")
+	@Temporal(TemporalType.TIME)
+	private Time startTime;
 
 	@Column(name="end_date")
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
+	
+	@Column(name="end_date")
+	@Temporal(TemporalType.TIME)
+	private Date endTime;
+	
+	
+
+	public Time getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Time startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
 
 	public Dog getDog() {
 		return dog;

@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class Contact {
@@ -22,18 +26,23 @@ public class Contact {
 	private String state;
 	
 	@Column(name="first_name")
+	@Size(min=2, max=100)
 	private String firstName;
 	
 	@Column(name="last_name")
+	@Size(min=2, max=100)
 	private String lastName;
 	
 	private String city;
 	
 	@Column(name="zipcode")
+	@Pattern(regexp="\\d{5}(-\\d{4})?")
 	private String zipCode;
 	
+	@Email
 	private String email;
 	
+	@Pattern(regexp="(\\d{3})(-\\d{3})(-\\d{4})")
 	private String phone;
 	
 	public User getUser() {
