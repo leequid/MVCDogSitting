@@ -1,4 +1,5 @@
 package data;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import entities.Appointment;
@@ -140,17 +143,17 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 	}
 	@Override
 	public Date constructDate(String date, String time) {
-		Date parsedDate = new Date();
+		Date formattedDate = new Date();
 		try {
 		    SimpleDateFormat format =
-		        new SimpleDateFormat("yyyy-MM-dd H:mm");
-		    parsedDate = format.parse(date + " " + time);
+		        new SimpleDateFormat("yyyy-MM-dd h:mm");
+		    formattedDate = format.parse(date + " " + time);
 		}
 		catch(ParseException pe) {
 		    throw new IllegalArgumentException();
 		}
-		System.out.println(parsedDate);
-		return parsedDate;
+		System.out.println(formattedDate);
+		return formattedDate;
 //		String[] dateDetails = date.split("-");
 //		String[] timeDetails = time.split(":");
 //		
