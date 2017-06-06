@@ -1,4 +1,7 @@
 package data;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -134,5 +137,25 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		String query = "SELECT s FROM Sitter s WHERE s.id = :sitterId";
 		Sitter s = em.createQuery(query, Sitter.class).setParameter("sitterId", id).getSingleResult();
 		return s;
+	}
+	@Override
+	public Date constructDate(String date, String time) {
+		Date parsedDate = new Date();
+		try {
+		    SimpleDateFormat format =
+		        new SimpleDateFormat("yyyy-MM-dd H:mm");
+		    parsedDate = format.parse(date + " " + time);
+		}
+		catch(ParseException pe) {
+		    throw new IllegalArgumentException();
+		}
+		System.out.println(parsedDate);
+		return parsedDate;
+//		String[] dateDetails = date.split("-");
+//		String[] timeDetails = time.split(":");
+//		
+//		Date d = new Date(Integer.parseInt(dateDetails[0]),Integer.parseInt(dateDetails[1]),Integer.parseInt(dateDetails[2]),
+//				Integer.parseInt(timeDetails[0]),Integer.parseInt(timeDetails[1]),0);
+//		
 	}
 }

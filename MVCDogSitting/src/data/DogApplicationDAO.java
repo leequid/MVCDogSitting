@@ -1,5 +1,6 @@
  package data;
 
+import java.util.Date;
 import java.util.List;
 
 import entities.Appointment;
@@ -29,4 +30,6 @@ public Contact updateContact(int id, Contact contact);
 
 public List<Sitter> indexOfSitters(User user);
 public Sitter showSitter(int id);
+
+public Date constructDate(String date, String time);
 }
