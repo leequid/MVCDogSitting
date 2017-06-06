@@ -17,7 +17,7 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     private EntityManager em;
     @Override
     public Dog createDog(Dog dog) {
-        dog.setUser(em.find(User.class, 1));//hard coded until session is added
+      //  dog.setUser(em.find(User.class, 1));//hard coded until session is added
     	em.persist(dog);
         em.flush();
         return dog;

@@ -36,8 +36,10 @@ public class DogAppController {
 
 	// still needs to be fixed
 	@RequestMapping(path = "createDog.do", method = RequestMethod.POST)
-	public ModelAndView createNewDog(@ModelAttribute("newDog") Dog dog) {
+	public ModelAndView createNewDog(@ModelAttribute("newDog") Dog dog, User user) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", dao.showUser(user.getId()));
+		//dao.createDog(user.getDogs().get(0))
 		mv.setViewName("profile.jsp");
 		dao.createDog(dog);
 		return mv;
