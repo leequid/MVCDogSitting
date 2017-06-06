@@ -34,22 +34,33 @@ public class LoginController {
 
 	@Autowired
 	private DogApplicationDAO dao;
-	
+
 	@ModelAttribute("user")
-	  public User initUser() {
-	    return new User();
-	  }
+	public User initUser() {
+		return new User();
+	}
 
 	@RequestMapping(path = "start.do", method = RequestMethod.GET)
 	public ModelAndView login(@ModelAttribute("user") User user) {
 		System.err.println(user);
 		User u = new User();
+		List<Sitter> sitters = dao.indexOfSitters(user);
+		ModelAndView mv = new ModelAndView("welcome.jsp", "user", u);
+		mv.addObject("sitters", sitters);
+		return mv;
+	}
+	
+	@RequestMapping(path = "goToLogin.do", method = RequestMethod.GET)
+	public ModelAndView loginOnly(@RequestParam(name="sitterId") Integer sitterId) {
+		User u = new User();
 		ModelAndView mv = new ModelAndView("login.jsp", "user", u);
+		mv.addObject("sitter", dao.showSitter(sitterId));
 		return mv;
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView doLogin(@Valid User user, Errors errors) {
+	public ModelAndView doLogin(@Valid User user, Errors errors, 
+			@RequestParam(name="sitterId", required=false) Integer sitterId) {
 		ModelAndView mv = new ModelAndView();
 		User existingUser = authDao.validUserName(user);
 
@@ -61,7 +72,13 @@ public class LoginController {
 		} else {
 			if (authDao.validPassword(existingUser, user.getPassword())) {
 				mv.addObject("user", existingUser);
-				mv.setViewName("profile.jsp"); // page name to be confirmed
+				if (sitterId == null) {
+					mv.setViewName("profile.jsp");
+				}
+				else {
+					mv.addObject("sitter", dao.showSitter(sitterId));
+					mv.setViewName("createAppointment.jsp");
+				}
 				return mv;
 			} else {
 				errors.rejectValue("password", "login.password", "User name and password don't match");
@@ -70,6 +87,13 @@ public class LoginController {
 			}
 		}
 
+	}
+
+	@RequestMapping(path = "goToCreateUser.do", method = RequestMethod.GET)
+	public ModelAndView goToCreateUser() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("createUser.jsp");
+		return mv;
 	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
@@ -101,33 +125,33 @@ public class LoginController {
 		return mv;
 
 	}
-	
+
 	@RequestMapping(path = "editProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToEditPage(@ModelAttribute("user")User user) {
+	public ModelAndView goToEditPage(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		mv.addObject("user", dao.showUser(user.getId()));
 		mv.setViewName("editProfile.jsp");
 		return mv;
-		
+
 	}
-	
+
 	@RequestMapping(path = "updateProfile.do", method = RequestMethod.POST)
-	public ModelAndView updateProfile(@ModelAttribute("user")User user, Contact contact) {
+	public ModelAndView updateProfile(@ModelAttribute("user") User user, Contact contact) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user.getId());
 		dao.updateContact(user.getContact().getId(), contact);
 		mv.addObject("user", dao.showUser(user.getId()));
 		mv.setViewName("profile.jsp");
 		return mv;
-		
+
 	}
-	
+
 	@RequestMapping(path = "viewSitters.do", method = RequestMethod.GET)
-	public ModelAndView viewSitters(@ModelAttribute("user")User user) {
+	public ModelAndView viewSitters(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
-		
-		List <Sitter> sitters = dao.indexOfSitters(user);
+
+		List<Sitter> sitters = dao.indexOfSitters(user);
 		for (Sitter s : sitters) {
 			System.out.println(s);
 		}
@@ -135,9 +159,9 @@ public class LoginController {
 		mv.addObject("user", user);
 		mv.setViewName("viewSitters.jsp");
 		return mv;
-		
+
 	}
-	
+
 	@RequestMapping(path = "setAppointment.do", method = RequestMethod.GET)
 	public ModelAndView goToSetAppointment(@RequestParam(name = "sitterId") Integer id) {
 		ModelAndView mv = new ModelAndView();
@@ -145,17 +169,14 @@ public class LoginController {
 		mv.setViewName("createAppointment.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "makeAppointment.do", method = RequestMethod.POST)
-	public ModelAndView makeAppointment(@ModelAttribute User user, 
-			@RequestParam(name="dogId") Integer dogId,  
-			@RequestParam(name="startDate") String startDate, 
-			@RequestParam(name="startTime") String startTime, 
-			@RequestParam(name="endDate") String endDate,
-			@RequestParam(name="endTime") String endTime,
-			@RequestParam(name="sitterId") Integer sitterId) {
+	public ModelAndView makeAppointment(@ModelAttribute User user, @RequestParam(name = "dogId") Integer dogId,
+			@RequestParam(name = "startDate") String startDate, @RequestParam(name = "startTime") String startTime,
+			@RequestParam(name = "endDate") String endDate, @RequestParam(name = "endTime") String endTime,
+			@RequestParam(name = "sitterId") Integer sitterId) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		Date start = dao.constructDate(startDate, startTime);
 		Date end = dao.constructDate(endDate, endTime);
 		Appointment appt = new Appointment();
@@ -163,11 +184,11 @@ public class LoginController {
 		appt.setSitter(s);
 		appt.setStartDate(start);
 		appt.setEndDate(end);
-		
+
 		Dog dog = dao.showDog(dogId);
-		
+
 		appt.setDog(dog);
-		
+
 		mv.addObject("appointment", dao.createAppointment(appt));
 		mv.setViewName("viewAppointment.jsp");
 		return mv;
