@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -29,8 +30,8 @@ public class User {
 	@Size(min=2, max=100)
 	private String userName;  
 	
-	@Size(min=4, max=100)
-	private String password;
+	@Pattern(regexp="^(?=.*\\d).{4,8}$")
+	private String password; //length 4~8 and must contain at least one number
 	
 	@OneToMany(mappedBy="user")		//maps bidirectional OneToMany to dogs
 	private List<Dog> dogs;
