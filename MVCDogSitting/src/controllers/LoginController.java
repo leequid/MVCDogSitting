@@ -148,47 +148,26 @@ public class LoginController {
 	
 	@RequestMapping(path = "makeAppointment.do", method = RequestMethod.POST)
 	public ModelAndView makeAppointment(@ModelAttribute User user, 
-			@RequestParam(name="weight") Integer weight, 
-			@RequestParam(name="name") String name, 
+			@RequestParam(name="dogId") Integer dogId,  
 			@RequestParam(name="startDate") String startDate, 
 			@RequestParam(name="startTime") String startTime, 
 			@RequestParam(name="endDate") String endDate,
 			@RequestParam(name="endTime") String endTime,
 			@RequestParam(name="sitterId") Integer sitterId) {
 		ModelAndView mv = new ModelAndView();
-		Dog dog = new Dog();
-		dog.setName(name);
-		dog.setWeight(weight);
-		dog.setUser(user);
-		Dog persistedDog = dao.createDog(dog);
 		
+		Date start = dao.constructDate(startDate, startTime);
+		Date end = dao.constructDate(endDate, endTime);
 		Appointment appt = new Appointment();
-		
 		Sitter s = dao.showSitter(sitterId);
 		appt.setSitter(s);
+		appt.setStartDate(start);
+		appt.setEndDate(end);
 		
-		Date parsedStartDate = new Date();
-		try {
-		    SimpleDateFormat format =
-		        new SimpleDateFormat("yyyy-MM-dd");
-		    parsedStartDate = format.parse(startDate);
-		}
-		catch(ParseException pe) {
-		    throw new IllegalArgumentException();
-		}
-		appt.setStartDate(parsedStartDate);
+		Dog dog = dao.showDog(dogId);
 		
-		Date parsedEndDate = new Date();
-		try {
-		    SimpleDateFormat format =
-		        new SimpleDateFormat("yyyy-MM-dd");
-		    parsedEndDate = format.parse(endDate);
-		}
-		catch(ParseException pe) {
-		    throw new IllegalArgumentException();
-		}
-		appt.setEndDate(parsedEndDate);
-		appt.setDog(persistedDog);
+		appt.setDog(dog);
+		
 		mv.addObject("appointment", dao.createAppointment(appt));
 		mv.setViewName("viewAppointment.jsp");
 		return mv;

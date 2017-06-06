@@ -13,8 +13,25 @@
 
 	<p>${user.contact.firstName}</p>
 	<p>${user.contact.lastName}</p>
-	<p>${user.userName}</p>
+	<p>User Name: ${user.userName}</p>
 
+	<table>
+		<thead>
+			<th colspan="3" align="center">Dags</th>
+			<tr><th>Name</th><th>Picture</th><th>Weight</th></tr>
+			
+		</thead>
+		<tbody>
+			<c:forEach var="dog" items="${sessionScope.user.dogs}">
+				<tr>
+					<td>${dog.name}</td>
+					<td><img src="${dog.imageUrl}" height="150em" width="200em"/></td>
+					<td>${dog.weight}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
 	<form action="editProfile.do">
 		<input type="hidden" name="userId" value="${user.id}" /> <input
 			type="submit" value="Edit Profile" name="editButton" />

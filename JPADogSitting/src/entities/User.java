@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class User {
 	@Pattern(regexp="^(?=.*\\d).{4,8}$")
 	private String password; //length 4~8 and must contain at least one number
 	
-	@OneToMany(mappedBy="user")		//maps bidirectional OneToMany to dogs
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)		//maps bidirectional OneToMany to dogs
 	private List<Dog> dogs;
 	
 	public Contact getContact() {
