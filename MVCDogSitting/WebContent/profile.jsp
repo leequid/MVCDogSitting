@@ -11,22 +11,33 @@
 </head>
 <body>
 
-	<p>${user.contact.firstName} ${user.contact.lastName}</p>
+	<p>${user.contact.firstName}${user.contact.lastName}</p>
 	<p>User Name: ${user.userName}</p>
-	<p>Address: ${user.contact.street} ${user.contact.city}, ${user.contact.state} ${user.contact.zipCode}</p>
+	<p>Address: ${user.contact.street} ${user.contact.city},
+		${user.contact.state} ${user.contact.zipCode}</p>
 
 	<table>
 		<thead>
 			<th colspan="3" align="center">Dags</th>
-			<tr><th>Name</th><th>Picture</th><th>Weight</th></tr>
-			
+			<tr>
+				<th>Name</th>
+				<th>Picture</th>
+				<th>Weight</th>
+			</tr>
+
 		</thead>
 		<tbody>
 			<c:forEach var="dog" items="${sessionScope.user.dogs}">
 				<tr>
 					<td>${dog.name}</td>
-					<td><img src="${dog.imageUrl}" height="150em" width="200em"/></td>
+					<td><img src="${dog.imageUrl}" height="150em" width="200em" /></td>
 					<td>${dog.weight}</td>
+					<td>
+						 <form action="deleteDog.do" method="POST">
+							<input type="hidden" name="id" value="${dog.id}" /> <input
+								type="submit" value="Delete Dog" name="deleteDogButton" />
+						</form>
+						</td>
 				</tr>
 			</c:forEach>
 		</tbody>
