@@ -1,4 +1,6 @@
 package data;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -6,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
+import entities.Sitter;
 import entities.User;
 @Transactional
 @Repository
@@ -119,5 +122,18 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 	@Override
 	public Dog showDog(int id) {
 		return em.find(Dog.class, id);
+	}
+	@Override
+	public List<Sitter> indexOfSitters(User user) {
+		
+		String query = "SELECT s FROM Sitter s WHERE s.user.id != :userId";
+		List<Sitter> sitters = em.createQuery(query, Sitter.class).setParameter("userId", user.getId()).getResultList();
+		return sitters;
+	}
+	@Override
+	public Sitter showSitter(int id) {
+		String query = "SELECT s FROM Sitter s WHERE s.id = :sitterId";
+		Sitter s = em.createQuery(query, Sitter.class).setParameter("sitterId", id).getSingleResult();
+		return s;
 	}
 }

@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import data.AuthenticationDAO;
 import data.DogApplicationDAO;
 import entities.Contact;
+import entities.Sitter;
 import entities.User;
 
 @Controller
@@ -35,7 +38,7 @@ public class LoginController {
 	public ModelAndView login(@ModelAttribute("user") User user) {
 		System.err.println(user);
 		User u = new User();
-		ModelAndView mv = new ModelAndView("createUser.jsp", "user", u);
+		ModelAndView mv = new ModelAndView("login.jsp", "user", u);
 		return mv;
 	}
 
@@ -117,12 +120,23 @@ public class LoginController {
 	@RequestMapping(path = "viewSitters.do", method = RequestMethod.GET)
 	public ModelAndView viewSitters(@ModelAttribute("user")User user) {
 		ModelAndView mv = new ModelAndView();
-//		
-//		dao.
-//		
-//		dao.updateContact(user.getContact().getId(), contact);
-//		mv.addObject("user", dao.showUser(user.getId()));
-//		mv.setViewName("profile.jsp");
+		
+		List <Sitter> sitters = dao.indexOfSitters(user);
+		for (Sitter s : sitters) {
+			System.out.println(s);
+		}
+		mv.addObject("sitters", sitters);
+		mv.addObject("user", user);
+		mv.setViewName("viewSitters.jsp");
+		return mv;
+		
+	}
+	
+	@RequestMapping(path = "setAppointment.do", method = RequestMethod.GET)
+	public ModelAndView goToSetAppointment(@RequestParam(name = "sitterId") Integer id) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("sitter", dao.showSitter(id));
+		mv.setViewName("appointment.jsp");
 		return mv;
 		
 	}

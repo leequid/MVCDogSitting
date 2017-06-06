@@ -1,8 +1,11 @@
  package data;
 
+import java.util.List;
+
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
+import entities.Sitter;
 import entities.User;
 
 public interface DogApplicationDAO {
@@ -23,4 +26,7 @@ public boolean cancelAppointment(int id);
 
 public Contact createContact(Contact contact);
 public Contact updateContact(int id, Contact contact);
+
+public List<Sitter> indexOfSitters(User user);
+public Sitter showSitter(int id);
 }
