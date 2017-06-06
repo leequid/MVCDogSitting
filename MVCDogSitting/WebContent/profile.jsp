@@ -15,9 +15,9 @@
 	<p>${user.contact.lastName}</p>
 	<p>${user.userName}</p>
 
-	<table>
+	<table align="center">
 		<thead>
-			<tr>Your Dog(s)</tr>
+			<tr>Dags</tr>
 			<tr><th>Name</th><th>Picture</th><th>Weight</th></tr>
 			
 		</thead>
@@ -25,7 +25,7 @@
 			<c:forEach var="dog" items="${sessionScope.user.dogs}">
 				<tr>
 					<td>${dog.name}</td>
-					<td>${dog.imageUrl}</td>
+					<td><img href="${dog.imageUrl}"/></td>
 					<td>${dog.weight}</td>
 				</tr>
 			</c:forEach>
