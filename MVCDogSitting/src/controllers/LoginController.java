@@ -1,7 +1,6 @@
 package controllers;
 
-import java.sql.Time;
-import java.text.ParseException;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -178,7 +177,10 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 
 		Date start = dao.constructDate(startDate, startTime);
+		Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
+		String strStart = formatter.format(start);
 		Date end = dao.constructDate(endDate, endTime);
+		String strEnd = formatter.format(end);
 		Appointment appt = new Appointment();
 		Sitter s = dao.showSitter(sitterId);
 		appt.setSitter(s);
@@ -188,7 +190,9 @@ public class LoginController {
 		Dog dog = dao.showDog(dogId);
 
 		appt.setDog(dog);
-
+		
+		mv.addObject("strStart", strStart);
+		mv.addObject("strEnd", strEnd);
 		mv.addObject("appointment", dao.createAppointment(appt));
 		mv.setViewName("viewAppointment.jsp");
 		return mv;
