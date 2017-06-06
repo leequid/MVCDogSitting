@@ -12,12 +12,16 @@
 <body>
 	Sitter: ${sitter.user.contact.firstName} ${sitter.user.contact.lastName}
 	<form action="makeAppointment.do" method="POST">
-		<label>Enter Your Dog's Name: <input type="text" name="name" /></label> 
-		<label>Enter Your Dog's Weight: <input type="text" name="weight" /></label> 
 		<label>Enter Start Date: <input type="text" value="yyyy-MM-dd" name="startDate" /></label> 
 		<label>Enter Start Time: <input type="text" value="HH:mm" name="startTime" /></label> 
 		<label>Enter End Date: <input type="text" value="yyyy-MM-dd" name="endDate" /></label> 
 		<label>Enter End Time: <input type="text" value="HH:mm" name="endTime" /></label> 
+		<label>Select Dog<select name="dogId">
+			<c:forEach var="dog" items="${sessionScope.user.dogs}">
+				<option value="${dog.id}">${dog.name}</option>
+			</c:forEach>
+			
+		</select></label>
 		<input type="hidden" value="${sitter.id}" name="sitterId" />
 		<input type="submit" value="Save Appointment" />
 	</form>
