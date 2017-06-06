@@ -1,15 +1,14 @@
 package controllers;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -152,7 +151,9 @@ public class LoginController {
 			@RequestParam(name="weight") Integer weight, 
 			@RequestParam(name="name") String name, 
 			@RequestParam(name="startDate") String startDate, 
+			@RequestParam(name="startTime") String startTime, 
 			@RequestParam(name="endDate") String endDate,
+			@RequestParam(name="endTime") String endTime,
 			@RequestParam(name="sitterId") Integer sitterId) {
 		ModelAndView mv = new ModelAndView();
 		Dog dog = new Dog();
@@ -180,7 +181,7 @@ public class LoginController {
 		Date parsedEndDate = new Date();
 		try {
 		    SimpleDateFormat format =
-		        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		        new SimpleDateFormat("yyyy-MM-dd");
 		    parsedEndDate = format.parse(endDate);
 		}
 		catch(ParseException pe) {
