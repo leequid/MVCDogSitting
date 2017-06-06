@@ -10,6 +10,16 @@
 <title>Login</title>
 </head>
 <body>
+<section>
+  <div class="grid-row row">
+    <div class="col">Grid Column 1</div>
+    <div class="col">Grid Column 2</div>
+    <div class="col">Grid Column 3</div>
+    <div class="col">Grid Column 4</div>
+    <div class="col">Grid Column 5</div>
+  </div>
+</section>
+
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
 		<form:input path="userName" />
