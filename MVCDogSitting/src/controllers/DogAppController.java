@@ -20,7 +20,7 @@ import entities.Sitter;
 import entities.User;
 
 @Controller
-@SessionAttributes("User")
+@SessionAttributes("user")
 public class DogAppController {
 
 	@Autowired
@@ -34,14 +34,20 @@ public class DogAppController {
 		return new Dog();
 	}
 
-	// still needs to be fixed
+	 //still needs to be fixed
 	@RequestMapping(path = "createDog.do", method = RequestMethod.POST)
-	public ModelAndView createNewDog(@ModelAttribute("newDog") Dog dog, User user) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("user", dao.showUser(user.getId()));
-		//dao.createDog(user.getDogs().get(0))
-		mv.setViewName("profile.jsp");
+	public ModelAndView createNewDog(Dog dog, @ModelAttribute("user") User user) {
+		dog.setUser(user);
+		dog.setImageUrl(null);
 		dao.createDog(dog);
+		System.out.println("********" + dog.getImageUrl());
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("profile.jsp");
+		User newUser = dao.showUser(user.getId());
+		for (Dog d : newUser.getDogs()) {
+			System.out.println(d);
+		}
+		mv.addObject("user", newUser);
 		return mv;
 	}
 
