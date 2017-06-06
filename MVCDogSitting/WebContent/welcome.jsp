@@ -22,14 +22,17 @@
 	</form:form>
 	
 	<a href="goToCreateUser.do">Create New Account</a>
+	<hr>
 	
 		<c:forEach var="sitter" items="${sitters}">
+		<hr>
 		<p>${sitter.user.contact.firstName} ${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street} ${sitter.user.contact.city}, ${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 		<form action="goToLogin.do" method="GET">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Set Appointment"/>
 		</form>
+		<hr>
 	</c:forEach>
 </body>
 </html>

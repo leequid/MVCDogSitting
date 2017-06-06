@@ -22,7 +22,7 @@
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Rate Sitter"/>
 		</form>
-		
+		<hr>
 	</c:forEach>
 	
 </body>
