@@ -121,13 +121,34 @@ CREATE TABLE IF NOT EXISTS `appointment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-SET SQL_MODE = '';
-GRANT USAGE ON *.* TO admin@localhost;
- DROP USER admin@localhost;
-SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
 
-GRANT ALL ON * TO 'admin'@'localhost';
+-- -----------------------------------------------------
+-- Table `rating`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `rating` ;
+
+CREATE TABLE IF NOT EXISTS `rating` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `num_stars` DECIMAL(3,1) NULL,
+  `comment` VARCHAR(200) NULL,
+  `sitter_id` INT NOT NULL,
+  `sitter_user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `sitter_id`, `sitter_user_id`),
+  INDEX `fk_rating_sitter1_idx` (`sitter_id` ASC, `sitter_user_id` ASC),
+  CONSTRAINT `fk_rating_sitter1`
+    FOREIGN KEY (`sitter_id` , `sitter_user_id`)
+    REFERENCES `sitter` (`id` , `user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SET SQL_MODE = '';
+GRANT USAGE ON *.* TO admin;
+ DROP USER admin;
+SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+CREATE USER 'admin' IDENTIFIED BY 'admin';
+
+GRANT ALL ON * TO 'admin';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -197,8 +218,5 @@ INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (5, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 2);
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2);
 
-<<<<<<< HEAD
 COMMIT;
-=======
-COMMIT;
->>>>>>> 8baa8ac8ae230d2b8aebb0bb36c81289e628c60e
+
