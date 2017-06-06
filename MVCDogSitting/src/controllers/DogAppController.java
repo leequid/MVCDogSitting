@@ -56,11 +56,16 @@ public class DogAppController {
 		mv.addObject("dogObject", dao.updateDog(id, dog)); // not complete
 		return mv;
 	}
-	/// Testing
+	/// Passed Testing
 	@RequestMapping(path = "deleteDog.do", method = RequestMethod.POST)
-	public ModelAndView deleteDog(int id) {
+	public ModelAndView deleteDog(Dog dog, @ModelAttribute("user") User user) {
+		dao.deleteDog(dog.getId());
 		ModelAndView mv = new ModelAndView("profile.jsp");
-		dao.deleteDog(id); // not complete
+		User newUser = dao.showUser(user.getId());
+		for (Dog d : newUser.getDogs()) {
+			System.out.println(d);
+		}
+		mv.addObject("user", newUser);
 		return mv;
 	}
 

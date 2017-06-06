@@ -96,6 +96,10 @@ public class Dog {
 		return id;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 
 	public Dog(String name, int weight, String imageUrl) {
 		super();
