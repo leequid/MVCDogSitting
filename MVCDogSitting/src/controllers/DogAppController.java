@@ -1,12 +1,16 @@
 package controllers;
 
+//import javax.enterprise.inject.Model;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
 import data.DogApplicationDAO;
 import entities.Appointment;
@@ -15,13 +19,15 @@ import entities.Dog;
 import entities.User;
 
 @Controller
-
 @SessionAttributes("User")
 public class DogAppController {
 
 	@Autowired
 	private DogApplicationDAO dao;
-
+	
+	public void setDogAppDao(DogApplicationDAO dao) {
+		this.dao = dao;
+	}
 	@ModelAttribute("newDog")
 	Dog createDog() {
 		return new Dog();
@@ -55,11 +61,13 @@ public class DogAppController {
 		return mv;
 	}
 
-	@RequestMapping(path = "showDog.do", method = RequestMethod.GET)
-	public ModelAndView showDog(int id) {
-		ModelAndView mv = new ModelAndView("profile.jsp");
-		dao.showDog(id); // not complete
-		return mv;
+    //   ***Passed Junit Testing***
+	@RequestMapping(path= "showDog.do",  method = RequestMethod.GET)
+	public String show(@RequestParam("id") Integer id, Model model) {
+		Dog dog = dao.showDog(id);
+		model.addAttribute("dog", dog);
+		return "profile.jsp";
+		
 	}
 
 //	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
