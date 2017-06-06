@@ -49,7 +49,7 @@ public class DogAppController {
 		mv.addObject("dogObject", dao.updateDog(id, dog)); // not complete
 		return mv;
 	}
-
+	/// Testing
 	@RequestMapping(path = "deleteDog.do", method = RequestMethod.POST)
 	public ModelAndView deleteDog(int id) {
 		ModelAndView mv = new ModelAndView("profile.jsp");
@@ -79,7 +79,7 @@ public class DogAppController {
 		model.addAttribute("user", user);
 		return "profile.jsp";
 		
-	}
+	}  
 	@RequestMapping(path = "deleteUser.do", method = RequestMethod.POST)
 	public ModelAndView deleteUser(int id) {
 		ModelAndView mv = new ModelAndView("profile.jsp");

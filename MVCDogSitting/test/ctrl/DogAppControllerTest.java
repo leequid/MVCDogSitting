@@ -86,23 +86,19 @@ public class DogAppControllerTest {
     		fail(e.toString());
     	}
     }
-//    @Test
-//    public void test_get_film_returns_film_view_and_model() {
-//    	try {
-//    		// Use MockMVC to create a request to the test servlet and get a
-//    		// response
-//    		MvcResult response = mockMvc.perform(get("/GetFilm.do?id=1")).andExpect(status().isOk()).andReturn();
-//    		// Extract the returned ModelAndView from the response
-//    		ModelAndView mv = response.getModelAndView();
-//    		// Extract the Model from the ModelAndView
-//    		ModelMap map = mv.getModelMap();
-//    		// Cast the Object value paired to the "film" key to a Film object
-//    		Film f = (Film) map.get("film");
-//    		// Check the values with JUnit tests
-//    		assertEquals("film.jsp", mv.getViewName());
-//    		assertEquals("ACADEMY DINOSAUR", f.getTitle());
-//    	} catch (Exception e) {
-//    		fail(e.toString());
-//    	}
-//    }
+    @Test
+    public void test_delete_dog_returns_profile_view_and_model() {
+    	try {
+    		MvcResult response = mockMvc.perform(get("/showDog.do?id=1")).andExpect(status().isOk()).andReturn();
+    		ModelAndView mv = response.getModelAndView();
+    		ModelMap map = mv.getModelMap();
+    		Dog d = (Dog) map.get("dog");
+    
+    		//User u = (User) map.get("user");
+    		assertEquals("profile.jsp", mv.getViewName());
+    		assertEquals("Eric", dao.deleteDog(1));
+    	} catch (Exception e) {
+    		fail(e.toString());
+    	}
+    }
 }
