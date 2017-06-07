@@ -1,5 +1,4 @@
 package data;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,12 +7,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
+import entities.Rating;
 import entities.Sitter;
 import entities.User;
 @Transactional
@@ -154,11 +154,16 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		}
 		System.out.println(formattedDate);
 		return formattedDate;
-//		String[] dateDetails = date.split("-");
-//		String[] timeDetails = time.split(":");
-//		
-//		Date d = new Date(Integer.parseInt(dateDetails[0]),Integer.parseInt(dateDetails[1]),Integer.parseInt(dateDetails[2]),
-//				Integer.parseInt(timeDetails[0]),Integer.parseInt(timeDetails[1]),0);
-//		
+	}
+	
+	@Override
+	public Rating addRatingToDB(Integer userId, Double rating, Integer sitterId) {
+		Rating r = new Rating();
+		r.setNumStars(rating);
+		r.setSitter(showSitter(sitterId));
+		r.setSitterUserId(userId);
+		em.persist(r);
+		
+		return r;
 	}
 }

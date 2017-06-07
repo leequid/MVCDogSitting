@@ -121,5 +121,15 @@ public class DogAppController {
 		dao.cancelAppointment(id); // not complete
 		return mv;
 	}
+	
+	@RequestMapping(path = "setRating.do", method = RequestMethod.POST)
+	public ModelAndView setRating(@ModelAttribute("user") User user, @RequestParam(name="rating") Double rating, @RequestParam(name="sitterId") Integer sitterId) {
+		ModelAndView mv = new ModelAndView("viewSitters.jsp");
+		System.out.println(rating);
+		System.out.println(sitterId);
+		dao.addRatingToDB(user.getId(), rating, sitterId);
+		
+		return mv;
+	}
 
 }

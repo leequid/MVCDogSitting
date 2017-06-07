@@ -70,5 +70,32 @@
 		<input type="hidden" name="userId" value="${user.id}" /> <input
 			type="submit" value="View Sitters" name="viewSittersButton" />
 	</form>
+	<table>
+		<thead>
+			<th colspan="3" align="center">Dags</th>
+			<tr>
+				<th>Name</th>
+				<th>Picture</th>
+				<th>Weight</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<c:forEach var="appt" items="${sessionScope.user.dogs}">
+				<tr>
+					<td>${dog.name}</td>
+					<td><img src="${dog.imageUrl}" height="150em" width="200em" /></td>
+					<td>${dog.weight}</td>
+					<td>
+						 <form action="deleteDog.do" method="POST">
+							<input type="hidden" name="id" value="${dog.id}" /> <input
+								type="submit" value="Delete Dog" name="deleteDogButton" />
+						</form>
+						</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
 </body>
 </html>
