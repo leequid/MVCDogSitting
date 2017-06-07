@@ -10,6 +10,7 @@
 <title>Login</title>
 </head>
 <body>
+<!-- test -->
 <section class="navbar">
 <div class="grid-row row">
 <c:if test="${sessionScope.user.userName == null}">
