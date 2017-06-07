@@ -2,7 +2,7 @@
 .item {
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.07);
+/*   background-color: #4E9CAF; */
   text-align: center;
   font-weight: 900;
   
@@ -16,12 +16,19 @@
     display: block;
     width: 115px;
     height: 25px;
-    background: #4E9CAF;
+    /* background: #4E9CAF; */
     padding: 10px;
     text-align: center;
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    text-decoration: none;
+ 
+    margin:auto;  /* centers the button */
+}
+
+.navbar {
+	background: #4E9CAF;
 }
 
 
