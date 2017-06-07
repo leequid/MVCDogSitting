@@ -26,9 +26,6 @@ public class Sitter {
 
 	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment bi-directional
 	private List<Appointment> appointments;
-	@OneToMany(mappedBy="sitter", fetch=FetchType.EAGER)	//mapped OneToMany to Appointment bi-directional
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<Rating> ratings;
 
 	
 

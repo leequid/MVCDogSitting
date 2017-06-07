@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
-import entities.Rating;
 import entities.Sitter;
 import entities.User;
 @Transactional
@@ -155,15 +154,18 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		System.out.println(formattedDate);
 		return formattedDate;
 	}
-	
 	@Override
-	public Rating addRatingToDB(Integer userId, Double rating, Integer sitterId) {
-		Rating r = new Rating();
-		r.setNumStars(rating);
-		r.setSitter(showSitter(sitterId));
-		r.setSitterUserId(userId);
-		em.persist(r);
-		
-		return r;
+	public Appointment showAppointment(int id) {
+		String query = "SELECT a FROM Appointment a WHERE a.id = :apptId";
+		Appointment a = em.createQuery(query, Appointment.class).setParameter("apptId", id).getSingleResult();
+		return a;
 	}
+	@Override
+	public void setRatingInDB(Appointment a) {
+		Appointment temp = em.find(Appointment.class, a.getId());
+		temp.setRating(a.getRating());
+		em.persist(temp);
+		
+	}
+	
 }

@@ -48,11 +48,15 @@ public class Appointment {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 	
-//	@Column(name="end_date")
-//	@Temporal(TemporalType.TIME)
-//	private Date endTime;
+	private double rating;
 	
-	
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
 
 	public Dog getDog() {
 		return dog;
