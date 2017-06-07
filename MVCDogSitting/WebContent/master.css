@@ -2,7 +2,7 @@
 .item {
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.07);
+/*   background-color: #4E9CAF; */
   text-align: center;
   font-weight: 900;
   
@@ -16,12 +16,42 @@
     display: block;
     width: 115px;
     height: 25px;
-    background: #4E9CAF;
+    /* background: #4E9CAF; */
     padding: 10px;
     text-align: center;
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    text-decoration: none;
+ 
+    margin:auto;  /* centers the button */
+}
+.sad {
+	height: 4em;
+    width: 5em;
+    position: absolute;
+    margin-top: -3em;
+    margin-left: 4em;
+    
+   
+}
+
+.button .sad { 
+	display: block;
+    position: absolute;
+    bottom: 0;
+    /* left: 367px;
+    height: 55%;
+    -webkit-transition: bottom 1s ease-out;
+    -moz-transition: bottom 1s ease-out;
+    -o-transition: bottom 1s ease-out;
+    -ms-transition: bottom 1s ease-out; */
+    transition: bottom 1s ease-out;
+	
+}
+
+.navbar {
+	background: #4E9CAF;
 }
 
 

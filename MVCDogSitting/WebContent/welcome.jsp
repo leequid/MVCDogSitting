@@ -10,7 +10,7 @@
 <title>Login</title>
 </head>
 <body>
-<section>
+<section class="navbar">
 <div class="grid-row row">
 <c:if test="${sessionScope.user.userName == null}">
 <div class="col"><a class="button" href="welcomePage.do">Home</a></div>
@@ -20,7 +20,9 @@
  
  <c:if test="${sessionScope.user.userName != null}">
 <div class="col"><a class="button" href="welcomePage.do">Home</a></div>
-<div class="col"><a class="button" href="logout.do">Logout</a></div>
+<div class="col"><a class="button" href="logout.do">Logout</a>
+<img class="sad" src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png">
+</div>
  <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
 <div class="col"><a class="button" href="profilePage.do">Profile</a></div>
  </c:if>
