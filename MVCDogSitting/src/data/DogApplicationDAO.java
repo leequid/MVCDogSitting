@@ -6,7 +6,6 @@ import java.util.List;
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
-import entities.Rating;
 import entities.Sitter;
 import entities.User;
 
@@ -25,6 +24,7 @@ public boolean deleteUser(int id);
 public Appointment createAppointment(Appointment a);
 public Appointment reschedule(int id, Appointment a);
 public boolean cancelAppointment(int id);
+public Appointment showAppointment(int id);
 
 public Contact createContact(Contact contact);
 public Contact updateContact(int id, Contact contact);
@@ -34,5 +34,6 @@ public Sitter showSitter(int id);
 
 public Date constructDate(String date, String time);
 
-public Rating addRatingToDB(Integer userId, Double rating, Integer sitterId);
+public void setRatingInDB(Appointment a);
+
 }
