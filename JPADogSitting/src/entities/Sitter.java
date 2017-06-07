@@ -15,8 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Sitter {
@@ -28,8 +28,8 @@ public class Sitter {
 	private List<Appointment> appointments;
 	
 
-	@OneToMany(mappedBy="sitter")	//mapped OneToMany to Appointment bi-directional
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="sitter", fetch=FetchType.EAGER)	//mapped OneToMany to Appointment bi-directional
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Rating> ratings;
 
 	
