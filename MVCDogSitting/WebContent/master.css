@@ -1,1 +1,21 @@
-@CHARSET "UTF-8";
+.col,
+.item {
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.07);
+}
+.col:nth-child(2n),
+.item:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0.14);
+}
+
+a:hover{
+	color: purple;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.grid-row {
+  display: grid;
+  grid-auto-flow: column;
+}

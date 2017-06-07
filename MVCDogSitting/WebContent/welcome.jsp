@@ -10,6 +10,14 @@
 <title>Login</title>
 </head>
 <body>
+<section>
+  <div class="grid-row row">
+    <div class="col"><a href="welcome.jsp">Home</a></div>
+    <div class="col"><a href="goToLogin.do">Login</a></div>
+    <div class="col"><a href="profile.jsp">Profile</a></div>
+  </div>
+</section>
+
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
 		<form:input path="userName" />
