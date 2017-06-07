@@ -26,10 +26,10 @@ public class Sitter {
 
 	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment bi-directional
 	private List<Appointment> appointments;
-	
 	@OneToMany(mappedBy="sitter", fetch=FetchType.EAGER)	//mapped OneToMany to Appointment bi-directional
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Rating> ratings;
+
 	
 
 	public List<Appointment> getAppointments() {
@@ -81,12 +81,7 @@ public class Sitter {
 	public String toString() {
 		return "Sitter [id=" + id + ", sizePreference=" + sizePreference + "]";
 	}
-	public List<Rating> getRatings() {
-		return ratings;
-	}
-	public void setRatings(List<Rating> ratings) {
-		this.ratings = ratings;
-	}
+
 	
 	
 }
