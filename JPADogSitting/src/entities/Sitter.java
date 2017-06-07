@@ -6,11 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -22,6 +24,10 @@ public class Sitter {
 
 	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment bi-directional
 	private List<Appointment> appointments;
+	
+	@OneToMany(mappedBy="sitter", fetch=FetchType.EAGER)	//mapped OneToMany to Appointment bi-directional
+	private List<Rating> ratings;
+	
 
 	public List<Appointment> getAppointments() {
 		return appointments;
@@ -71,6 +77,12 @@ public class Sitter {
 	@Override
 	public String toString() {
 		return "Sitter [id=" + id + ", sizePreference=" + sizePreference + "]";
+	}
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 	
 	
