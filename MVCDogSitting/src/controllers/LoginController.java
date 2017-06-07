@@ -212,9 +212,9 @@ public class LoginController {
 	public String showProfile() {
 		return "profile.jsp";
 	}
-//	@RequestMapping(value="logout.do", method = RequestMethod.POST)    <---- need to make method
-//	public String logoutUser() {
-//		return "welcome.jsp";
-//	}
+	@RequestMapping(value="logout.do", method = RequestMethod.GET)  // method to remove user session is in JSPs session.removeAttribute("user"); 
+	public String logoutUser() {
+		return "welcome.jsp";
+	}
 
 }
