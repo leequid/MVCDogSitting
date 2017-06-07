@@ -34,9 +34,10 @@
 		<p>${sitter.user.contact.street}${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 		<p>Average Rating: 
-		<div class="rating-box">
-    <div style="width:(${sitter.averageRating}%" class="rating"></div>
-</div>
+		<div class="star-ratings-sprite">
+		<span style="width:26%" class="star-ratings-sprite-rating">
+		</span>
+		</div>
 		<p>${sitter.averageRating} Stars!</p>
 		<form action="setAppointment.do">
 			<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
