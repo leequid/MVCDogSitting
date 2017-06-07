@@ -11,6 +11,23 @@
 <title>Profile Page</title>
 </head>
 <body>
+<section>
+<div class="grid-row row">
+<c:if test="${sessionScope.user.userName == null}">
+<div class="col"><a href="welcome.jsp">Home</a></div>
+<div class="col"><a href="goToLogin.do">Login</a></div>
+ <div class="col"><a href="profile.jsp">Profile</a></div>
+ </c:if>
+ <c:if test="${sessionScope.user.userName != null}">
+ <div class="col"><a href="welcome.jsp">Home</a></div>
+ <div class="col"><a href="goToLogin.do">Logout</a></div>
+ <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
+ <div class="col"><a href="profile.jsp">Profile</a></div>
+ </c:if>
+  </div>
+</section>
+    
+
 
 	<p>${user.contact.firstName}${user.contact.lastName}</p>
 	<p>User Name: ${user.userName}</p>

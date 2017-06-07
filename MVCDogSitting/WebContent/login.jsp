@@ -11,6 +11,21 @@
 </head>
 <p>Please login or create an account to continue</p>
 <body>
+<section>
+<div class="grid-row row">
+<c:if test="${sessionScope.user.userName == null}">
+<div class="col"><a href="welcome.jsp">Home</a></div>
+<div class="col"><a href="goToLogin.do">Login</a></div>
+ <div class="col"><a href="profile.jsp">Profile</a></div>
+ </c:if>
+ <c:if test="${sessionScope.user.userName != null}">
+ <div class="col"><a href="welcome.jsp">Home</a></div>
+ <div class="col"><a href="goToLogin.do">Logout</a></div>
+ <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
+ <div class="col"><a href="profile.jsp">Profile</a></div>
+ </c:if>
+  </div>
+</section>
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
 		<form:input path="userName" />
