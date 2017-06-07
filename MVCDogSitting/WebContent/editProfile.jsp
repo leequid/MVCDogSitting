@@ -11,6 +11,22 @@
 <title>Edit Profile Page</title>
 </head>
 <body>
+<section>
+<div class="grid-row row">
+<c:if test="${sessionScope.user.userName == null}">
+<div class="col"><a class="button" href="welcomePage.do">Home</a></div>
+<div class="col"><a class="button" href="loginPage.do">Login</a></div>
+<div class="col"><a class="button" href="profilePage.do">Profile</a></div>
+ </c:if>
+
+ <c:if test="${sessionScope.user.userName != null}">
+<div class="col"><a class="button" href="welcomePage.do">Home</a></div>
+<div class="col"><a class="button" href="logout.do">Logout</a></div>
+ <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
+<div class="col"><a class="button" href="profilePage.do">Profile</a></div>
+ </c:if>
+  </div>
+</section>
 
 <form:form action="updateProfile.do" method="POST" modelAttribute="user">
 	

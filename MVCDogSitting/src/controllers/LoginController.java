@@ -199,4 +199,22 @@ public class LoginController {
 		mv.setViewName("viewAppointment.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(value="welcomePage.do", method = RequestMethod.GET)   
+	public String showWelcomePage() {
+		return "welcome.jsp";
+	}
+	@RequestMapping(value="loginPage.do", method = RequestMethod.GET)   
+	public String showLoginPage() {
+		return "login.jsp";
+	}
+	@RequestMapping(value="profilePage.do", method = RequestMethod.GET)   
+	public String showProfile() {
+		return "profile.jsp";
+	}
+//	@RequestMapping(value="logout.do", method = RequestMethod.POST)    <---- need to make method
+//	public String logoutUser() {
+//		return "welcome.jsp";
+//	}
+
 }
