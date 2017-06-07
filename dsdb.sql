@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `end_date` DATETIME NULL,
   `dog_id` INT NOT NULL,
   `sitter_id` INT NOT NULL,
+  `rating` DECIMAL(3,1) NULL,
   PRIMARY KEY (`id`, `dog_id`),
   INDEX `fk_appointment_dog1_idx` (`dog_id` ASC),
   INDEX `fk_appointment_sitter1_idx` (`sitter_id` ASC),
@@ -117,27 +118,6 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   CONSTRAINT `fk_appointment_sitter1`
     FOREIGN KEY (`sitter_id`)
     REFERENCES `sitter` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `rating`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `rating` ;
-
-CREATE TABLE IF NOT EXISTS `rating` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `num_stars` DECIMAL(3,1) NULL,
-  `comment` VARCHAR(200) NULL,
-  `sitter_id` INT NOT NULL,
-  `sitter_user_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `sitter_id`, `sitter_user_id`),
-  INDEX `fk_rating_sitter1_idx` (`sitter_id` ASC, `sitter_user_id` ASC),
-  CONSTRAINT `fk_rating_sitter1`
-    FOREIGN KEY (`sitter_id` , `sitter_user_id`)
-    REFERENCES `sitter` (`id` , `user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -218,12 +198,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (1, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 1);
-INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (2, '2016-02-12 13:12:00', NULL, 4, 1);
-INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (3, '2016-02-12 13:12:00', NULL, 6, 1);
-INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (4, '2016-02-12 13:12:00', NULL, 5, 2);
-INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (5, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 2);
-INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (1, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 1, NULL);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (2, '2016-02-12 13:12:00', NULL, 4, 1, NULL);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (3, '2016-02-12 13:12:00', NULL, 6, 1, NULL);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (4, '2016-02-12 13:12:00', NULL, 5, 2, NULL);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (5, '2016-02-12 12:22:00', '2016-02-12 1:22:00', 3, 2, NULL);
+INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2, NULL);
 
 COMMIT;
 
