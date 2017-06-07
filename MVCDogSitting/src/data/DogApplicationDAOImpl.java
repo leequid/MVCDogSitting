@@ -52,6 +52,13 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     	user.setContact(c);
         em.persist(user);
         em.flush();
+        if(user.getActiveSitter()) {
+        		
+        	Sitter s = new Sitter();
+        	s.setUser(user);
+        	em.persist(s);
+        	em.flush();
+        }
         return user;
     }
     @Override
@@ -79,7 +86,8 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     public Appointment createAppointment(Appointment a) {
         em.persist(a);
         em.flush();
-        return a;
+        
+        return em.find(Appointment.class, a.getId());
     }
     @Override
     public boolean cancelAppointment(int id) {
@@ -164,8 +172,26 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 	public void setRatingInDB(Appointment a) {
 		Appointment temp = em.find(Appointment.class, a.getId());
 		temp.setRating(a.getRating());
-		em.persist(temp);
+		Sitter s = em.find(Sitter.class, a.getSitter().getId());
+		Double averageRating = calculateAverage(s.getAppointments());
+		s.setAverageRating(averageRating);
+	}
+	
+	public double calculateAverage(List<Appointment> appts) {
+		int count = 0;
+		double total = 0, average = 0;
 		
+		for (Appointment a : appts) {
+			if(a.getRating() != 0) {
+			total += a.getRating();
+			count ++;
+			}
+		}
+		if (count != 0) {
+		average = total/count;
+		}
+		
+		return average;
 	}
 	
 }

@@ -33,6 +33,10 @@
 		<br />
 		<label>Create password: <form:password path="password" /></label>
 		<br />
+		<label>Do you want to be a sitter? <form:checkbox path="activeSitter"
+			 value="true"/>
+			
+		</label>
 		<input type="submit" value="Register" />
 	</form:form>
 </body>

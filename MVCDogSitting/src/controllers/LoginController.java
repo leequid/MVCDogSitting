@@ -212,9 +212,5 @@ public class LoginController {
 	public String showProfile() {
 		return "profile.jsp";
 	}
-//	@RequestMapping(value="logout.do", method = RequestMethod.POST)    <---- need to make method
-//	public String logoutUser() {
-//		return "welcome.jsp";
-//	}
 
 }

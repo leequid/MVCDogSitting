@@ -12,35 +12,6 @@
 <title>View Appointment</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<section>
-	<div class="grid-row row">
-		<c:if test="${sessionScope.user.userName == null}">
-			<div class="col">
-				<a href="welcome.jsp">Home</a>
-			</div>
-			<div class="col">
-				<a href="goToLogin.do">Login</a>
-			</div>
-			<div class="col">
-				<a href="profile.jsp">Profile</a>
-			</div>
-		</c:if>
-		<c:if test="${sessionScope.user.userName != null}">
-			<div class="col">
-				<a href="welcome.jsp">Home</a>
-			</div>
-			<div class="col">
-				<a href="goToLogin.do">Logout</a>
-			</div>
-			<div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
-			<div class="col">
-				<a href="profile.jsp">Profile</a>
-			</div>
-		</c:if>
-	</div>
-	</section>
-=======
 <section>
 <div class="grid-row row">
 <c:if test="${sessionScope.user.userName == null}">
@@ -64,20 +35,8 @@ prefers ${appointment.sitter.sizePreference} dogs</p>
 <p>Dog: ${appointment.dog.name} <img src="${appointment.dog.imageUrl}" height="150em" width="200em"/></p>
 <p>Start Date and Time: ${strStart}</p>
 <p>End Date and Time: ${strEnd}</p>
->>>>>>> 3cff0990533a1893a982265e92f658413fc4452a
 
-	<p>Dog Owner: ${appointment.dog.user.contact.firstName}
-		${appointment.dog.user.contact.lastName}</p>
-	<p>Sitter: ${appointment.sitter.user.contact.firstName}
-		${appointment.sitter.user.contact.lastName} prefers
-		${appointment.sitter.sizePreference} dogs</p>
-	<p>
-		Dog: ${appointment.dog.name} <img src="${appointment.dog.imageUrl}"
-			height="150em" width="200em" />
-	</p>
-	<p>Start Date and Time: ${strStart}</p>
-	<p>End Date and Time: ${strEnd}</p>
-	<c:if test="${appointment.rating == 0}">
+	<c:if test="${appointment.rating == NULL}">
 	<form action="setRating.do" method="POST">
 		<fieldset class="rating">
 			<input type="radio" id="star5" name="rating" value="5" /><label

@@ -126,10 +126,13 @@ public class DogAppController {
 	public ModelAndView setRating(@ModelAttribute("user") User user, 
 			@RequestParam(name="rating") Double rating, 
 			@RequestParam(name="apptId") Integer apptId) {
-		ModelAndView mv = new ModelAndView("profile.jsp");
+		ModelAndView mv = new ModelAndView();
 		Appointment a = dao.showAppointment(apptId);
 		a.setRating(rating);
 		dao.setRatingInDB(a);
+		mv.setViewName("viewSitters.jsp");
+		mv.addObject("sitters", dao.indexOfSitters(user));
+		mv.addObject("appointment", a);
 
 		return mv;
 	}
