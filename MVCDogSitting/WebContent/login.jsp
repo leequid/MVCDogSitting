@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
-<p>Please login or create an account to continue</p>
+<p style="color:red;">Please login or create an account to continue</p>
 <body>
 <section class="navbar">
 <div class="grid-row row">
