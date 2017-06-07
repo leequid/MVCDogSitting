@@ -12,11 +12,9 @@
 <body>
 <section>
   <div class="grid-row row">
-    <div class="col">Grid Column 1</div>
-    <div class="col">Grid Column 2</div>
-    <div class="col">Grid Column 3</div>
-    <div class="col">Grid Column 4</div>
-    <div class="col">Grid Column 5</div>
+    <div class="col"><a href="welcome.jsp">Home</a></div>
+    <div class="col"><a href="goToLogin.do">Login</a></div>
+    <div class="col"><a href="profile.jsp">Profile</a></div>
   </div>
 </section>
 
@@ -32,14 +30,17 @@
 	</form:form>
 	
 	<a href="goToCreateUser.do">Create New Account</a>
+	<hr>
 	
 		<c:forEach var="sitter" items="${sitters}">
+		<hr>
 		<p>${sitter.user.contact.firstName} ${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street} ${sitter.user.contact.city}, ${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 		<form action="goToLogin.do" method="GET">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Set Appointment"/>
 		</form>
+		<hr>
 	</c:forEach>
 </body>
 </html>
