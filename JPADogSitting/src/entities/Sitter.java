@@ -12,9 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Sitter {
@@ -25,8 +27,11 @@ public class Sitter {
 	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment bi-directional
 	private List<Appointment> appointments;
 	
-//	@OneToMany(mappedBy="sitter1", fetch=FetchType.EAGER)	//mapped OneToMany to Appointment bi-directional
-//	private List<Rating> ratings;
+
+	@OneToMany(mappedBy="sitter")	//mapped OneToMany to Appointment bi-directional
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Rating> ratings;
+
 	
 
 	public List<Appointment> getAppointments() {
@@ -78,12 +83,7 @@ public class Sitter {
 	public String toString() {
 		return "Sitter [id=" + id + ", sizePreference=" + sizePreference + "]";
 	}
-//	public List<Rating> getRatings() {
-//		return ratings;
-//	}
-//	public void setRatings(List<Rating> ratings) {
-//		this.ratings = ratings;
-//	}
+
 	
 	
 }
