@@ -26,6 +26,17 @@ public class Rating {
 	@ManyToOne
 	@JoinColumn(name="sitter_id")		//mapped one to many with appointment
 	private Sitter sitter;
+	
+	@Column(name="sitter_user_id")
+	private int sitterUserId;
+
+	public int getSitterUserId() {
+		return sitterUserId;
+	}
+
+	public void setSitterUserId(int sitterUserId) {
+		this.sitterUserId = sitterUserId;
+	}
 
 	public double getNumStars() {
 		return numStars;
@@ -53,6 +64,19 @@ public class Rating {
 
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Rating [id=");
+		builder.append(id);
+		builder.append(", numStars=");
+		builder.append(numStars);
+		builder.append(", sitterUserId=");
+		builder.append(sitterUserId);
+		builder.append("]");
+		return builder.toString();
 	} 
 	
 }

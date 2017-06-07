@@ -6,6 +6,7 @@ import java.util.List;
 import entities.Appointment;
 import entities.Contact;
 import entities.Dog;
+import entities.Rating;
 import entities.Sitter;
 import entities.User;
 
@@ -32,4 +33,6 @@ public List<Sitter> indexOfSitters(User user);
 public Sitter showSitter(int id);
 
 public Date constructDate(String date, String time);
+
+public Rating addRatingToDB(Integer userId, Double rating, Integer sitterId);
 }
