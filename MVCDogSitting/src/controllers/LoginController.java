@@ -73,6 +73,7 @@ public class LoginController {
 		} else {
 			if (authDao.validPassword(existingUser, user.getPassword())) {
 				mv.addObject("user", existingUser);
+				System.out.println(existingUser.getUserName());
 				if (sitterId == null) {
 					mv.setViewName("profile.jsp");
 				}
@@ -209,12 +210,22 @@ public class LoginController {
 		return "login.jsp";
 	}
 	@RequestMapping(value="profilePage.do", method = RequestMethod.GET)   
-	public String showProfile() {
-		return "profile.jsp";
+	public ModelAndView showProfile(@ModelAttribute("user") User user) {
+		ModelAndView mv = new ModelAndView();
+		if(user.getUserName() == null){
+			mv.setViewName("login.jsp");
+		}
+		else{
+			mv.setViewName("profile.jsp");
+		}
+		return mv;
 	}
 	@RequestMapping(value="logout.do", method = RequestMethod.GET)  // method to remove user session is in JSPs session.removeAttribute("user"); 
-	public String logoutUser() {
-		return "welcome.jsp";
+	public ModelAndView logoutUser() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("welcome.jsp");
+		mv.addObject("user", new User());
+		return mv;
 	}
 
 }

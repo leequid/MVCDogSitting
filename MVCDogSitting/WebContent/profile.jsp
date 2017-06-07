@@ -18,25 +18,22 @@
 <div class="col"><a class="button" href="loginPage.do">Login</a></div>
 <div class="col"><a class="button" href="profilePage.do">Profile</a></div>
  </c:if>
- 
  <c:if test="${sessionScope.user.userName != null}">
 <div class="col"><a class="button" href="welcomePage.do">Home</a></div>
-<div class="col"><% session.removeAttribute("user"); %><a class="button" href="logout.do">Logout</a>
-<img class="sad" src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png">
+<div class="col"><a class="button" href="logout.do">Logout</a>
+<img class="sad" src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png"/>
 </div>
- <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
+ <div class="col">Hi ${sessionScope.user.userName}!</div>
 <div class="col"><a class="button" href="profilePage.do">Profile</a></div>
  </c:if>
   </div>
 </section>
-    
 
 
 	<p>${user.contact.firstName}${user.contact.lastName}</p>
 	<p>User Name: ${user.userName}</p>
 	<p>Address: ${user.contact.street} ${user.contact.city},
 		${user.contact.state} ${user.contact.zipCode}</p>
-
 	<table>
 		<thead>
 			<th colspan="3" align="center">Dags</th>
