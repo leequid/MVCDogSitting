@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ import entities.User;
 @Controller
 @SessionAttributes("user")
 public class LoginController {
+	
 	@Autowired
 	private AuthenticationDAO authDao;
 
