@@ -11,6 +11,21 @@
 <title>View Sitters</title>
 </head>
 <body>
+<section>
+<div class="grid-row row">
+<c:if test="${sessionScope.user.userName == null}">
+<div class="col"><a href="welcome.jsp">Home</a></div>
+<div class="col"><a href="goToLogin.do">Login</a></div>
+ <div class="col"><a href="profile.jsp">Profile</a></div>
+ </c:if>
+ <c:if test="${sessionScope.user.userName != null}">
+ <div class="col"><a href="welcome.jsp">Home</a></div>
+ <div class="col"><a href="goToLogin.do">Logout</a></div>
+ <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
+ <div class="col"><a href="profile.jsp">Profile</a></div>
+ </c:if>
+  </div>
+</section>
 	<c:forEach var="sitter" items="${sitters}">
 		<p>${sitter.user.contact.firstName} ${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street} ${sitter.user.contact.city}, ${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
