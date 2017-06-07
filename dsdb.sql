@@ -121,6 +121,27 @@ CREATE TABLE IF NOT EXISTS `appointment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `rating`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `rating` ;
+
+CREATE TABLE IF NOT EXISTS `rating` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `num_stars` DECIMAL(3,1) NULL,
+  `comment` VARCHAR(200) NULL,
+  `sitter_id` INT NOT NULL,
+  `sitter_user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `sitter_id`, `sitter_user_id`),
+  INDEX `fk_rating_sitter1_idx` (`sitter_id` ASC, `sitter_user_id` ASC),
+  CONSTRAINT `fk_rating_sitter1`
+    FOREIGN KEY (`sitter_id` , `sitter_user_id`)
+    REFERENCES `sitter` (`id` , `user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 GRANT USAGE ON *.* TO admin@localhost;
  DROP USER admin@localhost;
@@ -128,6 +149,13 @@ SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
 
 GRANT ALL ON * TO 'admin'@'localhost';
+SET SQL_MODE = '';
+GRANT USAGE ON *.* TO user@localhost;
+ DROP USER user@localhost;
+SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'user';
+
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'user'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -198,3 +226,4 @@ INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2);
 
 COMMIT;
+

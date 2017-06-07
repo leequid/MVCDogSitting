@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Sitter {
@@ -22,6 +26,11 @@ public class Sitter {
 
 	@OneToMany(mappedBy="sitter")		//mapped OneToMany to Appointment bi-directional
 	private List<Appointment> appointments;
+	@OneToMany(mappedBy="sitter", fetch=FetchType.EAGER)	//mapped OneToMany to Appointment bi-directional
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Rating> ratings;
+
+	
 
 	public List<Appointment> getAppointments() {
 		return appointments;
@@ -72,6 +81,7 @@ public class Sitter {
 	public String toString() {
 		return "Sitter [id=" + id + ", sizePreference=" + sizePreference + "]";
 	}
+
 	
 	
 }
