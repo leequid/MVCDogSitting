@@ -57,6 +57,7 @@
 	<hr>
 	<c:forEach var="sitter" items="${sitters}">
 		<hr>
+
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
@@ -86,13 +87,14 @@
 			</tr>
 		</table>
 		</div>
-			<hr>
-			<%-- 		<div id="Arate">Average Rating:
+		<hr>
+		<%-- 		<div id="Arate">Average Rating:
 		<div class="star-ratings-css">
   <div class="star-ratings-css-top" style="width:${sitter.averageRating*25}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
   <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 </div>${sitter.averageRating} Stars!</div>
 		<p>${sitter.averageRating} Stars!</p>
+>>>>>>> 63132bfc1261f761ea570460485353c02cafcbd0
 		<form action="goToLogin.do" method="GET">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Set Appointment"/>

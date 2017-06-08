@@ -31,7 +31,7 @@ public class User {
 	@Size(min=2, max=100)
 	private String userName;  
 	
-	@Pattern(regexp="^(?=.*\\d).{4,8}$")
+	@Pattern(regexp="^(?=.*\\d).{4,8}$", message="Pattern.user.password")
 	private String password; //length 4~8 and must contain at least one number
 	
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)		//maps bidirectional OneToMany to dogs
