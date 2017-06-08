@@ -29,12 +29,17 @@
 </section>
 	<form:form action="createContact.do" method="POST" modelAttribute="contact">
 		<label>First Name: <form:input path="firstName" /></label>
+		<form:errors path="firstName" />
 		<br />
 		<label>Last Name: <form:input path="lastName" /></label>
+		<form:errors path="lastName" />
 		<br />
+		
 		<label>Email: <form:input path="email" /></label>
+		<form:errors path="email" />
 		<br />
 		<label>Phone Number: <form:input path="phone" /></label>
+		<form:errors path="phone" />
 		<br />
 		<label>Street Address: <form:input path="street" /></label>
 		<br />
@@ -43,6 +48,7 @@
 		<label>State: <form:input path="state" /></label>
 		<br />
 		<label>ZipCode: <form:input path="zipCode" /></label>
+		<form:errors path="zipCode" />
 		<br />
 		<form:hidden path="id" value="${contactId}"/>
 		<input type="submit" value="Register" />

@@ -43,10 +43,10 @@
 	<c:forEach var="sitter" items="${sitters}">
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
-		<p>${sitter.user.contact.street}${sitter.user.contact.city},
+		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 
-		<p>Average Rating:
+		<p>Average Rating:</p>
 		<div class="star-ratings-css">
 			<div class="star-ratings-css-top"
 				style="width:${sitter.averageRating*25}%">
@@ -55,6 +55,7 @@
 			<div class="star-ratings-css-bottom">
 				<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 			</div>
+		
 		</div>
 		<p>${sitter.averageRating} Stars!</p>
 

@@ -57,29 +57,35 @@
 	<hr>
 	<c:forEach var="sitter" items="${sitters}">
 		<hr>
+
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
-		<p>${sitter.user.contact.street}${sitter.user.contact.city},
+		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
-		<div id="sitRateTable">
-			<table width="75%">
-				<tr>
-					<td>Average Rating:</td>
-					<td><span class="star-ratings-css"> <span
-							class="star-ratings-css-top"
-							style="width:${sitter.averageRating*25}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+		<div >
+		<table id="rating_table">
+			<tr>
+				<td id="shrink">Average Rating:</td>
+				<td>
+					<span class="star-ratings-css">
+						<span class="star-ratings-css-top"
+							style="width:${sitter.averageRating*25}%">
+							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
-					</span></td>
-					<td>${sitter.averageRating}Stars!</td>
-					<td>
-						<form action="goToLogin.do" method="GET">
-							<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
-								type="submit" value="Set Appointment" />
-						</form>
-					</td>
-				</tr>
-			</table>
+						<span class="star-ratings-css-bottom">
+							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+						</span>
+					</span>
+				</td>
+				<td>${sitter.averageRating} Stars!</td>
+				<td>
+					<form action="goToLogin.do" method="GET">
+						<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
+							type="submit" value="Set Appointment" />
+					</form>
+				</td>
+			</tr>
+		</table>
 		</div>
 		<hr>
 		<%-- 		<div id="Arate">Average Rating:
@@ -88,6 +94,7 @@
   <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 </div>${sitter.averageRating} Stars!</div>
 		<p>${sitter.averageRating} Stars!</p>
+>>>>>>> 63132bfc1261f761ea570460485353c02cafcbd0
 		<form action="goToLogin.do" method="GET">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Set Appointment"/>

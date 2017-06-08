@@ -26,23 +26,23 @@ public class Contact {
 	private String state;
 	
 	@Column(name="first_name")
-	@Size(min=2, max=100)
+	@Size(min=2, max=50, message="Size.contact.firstName")
 	private String firstName;
 	
 	@Column(name="last_name")
-	@Size(min=2, max=100)
+	@Size(min=2, max=50, message="Size.contact.lastName")
 	private String lastName;
 	
 	private String city;
 	
 	@Column(name="zipcode")
-	@Pattern(regexp="\\d{5}(-\\d{4})?")
+	@Pattern(regexp="\\d{5}(-\\d{4})?", message="Pattern.contact.zipCode")
 	private String zipCode;
 	
 	@Email
 	private String email;
 	
-	@Pattern(regexp="(\\d{3})(-\\d{3})(-\\d{4})")
+	@Pattern(regexp="(\\d{3})(-\\d{3})(-\\d{4})", message="Pattern.contact.phone")
 	private String phone;
 	
 	public User getUser() {
