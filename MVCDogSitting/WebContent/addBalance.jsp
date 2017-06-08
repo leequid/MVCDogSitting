@@ -54,7 +54,7 @@
 		</form:select> --%>
 		
 		<br />
-		<label>Add Balance: <form:input path="balance"  /></label>
+		<label>Add Balance: <input type="text" name="balance"  /></label>
 		<input type="submit" value="Add balance!" />
 	</form:form>
 
