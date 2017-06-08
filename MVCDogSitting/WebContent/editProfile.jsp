@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="bark.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="master.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edit Profile Page</title>
@@ -42,6 +43,7 @@
 <%-- 	<input type="hidden" value="${user.id}" name="userId"/>
  --%>	<%-- <input type="hidden" value="${user.contact.id} name="contactId"/> --%>
 	<input type="submit" value="Update Profile"/>
+	
 
 </form:form>
  <form:form action="createDog.do" method="POST" modelAttribute="newDog">
@@ -49,7 +51,7 @@
 	<label>Dog's Name: <input type="text" name="name"/></label>
 	<label>Weight: <input type="text" name="weight"/></label>
 	<label>Image URL: <input type="text" name="imageUrl"/></label>
-	<input type="submit" value="Add Dog"/>
+	<input type="submit" value="Add Dog" onmouseover="playBark()"/>
 
 </form:form> 
 </body>
