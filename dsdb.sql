@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `sitter` (
   `size_pref` ENUM('TOY', 'SMALL', 'MEDIUM', 'LARGE', 'GIANT') NULL,
   `user_id` INT NOT NULL,
   `average_rating` DECIMAL(3,1) NOT NULL DEFAULT 0.0,
-  `rate` DECIMAL(6,2) NOT NULL DEFAULT 30.0,
+  `rate` DECIMAL(6,2) NULL DEFAULT 30.0,
   `availability` ENUM('ANYTIME', 'WEEKENDS', 'EVENINGS', 'OVERNIGHTS', 'WEEKDAYS') NULL DEFAULT 'ANYTIME',
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_sitter_user1_idx` (`user_id` ASC),

@@ -180,4 +180,17 @@ public class DogAppController {
 		return mv;
 
 	}
+	
+	@RequestMapping(path = "updateSitterRate.do", method = RequestMethod.POST)
+	public ModelAndView updateSitterRate(@ModelAttribute("user") User user,
+			@RequestParam(name = "rate") Double rate) {
+		ModelAndView mv = new ModelAndView();
+		
+		user = dao.updateSitter(user.getSitter().getId(), rate);
+		mv.addObject("user", user);
+		mv.setViewName("profile.jsp");
+		return mv;
+		
+	}
+	
 }
