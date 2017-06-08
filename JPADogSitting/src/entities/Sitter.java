@@ -63,8 +63,14 @@ public class Sitter {
 	public SizePreference sizePreference;
 	
 	@Enumerated(EnumType.STRING)
-	public Availability availability;
+	private Availability availability;
 
+	public Availability getAvailability() {
+		return availability;
+	}
+	public void setAvailability(Availability availability) {
+		this.availability = availability;
+	}
 	public void setUser(User user) {
 		this.user = user;
 	}

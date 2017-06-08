@@ -52,6 +52,7 @@ public class User {
 	public Contact getContact() {
 		return contact;
 	}
+	
 	@OneToOne(mappedBy="user") // mapped OneToOne with sitter
 	private Sitter sitter;
 

@@ -202,10 +202,6 @@ public class LoginController {
 		return mv;
 	}
 	
-//	@RequestMapping(value="welcomePage.do", method = RequestMethod.GET)   
-//	public String showWelcomePage() {
-//		return "viewSitters.jsp";
-//	}
 	@RequestMapping(value="loginPage.do", method = RequestMethod.GET)   
 	public String showLoginPage() {
 		return "login.jsp";
@@ -228,7 +224,6 @@ public class LoginController {
 		mv.addObject("user", new User());
 		List<Sitter> sitters = dao.indexOfSitters(u);
 		mv.addObject("sitters", sitters);
-		//mv.addObject("sitters", dao.indexOfSitters(new User()));
 		return mv;
 	}
 

@@ -165,7 +165,7 @@ START TRANSACTION;
 USE `dsdb`;
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', '1', true, 1, NULL);
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', '2', false, 2, NULL);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', '3', false, 3, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', '1234a', false, 3, NULL);
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', '4', true, 4, NULL);
 
 COMMIT;
