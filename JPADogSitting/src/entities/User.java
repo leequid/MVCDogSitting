@@ -22,6 +22,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	private Double balance;
 		
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="contact_id") 
@@ -37,6 +39,16 @@ public class User {
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)		//maps bidirectional OneToMany to dogs
 	private List<Dog> dogs;
 	
+	
+	
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
 	public Contact getContact() {
 		return contact;
 	}

@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(45) NOT NULL,
   `sitter` TINYINT(1) NOT NULL,
   `contact_id` INT NOT NULL,
+  `balance` DECIMAL(6,2) NULL DEFAULT 0.0,
   PRIMARY KEY (`id`),
   INDEX `fk_user_contact1_idx` (`contact_id` ASC),
   CONSTRAINT `fk_user_contact1`
@@ -86,6 +87,8 @@ CREATE TABLE IF NOT EXISTS `sitter` (
   `size_pref` ENUM('TOY', 'SMALL', 'MEDIUM', 'LARGE', 'GIANT') NULL,
   `user_id` INT NOT NULL,
   `average_rating` DECIMAL(3,1) NOT NULL DEFAULT 0.0,
+  `rate` DECIMAL(6,2) NULL DEFAULT 0.0,
+  `availability` ENUM('ANYTIME', 'WEEKENDS', 'EVENINGS', 'OVERNIGHTS', 'WEEKDAYS') NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_sitter_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_sitter_user1`
@@ -119,27 +122,6 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   CONSTRAINT `fk_appointment_sitter1`
     FOREIGN KEY (`sitter_id`)
     REFERENCES `sitter` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `availability`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `availability` ;
-
-CREATE TABLE IF NOT EXISTS `availability` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `time` DATETIME NULL,
-  `day` INT NULL,
-  `sitter_id` INT NOT NULL,
-  `sitter_user_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `sitter_id`, `sitter_user_id`),
-  INDEX `fk_availability_sitter1_idx` (`sitter_id` ASC, `sitter_user_id` ASC),
-  CONSTRAINT `fk_availability_sitter1`
-    FOREIGN KEY (`sitter_id` , `sitter_user_id`)
-    REFERENCES `sitter` (`id` , `user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -181,10 +163,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (1, 'Eric', '1', true, 1);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (2, 'Mike', '2', false, 2);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (3, 'Miles', '3', false, 3);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`) VALUES (4, 'Ryan', '4', true, 4);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', '1', true, 1, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', '2', false, 2, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', '3', false, 3, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', '4', true, 4, NULL);
 
 COMMIT;
 
@@ -209,8 +191,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`) VALUES (1, 'SMALL', 1, 3);
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`) VALUES (2, 'LARGE', 4, 3);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (1, 'SMALL', 1, 3, NULL, NULL);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (2, 'LARGE', 4, 3, NULL, NULL);
 
 COMMIT;
 
