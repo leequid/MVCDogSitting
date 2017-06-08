@@ -144,6 +144,8 @@ public class DogAppController {
 		@RequestParam(name="balance") Double amount) {
 		ModelAndView mv = new ModelAndView();
 	System.out.println(amount);
+	dao.addBalanceToUser(user.getId(), amount);
+	mv.addObject("user", user);
 	mv.setViewName("profile.jsp");
 		return mv;
 	}
