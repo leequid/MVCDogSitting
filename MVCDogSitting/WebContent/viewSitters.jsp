@@ -57,7 +57,7 @@
 			</div>
 		
 		</div>
-		<p>${sitter.averageRating}Stars!</p>
+		<p>${sitter.averageRating} Stars!</p>
 
 		<form action="setAppointment.do">
 			<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
