@@ -45,13 +45,19 @@
 			${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street}${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
+
 		<p>Average Rating:
 		<div class="star-ratings-css">
-  <div class="star-ratings-css-top" style="width:${sitter.averageRating*25}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-</div>
-
+			<div class="star-ratings-css-top"
+				style="width:${sitter.averageRating*25}%">
+				<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+			</div>
+			<div class="star-ratings-css-bottom">
+				<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+			</div>
+		</div>
 		<p>${sitter.averageRating}Stars!</p>
+
 		<form action="setAppointment.do">
 			<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
 				type="submit" value="Set Appointment" />
