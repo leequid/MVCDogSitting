@@ -74,16 +74,21 @@
 					</select>
 					 <input type="submit" value="Submit" >
 				</form>
+				<form action="updateSitterRate.do" method="POST">
+					<label>Set your rate:$ <input type="number" name="rate"/>
+						<input type="submit" value="Set Rate"/>   Current Rate is: $${user.sitter.rate}
+					</label>
+				</form>
 			<form action="updateSitterStatus.do" method="POST">
 					<input type="checkbox" name="activeSitter" value="false"> I don't want to be a sitter!
-					 <input type="submit" value="Submit">
+					 <input type="submit" value="Submit"/>
 				</form>
 		</c:if>	
 		<c:if test="${user.activeSitter == false }">
 			<p>Sitter status: I'm not a sitter :-(</p>
 				<form action="updateSitterStatus.do" method="POST">
 					<input type="checkbox" name="activeSitter" value="true"> Make me a sitter!
-					 <input type="submit" value="Submit">
+					 <input type="submit" value="Update Status">
 				</form>
 		</c:if>	
 	
