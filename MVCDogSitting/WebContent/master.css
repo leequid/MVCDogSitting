@@ -1,6 +1,19 @@
+body {
+    background-image: url("https://images.alphacoders.com/288/288213.jpg");
+    background-size: 75em;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+
+}
+
+
+
 .col,
 .item {
-  padding: 10px;
+ padding: 10px;
+/*  margin-top: 0; */
   box-sizing: border-box;
 /*   background-color: #4E9CAF; */
   text-align: center;
@@ -15,6 +28,7 @@
 }
 
 .button {
+	
     display: block;
     width: 115px;
     height: 25px;
@@ -25,7 +39,6 @@
     color: white;
     font-weight: bold;
     text-decoration: none;
- 
     margin:auto;  /* centers the button */
 }
 .sad {
@@ -46,7 +59,20 @@ logerror {
 }
 
 .navbar {
-	background: #4E9CAF;
+	/* margin-top: -1em; */
+	background: #a2a37a;
+	opacity: 0.7;
+	/* margin-left: -2em;
+	margin-right: -2em; */
+	display:block;
+	border-bottom: 1px solid black;
+	top:0;
+	padding:0;
+	position: fixed;
+	margin: 0 px;
+	width: 100%;
+	margin-left: -1.25em;
+	
 }
 
 

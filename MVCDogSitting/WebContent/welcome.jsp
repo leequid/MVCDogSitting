@@ -11,7 +11,6 @@
 <title>Login</title>
 </head>
 <body>
-	<!-- test -->
 	<section class="navbar">
 	<div class="grid-row row">
 		<c:if test="${sessionScope.user.userName == null}">
@@ -25,22 +24,27 @@
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>
 		</c:if>
-
 		<c:if test="${sessionScope.user.userName != null}">
 			<div class="col">
 				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
-				<a class="button" href="logout.do">Logout</a> <img class="sad"
-					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png">
+				<a class="button buttonlogout" href="logout.do">Logout</a> <img
+					class="sad"
+					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
 			</div>
-			<div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
+			<div class="col">Hi ${sessionScope.user.userName}!</div>
 			<div class="col">
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>
 		</c:if>
 	</div>
 	</section>
+
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
@@ -61,32 +65,27 @@
 
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
-		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
+		<p>${sitter.user.contact.street}${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
-		<div >
-		<table id="rating_table">
-			<tr>
-				<td id="shrink">Average Rating:</td>
-				<td>
-					<span class="star-ratings-css">
-						<span class="star-ratings-css-top"
-							style="width:${sitter.averageRating*25}%">
-							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+		<div>
+			<table id="rating_table">
+				<tr>
+					<td id="shrink">Average Rating:</td>
+					<td><span class="star-ratings-css"> <span
+							class="star-ratings-css-top"
+							style="width:${sitter.averageRating*25}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
-						<span class="star-ratings-css-bottom">
-							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-						</span>
-					</span>
-				</td>
-				<td>${sitter.averageRating} Stars!</td>
-				<td>
-					<form action="goToLogin.do" method="GET">
-						<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
-							type="submit" value="Set Appointment" />
-					</form>
-				</td>
-			</tr>
-		</table>
+					</span></td>
+					<td>${sitter.averageRating}Stars!</td>
+					<td>
+						<form action="goToLogin.do" method="GET">
+							<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
+								type="submit" value="Set Appointment" />
+						</form>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<hr>
 		<%-- 		<div id="Arate">Average Rating:
