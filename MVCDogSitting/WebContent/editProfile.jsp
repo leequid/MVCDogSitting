@@ -62,33 +62,40 @@
 
 		<label>First Name: <input type="text"
 			value="${user.contact.firstName}" name="firstName" /></label>
-		<label>Last Name: <input type="text"
+		<label>  Last Name: <input type="text"
 			value="${user.contact.lastName}" name="lastName" /></label>
+			<br>
 		<label>Street Address: <input type="text"
 			value="${user.contact.street}" name="street" /></label>
+			<br>
 		<label>City: <input type="text" value="${user.contact.city}"
 			name="city" /></label>
+			<br>
 		<label>State: <input type="text" value="${user.contact.state}"
 			name="state" /></label>
+			<br>
 		<label>ZipCode: <input type="text"
 			value="${user.contact.zipCode}" name="zipCode" /></label>
+			<br>
 		<label>Email: <input type="text" value="${user.contact.email}"
 			name="email" /></label>
+			<br>
 		<label>Phone Number: <input type="text"
-			value="${user.contact.phone}" name="phone" /></label>
+			value="${user.contact.phone}" name="phone" /></label><br>
 
 		<%-- 	<input type="hidden" value="${user.id}" name="userId"/>
  --%>
 		<%-- <input type="hidden" value="${user.contact.id} name="contactId"/> --%>
 		<input type="submit" value="Update Profile" />
-
+		<br>
+		<br>
 
 	</form:form>
 	<form:form action="createDog.do" method="POST" modelAttribute="newDog">
 
-		<label>Dog's Name: <input type="text" name="name" /></label>
-		<label>Weight: <input type="text" name="weight" /></label>
-		<label>Image URL: <input type="text" name="imageUrl" /></label>
+		<label>Dog's Name: <input type="text" name="name" /></label><br>
+		<label>Weight: <input type="text" name="weight" /></label><br>
+		<label>Image URL: <input type="text" name="imageUrl" /></label><br>
 		<input type="submit" value="Add Dog" onmouseover="playBark()" />
 
 	</form:form>
