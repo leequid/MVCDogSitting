@@ -83,6 +83,10 @@
 		<input type="hidden" name="userId" value="${user.id}" /> <input
 			type="submit" value="View Sitters" name="viewSittersButton" />
 	</form>
+	<form action="addBalance.do">
+		<input type="hidden" name="userId" value="${user.id}" /> <input
+			type="submit" value="Add Balance" name="addBalanceButton" />
+	</form>
 
 </body>
 </html>
