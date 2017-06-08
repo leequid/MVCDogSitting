@@ -98,10 +98,13 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createNewUser(User user, Errors errors) {
+	public ModelAndView createNewUser(@Valid User user, Errors errors) {
 		ModelAndView mv = new ModelAndView();
 		User u = authDao.validUserName(user);
-		System.out.println(user);
+		  if (errors.getErrorCount() != 0) {
+			    mv.setViewName("createUser.jsp");
+			    return mv;
+			  }
 		if (u != null) {
 			errors.rejectValue("userName", "user.userName", "User name already taken; pick another");
 			mv.setViewName("createUser.jsp");
@@ -117,8 +120,14 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "createContact.do", method = RequestMethod.POST)
-	public ModelAndView createContact(@RequestParam(name = "id") Integer id, Contact contact, Errors errors) {
+	public ModelAndView createContact(@RequestParam(name = "id") Integer id, @Valid Contact contact, Errors errors) {
 		ModelAndView mv = new ModelAndView();
+		  if (errors.getErrorCount() != 0) {
+			  mv.addObject("contactId", id);
+			    mv.setViewName("contact.jsp");
+			    return mv;
+			  }
+		  System.out.println(errors.getErrorCount());
 		Contact temp = dao.updateContact(id, contact);
 		mv.addObject("user", temp.getUser());
 		System.out.println(temp.getUser().getId());

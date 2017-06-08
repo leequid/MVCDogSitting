@@ -32,6 +32,7 @@
 		<form:errors path="userName" />
 		<br />
 		<label>Create password: <form:password path="password" /></label>
+		<form:errors path="password" />
 		<br />
 		<label>Do you want to be a sitter? <form:checkbox path="activeSitter"
 			 value="true"/>

@@ -49,11 +49,11 @@
 		<hr>
 		<p>${sitter.user.contact.firstName} ${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street} ${sitter.user.contact.city}, ${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
-		<p>Average Rating:</p>
+		<label>Average Rating:
 		<div class="star-ratings-css">
   <div class="star-ratings-css-top" style="width:${sitter.averageRating*25}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
   <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-</div>
+</div></label>
 		<p>${sitter.averageRating}Stars!</p>
 		<form action="goToLogin.do" method="GET">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
