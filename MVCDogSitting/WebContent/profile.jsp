@@ -61,6 +61,32 @@
 	<p>User Name: ${user.userName}</p>
 	<p>Address: ${user.contact.street} ${user.contact.city},
 		${user.contact.state} ${user.contact.zipCode}</p>
+	 
+		<c:if test="${user.activeSitter == true}">
+			<p>Sitter status: I'm a sitter :-)</p>
+				<form action="updateSitterAvailability.do" method="POST">
+					When are you available to dog-sit?: <select name ="availability">
+						<option value="1" >Any time</option>
+						<option value="2" >Weekends</option>
+						<option value="3" >Weekdays</option>
+						<option value="4" >Evenings</option>
+						<option value="5" >Overnights</option>
+					</select>
+					 <input type="submit" value="Submit" >
+				</form>
+			<form action="updateSitterStatus.do" method="POST">
+					<input type="checkbox" name="activeSitter" value="false"> I don't want to be a sitter!
+					 <input type="submit" value="Submit">
+				</form>
+		</c:if>	
+		<c:if test="${user.activeSitter == false }">
+			<p>Sitter status: I'm not a sitter :-(</p>
+				<form action="updateSitterStatus.do" method="POST">
+					<input type="checkbox" name="activeSitter" value="true"> Make me a sitter!
+					 <input type="submit" value="Submit">
+				</form>
+		</c:if>	
+	
 	<table>
 		<thead>
 			<tr>

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import entities.Appointment;
+import entities.Availability;
 import entities.Contact;
 import entities.Dog;
 import entities.Sitter;
@@ -37,6 +38,7 @@ public Sitter showSitter(int id);
 public Date constructDate(String date, String time);
 
 public void setRatingInDB(Appointment a);
+public User updateSitter(Integer id, Availability a);
 
 public User addBalanceToUser(int id, double b);
 

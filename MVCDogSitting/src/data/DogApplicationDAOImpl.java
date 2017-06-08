@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import entities.Appointment;
+import entities.Availability;
 import entities.Contact;
 import entities.Dog;
 import entities.Sitter;
@@ -74,11 +75,14 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     @Override
     public User updateUser(int id, User user) {
         User u = em.find(User.class, id);
-        u.setContact(user.getContact());
         u.setDogs(user.getDogs());
         u.setPassword(user.getPassword());
-        u.setSitter(user.getSitter());
         u.setActiveSitter(user.getActiveSitter());
+        Sitter s = new Sitter();
+    		s.setUser(user);
+    		u.setSitter(s);
+    		em.persist(s);
+    		em.flush();
         return user;
     }
     
@@ -191,11 +195,18 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		return average;
 	}
 	@Override
+
+	public User updateSitter(Integer id, Availability a) {
+		Sitter s = em.find(Sitter.class, id);
+		s.setAvailability(a);
+		User u = em.find(User.class, s.getUser().getId());
+		return u;
+	}
+
 	public User addBalanceToUser(int id, double b) {
         User u = em.find(User.class, id);
         System.out.println(u.getBalance()+b);
         u.setBalance(u.getBalance()+b);
-        System.out.println();
         return u;
 	}
 
