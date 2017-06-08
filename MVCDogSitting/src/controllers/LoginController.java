@@ -202,10 +202,10 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping(value="welcomePage.do", method = RequestMethod.GET)   
-	public String showWelcomePage() {
-		return "welcome.jsp";
-	}
+//	@RequestMapping(value="welcomePage.do", method = RequestMethod.GET)   
+//	public String showWelcomePage() {
+//		return "viewSitters.jsp";
+//	}
 	@RequestMapping(value="loginPage.do", method = RequestMethod.GET)   
 	public String showLoginPage() {
 		return "login.jsp";
