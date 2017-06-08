@@ -94,7 +94,6 @@
   <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 </div>${sitter.averageRating} Stars!</div>
 		<p>${sitter.averageRating} Stars!</p>
->>>>>>> 63132bfc1261f761ea570460485353c02cafcbd0
 		<form action="goToLogin.do" method="GET">
 			<input type="hidden" value="${sitter.id}" name="sitterId"/>
 			<input type="submit" value="Set Appointment"/>
