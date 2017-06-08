@@ -56,7 +56,7 @@
 	<br>
 	<br>
 
-	<form:form action="login.do" method="POST" modelAttribute="user">
+<%-- 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
 		<form:input path="userName" />
 		<form:errors path="userName" />
@@ -67,7 +67,7 @@
 		<input type="submit" value="Login" />
 	</form:form>
 
-	<a href="goToCreateUser.do">Create New Account</a>
+	<a href="goToCreateUser.do">Create New Account</a> --%>
 	<hr>
 	<h1 align="center">Available Dog Sitters</h1>
 	<div class="sitterlist">
