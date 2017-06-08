@@ -70,7 +70,9 @@
 					</span>
 				</td>
 				<td>${sitter.averageRating} Stars!</td>
-				<td>[sitter.availability goes here]</td>
+				<td>${sitter.user.contact.firstName}
+				 ${sitter.user.contact.lastName} is available 
+				 ${sitter.availability}</td>
 				<td>${sitter.rate}</td>
 				<td>
 					<form action="setAppointment.do" method="GET">
