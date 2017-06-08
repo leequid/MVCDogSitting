@@ -8,6 +8,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+
 <script src="bark.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="master.css">
 <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
@@ -56,39 +58,36 @@
 	<br>
 	<br>
 	<br>
-
+<div class="form-style-10">
+<h1>Edit Your Profile<span>Show the world your dog and info</span></h1>
 	<form:form action="updateProfile.do" method="POST"
 		modelAttribute="user">
 
-		<label>First Name: <input type="text"
-			value="${user.contact.firstName}" name="firstName" /></label>
-		<label>  Last Name: <input type="text"
-			value="${user.contact.lastName}" name="lastName" /></label>
-			<br>
-		<label>Street Address: <input type="text"
-			value="${user.contact.street}" name="street" /></label>
-			<br>
-		<label>City: <input type="text" value="${user.contact.city}"
-			name="city" /></label>
-			<br>
-		<label>State: <input type="text" value="${user.contact.state}"
-			name="state" /></label>
-			<br>
-		<label>ZipCode: <input type="text"
-			value="${user.contact.zipCode}" name="zipCode" /></label>
-			<br>
-		<label>Email: <input type="text" value="${user.contact.email}"
-			name="email" /></label>
-			<br>
-		<label>Phone Number: <input type="text"
-			value="${user.contact.phone}" name="phone" /></label><br>
+		<div class="section"><span>1</span>First Name &amp; Address</div>
+    <div class="inner-wrap">
+        <label>First Name <input type="text" name="firstName" value="${user.contact.firstName}" /></label>
+        <label>Last Name <input type="text" name="lastName" value="${user.contact.lastName}" ></label>
+    </div>
 
-		<%-- 	<input type="hidden" value="${user.id}" name="userId"/>
- --%>
-		<%-- <input type="hidden" value="${user.contact.id} name="contactId"/> --%>
-		<input type="submit" value="Update Profile" />
-		<br>
-		<br>
+    <div class="section"><span>2</span>Address</div>
+    <div class="inner-wrap">
+        <label>Street Address <input type="text" value="${user.contact.street}" name="street" /></label>
+        <label>City <input type="text" value="${user.contact.city}" name="city" /></label>
+        <label>State <input type="text" value="${user.contact.state}" name="state" /></label>
+        <label>ZipCode <input type="text" value="${user.contact.zipCode}" name="zipCode" /></label>
+    </div>
+
+    <div class="section"><span>3</span>Email &amp; Phone</div>
+        <div class="inner-wrap">
+        <label>Email <input type="text" name="email" value="${user.contact.email}" /></label>
+        <label>Phone <input type="text" value="${user.contact.phone}" name="phone" /></label>
+    </div>
+    <div class="button-section">
+     <input type="submit" name="Edit Profile" />
+     <span class="privacy-policy">
+     <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+     </span>
+    </div>
 
 	</form:form>
 	<form:form action="createDog.do" method="POST" modelAttribute="newDog">
@@ -99,5 +98,6 @@
 		<input type="submit" value="Add Dog" onmouseover="playBark()" />
 
 	</form:form>
+	</div>
 </body>
 </html>
