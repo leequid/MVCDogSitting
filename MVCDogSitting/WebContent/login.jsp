@@ -8,15 +8,17 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="master.css">
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
-<p style="color: red;">Please login or create an account to continue</p>
 <body>
 	<section class="navbar">
 	<div class="grid-row row">
 		<c:if test="${sessionScope.user.userName == null}">
 			<div class="col">
+			<p class="wagly">WAGLY</p>
+			<img class ="doggy" src="https://tailwagphotography.com/images/tailwag-logo.png">
 				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
@@ -49,6 +51,7 @@
 	<br>
 	<br>
 	<br>
+<p style="color: red;">Please login or create an account to continue</p>
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
 		<form:input path="userName" />
