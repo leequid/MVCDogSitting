@@ -43,11 +43,11 @@ public class SitterTest {
 		assertNotNull(em.find(Sitter.class, 1).getAppointments());
 	}
 
-	@Test
-	public void check_if_sitter_has_appointment_id_accessible() {
-		System.out.println(em.find(Sitter.class, 1).getSizePreference());
-		assertEquals(em.find(Sitter.class, 1).getAppointments().get(0).getStartDate().toString(), "2016-02-12");
-	}
+//	@Test
+//	public void check_if_sitter_has_appointment_id_accessible() {
+//		System.out.println(em.find(Sitter.class, 1).getSizePreference());
+//		assertEquals(em.find(Sitter.class, 1).getAppointments().get(0).getStartDate().toString(), "2016-02-12");
+//	}
 
 	@Test
 	public void check_if_sitter_has_user_mapped_correctly() {

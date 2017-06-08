@@ -6,28 +6,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="master.css" >
+<link rel="stylesheet" type="text/css" href="master.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Profile Page</title>
 </head>
 <body>
-<section class="navbar">
-<div class="grid-row row">
-<c:if test="${sessionScope.user.userName == null}">
-<div class="col"><a class="button" href="welcomePage.do">Home</a></div>
-<div class="col"><a class="button" href="loginPage.do">Login</a></div>
-<div class="col"><a class="button" href="profilePage.do">Profile</a></div>
- </c:if>
- <c:if test="${sessionScope.user.userName != null}">
-<div class="col"><a class="button" href="welcomePage.do">Home</a></div>
-<div class="col"><a class="button" href="logout.do">Logout</a>
-<img class="sad" src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png"/>
-</div>
- <div class="col">Hi ${sessionScope.user.userName}!</div>
-<div class="col"><a class="button" href="profilePage.do">Profile</a></div>
- </c:if>
-  </div>
-</section>
+	<section class="navbar">
+	<div class="grid-row row">
+		<c:if test="${sessionScope.user.userName == null}">
+			<div class="col">
+				<a class="button" href="welcomePage.do">Home</a>
+			</div>
+			<div class="col">
+				<a class="button" href="loginPage.do">Login</a>
+			</div>
+			<div class="col">
+				<a class="button" href="profilePage.do">Profile</a>
+			</div>
+		</c:if>
+		<c:if test="${sessionScope.user.userName != null}">
+			<div class="col">
+				<a class="button" href="welcomePage.do">Home</a>
+			</div>
+			<div class="col">
+				<a class="button buttonlogout" href="logout.do">Logout</a> <img
+					class="sad"
+					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
+			</div>
+			<div class="col">Hi ${sessionScope.user.userName}!</div>
+			<div class="col">
+				<a class="button" href="profilePage.do">Profile</a>
+			</div>
+		</c:if>
+	</div>
+	</section>
 
 
 	<p>${user.contact.firstName}${user.contact.lastName}</p>
@@ -51,11 +63,11 @@
 					<td><img src="${dog.imageUrl}" height="150em" width="200em" /></td>
 					<td>${dog.weight}</td>
 					<td>
-						 <form action="deleteDog.do" method="POST">
+						<form action="deleteDog.do" method="POST">
 							<input type="hidden" name="id" value="${dog.id}" /> <input
 								type="submit" value="Delete Dog" name="deleteDogButton" />
 						</form>
-						</td>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -69,6 +81,6 @@
 		<input type="hidden" name="userId" value="${user.id}" /> <input
 			type="submit" value="View Sitters" name="viewSittersButton" />
 	</form>
-	
+
 </body>
 </html>
