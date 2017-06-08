@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +71,6 @@ public class LoginController {
 		} else {
 			if (authDao.validPassword(existingUser, user.getPassword())) {
 				mv.addObject("user", existingUser);
-				System.out.println(existingUser.getUserName());
 				if (sitterId == null) {
 					mv.setViewName("profile.jsp");
 				}
@@ -126,11 +124,9 @@ public class LoginController {
 			  mv.addObject("contactId", id);
 			    mv.setViewName("contact.jsp");
 			    return mv;
-			  }
-		  System.out.println(errors.getErrorCount());
+		  }
 		Contact temp = dao.updateContact(id, contact);
 		mv.addObject("user", temp.getUser());
-		System.out.println(temp.getUser().getId());
 		mv.setViewName("profile.jsp");
 		return mv;
 
@@ -149,12 +145,10 @@ public class LoginController {
 	@RequestMapping(path = "updateProfile.do", method = RequestMethod.POST)
 	public ModelAndView updateProfile(@ModelAttribute("user") User user, Contact contact) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(user.getId());
 		dao.updateContact(user.getContact().getId(), contact);
 		mv.addObject("user", dao.showUser(user.getId()));
 		mv.setViewName("profile.jsp");
 		return mv;
-
 	}
 
 	@RequestMapping(path = "viewSitters.do", method = RequestMethod.GET)
@@ -163,7 +157,6 @@ public class LoginController {
 
 		List<Sitter> sitters = dao.indexOfSitters(user);
 		for (Sitter s : sitters) {
-			System.out.println(s);
 		}
 		mv.addObject("sitters", sitters);
 		mv.addObject("user", user);

@@ -80,8 +80,8 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
         u.setSitter(user.getSitter());
         u.setActiveSitter(user.getActiveSitter());
         return user;
-        
     }
+    
     @Override
     public Appointment createAppointment(Appointment a) {
         em.persist(a);
@@ -127,7 +127,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
     }
     @Override
     public User showUser(int id) {
-    	System.out.println("id: " + id);
         return em.find(User.class, id);
     }
 	@Override
@@ -158,7 +157,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		catch(ParseException pe) {
 		    throw new IllegalArgumentException();
 		}
-		System.out.println(formattedDate);
 		return formattedDate;
 	}
 	@Override

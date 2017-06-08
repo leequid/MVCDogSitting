@@ -45,9 +45,6 @@ public class DogAppController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("profile.jsp");
 		User newUser = dao.showUser(user.getId());
-		for (Dog d : newUser.getDogs()) {
-			System.out.println(d);
-		}
 		mv.addObject("user", newUser);
 		return mv;
 	}
@@ -64,9 +61,6 @@ public class DogAppController {
 		dao.deleteDog(dog.getId());
 		ModelAndView mv = new ModelAndView("profile.jsp");
 		User newUser = dao.showUser(user.getId());
-		for (Dog d : newUser.getDogs()) {
-			System.out.println(d);
-		}
 		mv.addObject("user", newUser);
 		return mv;
 	}

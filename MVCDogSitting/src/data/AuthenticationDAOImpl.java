@@ -26,7 +26,6 @@ public class AuthenticationDAOImpl implements AuthenticationDAO {
 			return null;
 		}
 		else {
-			System.out.println(users.get(0));
 			return users.get(0);
 		}
 		

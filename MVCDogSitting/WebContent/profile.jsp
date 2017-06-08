@@ -42,13 +42,15 @@
 	</section>
 
 
-	<p>${user.contact.firstName}${user.contact.lastName}</p>
+	<p>${user.contact.firstName} ${user.contact.lastName}</p>
 	<p>User Name: ${user.userName}</p>
 	<p>Address: ${user.contact.street} ${user.contact.city},
 		${user.contact.state} ${user.contact.zipCode}</p>
 	<table>
 		<thead>
-			<th colspan="3" align="center">Dags</th>
+			<tr>
+				<th colspan="3" align="center">Dogs</th>
+			</tr>
 			<tr>
 				<th>Name</th>
 				<th>Picture</th>
