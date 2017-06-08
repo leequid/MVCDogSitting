@@ -39,6 +39,8 @@ public Date constructDate(String date, String time);
 
 public void setRatingInDB(Appointment a);
 public User updateSitter(Integer id, Availability a);
+public User updateSitter(Integer id, Double rate);
+
 
 public User addBalanceToUser(int id, double b);
 
