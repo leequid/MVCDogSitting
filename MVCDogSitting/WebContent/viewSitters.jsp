@@ -81,7 +81,6 @@
 				<td>${sitter.user.contact.firstName}
 				 ${sitter.user.contact.lastName} is available 
 				 ${sitter.availability}</td>
-				<td>${sitter.rate}</td>
 
 				<td>Sitter Rate: <fmt:formatNumber value="${sitter.rate}" type="currency" /> 
 				<c:if test="${sitterid != null && sitterid == sitter.id }">
