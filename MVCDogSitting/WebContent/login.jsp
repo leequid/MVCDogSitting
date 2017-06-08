@@ -5,28 +5,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="master.css" >
+<link rel="stylesheet" type="text/css" href="master.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
-<p style="color:red;">Please login or create an account to continue</p>
+<p style="color: red;">Please login or create an account to continue</p>
 <body>
-<section class="navbar">
-<div class="grid-row row">
-<c:if test="${sessionScope.user.userName == null}">
-<div class="col"><a class="button" href="viewSitters.do">Home</a></div>
-<div class="col"><a class="button" href="loginPage.do">Login</a></div>
-<div class="col"><a class="button" href="profilePage.do">Profile</a></div>
- </c:if>
- 
- <c:if test="${sessionScope.user.userName != null}">
-<div class="col"><a class="button" href="viewSitters.do">Home</a></div>
-<div class="col"><a class="button" href="logout.do">Logout</a></div>
- <div class="col">Hi ${sessionScope.user.contact.firstName}!</div>
-<div class="col"><a class="button" href="profilePage.do">Profile</a></div>
- </c:if>
-  </div>
-</section>
+	<section class="navbar">
+	<div class="grid-row row">
+		<c:if test="${sessionScope.user.userName == null}">
+			<div class="col">
+				<a class="button" href="viewSitters.do">Home</a>
+			</div>
+			<div class="col">
+				<a class="button" href="loginPage.do">Login</a>
+			</div>
+			<div class="col">
+				<a class="button" href="profilePage.do">Profile</a>
+			</div>
+		</c:if>
+		<c:if test="${sessionScope.user.userName != null}">
+			<div class="col">
+				<a class="button" href="viewSitters.do">Home</a>
+			</div>
+			<div class="col">
+				<a class="button buttonlogout" href="logout.do">Logout</a> <img
+					class="sad"
+					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
+			</div>
+			<div class="col">Hi ${sessionScope.user.userName}!</div>
+			<div class="col">
+				<a class="button" href="profilePage.do">Profile</a>
+			</div>
+		</c:if>
+	</div>
+	</section>
+
+	<br>
+	<br>
+	<br>
+	<br>
 	<form:form action="login.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label>
 		<form:input path="userName" />
@@ -35,11 +53,11 @@
 		<form:label path="password">Password:</form:label>
 		<form:input path="password" />
 		<form:errors path="password" />
-		<input type="hidden" value="${sitter.id}" name ="sitterId"/>
+		<input type="hidden" value="${sitter.id}" name="sitterId" />
 		<input type="submit" value="Login" />
 	</form:form>
-	
+
 	<a href="goToCreateUser.do">Create New Account</a>
-	
+
 </body>
 </html>

@@ -40,6 +40,11 @@
 		</c:if>
 	</div>
 	</section>
+	
+	<br>
+<br>
+<br>
+<br>
 
 
 	<p>${user.contact.firstName} ${user.contact.lastName}</p>
