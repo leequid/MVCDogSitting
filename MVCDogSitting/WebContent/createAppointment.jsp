@@ -58,13 +58,13 @@
 	${sitter.user.contact.lastName}
 	<form action="makeAppointment.do" method="POST">
 		<label>Enter Start Date: <input type="date" name="startDate" /></label>
-		<label>Enter Start Time: <input type="time" name="startTime" /></label>
+		<label>Enter Start Time: <input type="time" name="startTime" /></label><br>
 		<label>Enter End Date: <input type="date" name="endDate" /></label> <label>Enter
-			End Time: <input type="time" name="endTime" />
+			End Time: <input type="time" name="endTime" /><br>
 		</label> <label>Select Dog<select name="dogId">
 				<c:forEach var="dog" items="${sessionScope.user.dogs}">
 					<option value="${dog.id}">${dog.name}</option>
-				</c:forEach>
+				</c:forEach><br>
 
 		</select></label> <input type="hidden" value="${sitter.id}" name="sitterId" /> <input
 			type="submit" value="Save Appointment" />
