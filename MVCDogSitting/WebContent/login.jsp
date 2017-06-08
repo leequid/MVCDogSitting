@@ -66,8 +66,12 @@
 		<input type="hidden" value="${sitter.id}" name="sitterId" />
 		<input type="submit" value="Login" />
 	</form:form>
-
-	<a href="goToCreateUser.do">Create New Account</a>
+	<br>
+	<form:form action="goToCreateUser.do" method="GET">
+		<input type="submit" value="Sign Up" />
+	</form:form>
+		
+	
 
 </body>
 </html>
