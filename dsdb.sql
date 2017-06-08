@@ -123,27 +123,6 @@ CREATE TABLE IF NOT EXISTS `appointment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `availability`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `availability` ;
-
-CREATE TABLE IF NOT EXISTS `availability` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `time` DATETIME NULL,
-  `day` INT NULL,
-  `sitter_id` INT NOT NULL,
-  `sitter_user_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `sitter_id`, `sitter_user_id`),
-  INDEX `fk_availability_sitter1_idx` (`sitter_id` ASC, `sitter_user_id` ASC),
-  CONSTRAINT `fk_availability_sitter1`
-    FOREIGN KEY (`sitter_id` , `sitter_user_id`)
-    REFERENCES `sitter` (`id` , `user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 SET SQL_MODE = '';
 GRANT USAGE ON *.* TO admin@localhost;
  DROP USER admin@localhost;

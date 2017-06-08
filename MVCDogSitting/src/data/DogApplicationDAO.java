@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import entities.Appointment;
-import entities.Availability;
 import entities.Contact;
 import entities.Dog;
 import entities.Sitter;
@@ -17,7 +16,6 @@ public Dog updateDog(int id, Dog dog);
 public Dog showDog(int id);
 public boolean deleteDog(int id);
 
-public Availability createAvailability(Date time, int day);
 
 public User createUser(User user);
 public User updateUser(int id, User user);
@@ -28,6 +26,7 @@ public Appointment createAppointment(Appointment a);
 public Appointment reschedule(int id, Appointment a);
 public boolean cancelAppointment(int id);
 public Appointment showAppointment(int id);
+
 
 public Contact createContact(Contact contact);
 public Contact updateContact(int id, Contact contact);
