@@ -132,5 +132,22 @@ public class DogAppController {
 
 		return mv;
 	}
+	@RequestMapping(path = "addBalance.do", method = RequestMethod.GET)
+	public ModelAndView setRating(@ModelAttribute("user") User user) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", user);
+		mv.setViewName("addBalance.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "addBalance.do", method = RequestMethod.POST)
+	public ModelAndView setRating(@ModelAttribute("user") User user, 
+		@RequestParam(name="balance") Double amount) {
+		ModelAndView mv = new ModelAndView();
+	System.out.println(amount);
+	
+	mv.addObject("user",dao.addBalanceToUser(user.getId(), amount));
+	mv.setViewName("profile.jsp");
+		return mv;
+	}
 
 }

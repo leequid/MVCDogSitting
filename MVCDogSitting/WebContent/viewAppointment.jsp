@@ -34,7 +34,9 @@
 					class="sad"
 					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
 			</div>
-			<div class="col">Hi ${sessionScope.user.userName}!</div>
+			<div class="col">Hi ${sessionScope.user.userName}!<br/>
+				Your balance is :
+			<fmt:formatNumber value="${sessionScope.user.balance}" type="currency" /></div>
 			<div class="col">
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>

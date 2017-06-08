@@ -23,6 +23,8 @@ public class Sitter {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	private Double rate;
 
 	@OneToMany(mappedBy="sitter", fetch=FetchType.EAGER)	
 	@Fetch(value= FetchMode.SUBSELECT)//mapped OneToMany to Appointment bi-directional
@@ -31,6 +33,14 @@ public class Sitter {
 	@Column(name="average_rating")
 	private double averageRating;
 
+	
+	
+	public Double getRate() {
+		return rate;
+	}
+	public void setRate(Double rate) {
+		this.rate = rate;
+	}
 	public double getAverageRating() {
 		return averageRating;
 	}

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +35,9 @@
 					class="sad"
 					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
 			</div>
-			<div class="col">Hi ${sessionScope.user.userName}!</div>
+			<div class="col">Hi ${sessionScope.user.userName}!<br/>
+				Your balance is :
+			<fmt:formatNumber value="${sessionScope.user.balance}" type="currency" /></div>
 			<div class="col">
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>
@@ -73,7 +77,7 @@
 					<td id="shrink">Average Rating:</td>
 					<td><span class="star-ratings-css"> <span
 							class="star-ratings-css-top"
-							style="width:${sitter.averageRating*25}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							style="width:${sitter.averageRating*20}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
 					</span></td>

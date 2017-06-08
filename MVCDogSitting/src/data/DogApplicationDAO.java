@@ -38,4 +38,6 @@ public Date constructDate(String date, String time);
 
 public void setRatingInDB(Appointment a);
 
+public User addBalanceToUser(int id, double b);
+
 }

@@ -190,6 +190,14 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		
 		return average;
 	}
+	@Override
+	public User addBalanceToUser(int id, double b) {
+        User u = em.find(User.class, id);
+        System.out.println(u.getBalance()+b);
+        u.setBalance(u.getBalance()+b);
+        System.out.println();
+        return u;
+	}
 
 	
 }

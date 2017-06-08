@@ -10,22 +10,26 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 <context:component-scan base-package="controllers,data"></context:component-scan>
+
 <bean id="dao" class="data.DogApplicationDAOImpl" />
 <bean id="authDao" class="data.AuthenticationDAOImpl" />
 <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-    <property name="basename" value="/WEB-INF/ValidationMessages" /></bean>
+    <property name="basename" value="/WEB-INF/ValidationMessages" />
+</bean>
 
-<bean id="myEntityManagerFactory" 
+  <bean id="myEntityManagerFactory" 
     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
       <property name="persistenceUnitName" 
         value="DogSitting" />
   </bean>
+  
   <bean id="transactionManager"
     class="org.springframework.orm.jpa.JpaTransactionManager">
     <!-- this property references (ref="") an existing bean -->
      <property name="entityManagerFactory"
         ref="myEntityManagerFactory" />
   </bean>
+  
   <tx:annotation-driven transaction-manager="transactionManager"/>
   <mvc:annotation-driven></mvc:annotation-driven>
 </beans>
