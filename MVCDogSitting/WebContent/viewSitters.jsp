@@ -71,15 +71,23 @@
 					<td id="shrink">Average Rating:</td>
 					<td><span class="star-ratings-css"> <span
 							class="star-ratings-css-top"
-							style="width:${sitter.averageRating*25}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							style="width:${sitter.averageRating*20}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
 
 					</span>
 				</td>
 				<td>${sitter.averageRating} Stars!</td>
-				<td>[sitter.availability goes here]</td>
+				<td>${sitter.user.contact.firstName}
+				 ${sitter.user.contact.lastName} is available 
+				 ${sitter.availability}</td>
 				<td>${sitter.rate}</td>
+
+				<td>Sitter Rate: <fmt:formatNumber value="${sitter.rate}" type="currency" /> 
+				<c:if test="${sitterid != null && sitterid == sitter.id }">
+				"${balanceError}"
+				</c:if>
+				</td>
 				<td>
 					<form action="setAppointment.do" method="GET">
 						<input type="hidden" value="${sitter.id}" name="sitterId" /> <input

@@ -78,12 +78,20 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
         u.setDogs(user.getDogs());
         u.setPassword(user.getPassword());
         u.setActiveSitter(user.getActiveSitter());
-        Sitter s = new Sitter();
-    		s.setUser(user);
-    		u.setSitter(s);
-    		em.persist(s);
-    		em.flush();
-        return user;
+        if (user.getActiveSitter()==false && user.getSitter() != null) {
+        		Sitter s = em.find(Sitter.class, user.getSitter().getId());
+        		em.remove(s);
+        		u.setSitter(null);
+        }
+        if (user.getActiveSitter() && user.getSitter() == null) {
+	        	Sitter s = new Sitter();
+	        	s.setUser(user);
+	        	u.setSitter(s);
+	        	em.persist(s);
+	        	em.flush();
+        }
+        
+        return u;
     }
     
     @Override

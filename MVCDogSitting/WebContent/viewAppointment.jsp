@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -66,6 +68,12 @@
 	</p>
 	<p>Start Date and Time: ${strStart}</p>
 	<p>End Date and Time: ${strEnd}</p>
+	
+	<p>Previous balance: <fmt:formatNumber value="${prevBalance}" type="currency" /></p>
+	<p>Rate: <fmt:formatNumber value="${rate}" type="currency" /></p>
+	<p>=========================</p>
+	<p>Final Balance<fmt:formatNumber value="${sessionScope.user.balance}" type="currency" /></p>
+	
 
 	<c:if test="${appointment.rating == NULL}">
 		<form action="setRating.do" method="POST">

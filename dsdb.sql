@@ -194,7 +194,7 @@ COMMIT;
 START TRANSACTION;
 USE `dsdb`;
 INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (1, 'SMALL', 1, 3, 30.00, NULL);
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (2, 'LARGE', 4, 3, NULL, NULL);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (2, 'LARGE', 4, 3, 100.00, NULL);
 
 COMMIT;
 
