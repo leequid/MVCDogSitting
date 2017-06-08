@@ -1,5 +1,4 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-@import "lesshat";
 
 fieldset, label { margin: 0; padding: 0; }
 body{ margin: 20px; }
@@ -42,6 +41,13 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
+#rating_table {
+	width:70%;
+}
+#shrink {
+	width:150px;
+}
+
 .star-ratings-css {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
@@ -72,8 +78,5 @@ h1 { font-size: 1.5em; margin: 10px; }
   }
 }
 
-#sitRateTable table {
-	width:100%;
-	table-layout: fixed;
-}
+
 

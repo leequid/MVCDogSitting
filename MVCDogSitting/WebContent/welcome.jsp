@@ -59,12 +59,12 @@
 		<hr>
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
-		<p>${sitter.user.contact.street}${sitter.user.contact.city},
+		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
-		<div id="sitRateTable">
-		<table width="75%">
+		<div >
+		<table id="rating_table">
 			<tr>
-				<td>Average Rating:</td>
+				<td id="shrink">Average Rating:</td>
 				<td>
 					<span class="star-ratings-css">
 						<span class="star-ratings-css-top"
@@ -76,7 +76,7 @@
 						</span>
 					</span>
 				</td>
-				<td>${sitter.averageRating}Stars!</td>
+				<td>${sitter.averageRating} Stars!</td>
 				<td>
 					<form action="goToLogin.do" method="GET">
 						<input type="hidden" value="${sitter.id}" name="sitterId" /> <input

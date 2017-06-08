@@ -43,7 +43,7 @@
 	<c:forEach var="sitter" items="${sitters}">
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
-		<p>${sitter.user.contact.street}${sitter.user.contact.city},
+		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 
 		<p>Average Rating:
