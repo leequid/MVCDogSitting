@@ -60,7 +60,7 @@
 			<c:forEach var="dog" items="${sessionScope.user.dogs}">
 				<tr>
 					<td>${dog.name}</td>
-					<td><img src="${dog.imageUrl}" height="150em" width="200em" /></td>
+					<td><img src="${dog.imageUrl}" width="200em" /></td>
 					<td>${dog.weight}</td>
 					<td>
 						<form action="deleteDog.do" method="POST">
