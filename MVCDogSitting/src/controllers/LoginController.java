@@ -222,9 +222,12 @@ public class LoginController {
 	}
 	@RequestMapping(value="logout.do", method = RequestMethod.GET)  // method to remove user session is in JSPs session.removeAttribute("user"); 
 	public ModelAndView logoutUser() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("welcome.jsp");
+		User u = new User();
+		ModelAndView mv = new ModelAndView("welcome.jsp", "user", u);
 		mv.addObject("user", new User());
+		List<Sitter> sitters = dao.indexOfSitters(u);
+		mv.addObject("sitters", sitters);
+		//mv.addObject("sitters", dao.indexOfSitters(new User()));
 		return mv;
 	}
 
