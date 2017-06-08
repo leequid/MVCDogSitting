@@ -195,11 +195,19 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		return average;
 	}
 	@Override
+
 	public User updateSitter(Integer id, Availability a) {
 		Sitter s = em.find(Sitter.class, id);
 		s.setAvailability(a);
 		User u = em.find(User.class, s.getUser().getId());
 		return u;
+	}
+
+	public User addBalanceToUser(int id, double b) {
+        User u = em.find(User.class, id);
+        System.out.println(u.getBalance()+b);
+        u.setBalance(u.getBalance()+b);
+        return u;
 	}
 
 	

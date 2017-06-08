@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,13 +35,20 @@
 					class="sad"
 					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
 			</div>
-			<div class="col">Hi ${sessionScope.user.userName}!</div>
+			<div class="col">Hi ${sessionScope.user.userName}!<br/>
+				Your balance is :
+			<fmt:formatNumber value="${sessionScope.user.balance}" type="currency" /></div>
 			<div class="col">
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>
 		</c:if>
 	</div>
 	</section>
+	
+	<br>
+<br>
+<br>
+<br>
 
 
 	<p>${user.contact.firstName} ${user.contact.lastName}</p>
@@ -108,6 +117,10 @@
 	<form action="viewSitters.do">
 		<input type="hidden" name="userId" value="${user.id}" /> <input
 			type="submit" value="View Sitters" name="viewSittersButton" />
+	</form>
+	<form action="addBalance.do">
+		<input type="hidden" name="userId" value="${user.id}" /> <input
+			type="submit" value="Add Balance" name="addBalanceButton" />
 	</form>
 
 </body>
