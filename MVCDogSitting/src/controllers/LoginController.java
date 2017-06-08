@@ -156,8 +156,6 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 
 		List<Sitter> sitters = dao.indexOfSitters(user);
-		for (Sitter s : sitters) {
-		}
 		mv.addObject("sitters", sitters);
 		mv.addObject("user", user);
 		mv.setViewName("viewSitters.jsp");
@@ -166,8 +164,17 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "setAppointment.do", method = RequestMethod.GET)
-	public ModelAndView goToSetAppointment(@RequestParam(name = "sitterId") Integer id) {
+	public ModelAndView goToSetAppointment(@RequestParam(name = "sitterId") Integer id,@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
+		if(dao.showSitter(id).getRate() > user.getBalance()){
+			List<Sitter> sitters = dao.indexOfSitters(user);
+			mv.addObject("sitters", sitters);
+			mv.addObject("sitterid", id);
+			mv.addObject("user", user);
+			mv.addObject("balanceError", "Insufficient balance to hire this sitter!! Add more money");
+			mv.setViewName("viewSitters.jsp");
+			return mv;
+		}
 		mv.addObject("sitter", dao.showSitter(id));
 		mv.setViewName("createAppointment.jsp");
 		return mv;
@@ -192,13 +199,18 @@ public class LoginController {
 		appt.setEndDate(end);
 
 		Dog dog = dao.showDog(dogId);
+		mv.addObject("prevBalance", user.getBalance());
+		User u =dao.addBalanceToUser(user.getId(), -s.getRate());
+		
 
 		appt.setDog(dog);
-		
+		mv.addObject("user", u);
+		mv.addObject("rate", s.getRate());
 		mv.addObject("strStart", strStart);
 		mv.addObject("strEnd", strEnd);
 		mv.addObject("appointment", dao.createAppointment(appt));
 		mv.setViewName("viewAppointment.jsp");
+		
 		return mv;
 	}
 	
