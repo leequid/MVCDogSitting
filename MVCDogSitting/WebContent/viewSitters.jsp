@@ -71,7 +71,7 @@
 					<td id="shrink">Average Rating:</td>
 					<td><span class="star-ratings-css"> <span
 							class="star-ratings-css-top"
-							style="width:${sitter.averageRating*25}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							style="width:${sitter.averageRating*20}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
 
