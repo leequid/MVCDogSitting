@@ -55,6 +55,7 @@
 
 	<a href="goToCreateUser.do">Create New Account</a>
 	<hr>
+	<h1 align="center">Available Dog Sitters</h1>
 	<c:forEach var="sitter" items="${sitters}">
 		<hr>
 

@@ -40,6 +40,7 @@
 		</c:if>
 	</div>
 	</section>
+	<h1 align="center">Available Dog Sitters</h1>
 	<c:forEach var="sitter" items="${sitters}">
 	<hr>
 		<p>${sitter.user.contact.firstName}
