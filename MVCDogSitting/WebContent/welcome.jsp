@@ -90,6 +90,7 @@
 						</span>
 					</span></td>
 					<td>${sitter.averageRating}Stars!</td>
+					<td>Sitter Rate: <fmt:formatNumber value="${sitter.rate}" type="currency" /> 
 					<td>
 						<form action="goToLogin.do" method="GET">
 							<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
