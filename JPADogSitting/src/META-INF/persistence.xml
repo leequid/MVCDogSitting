@@ -12,6 +12,7 @@
      <class>entities.Sitter</class> 
      <class>entities.Appointment</class>  
      <class>entities.Contact</class> 
+ 
    
     
     <properties>

@@ -15,7 +15,7 @@
 	<div class="grid-row row">
 		<c:if test="${sessionScope.user.userName == null}">
 			<div class="col">
-				<a class="button" href="welcomePage.do">Home</a>
+				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
 				<a class="button" href="loginPage.do">Login</a>
@@ -26,7 +26,7 @@
 		</c:if>
 		<c:if test="${sessionScope.user.userName != null}">
 			<div class="col">
-				<a class="button" href="welcomePage.do">Home</a>
+				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
 				<a class="button buttonlogout" href="logout.do">Logout</a> <img
