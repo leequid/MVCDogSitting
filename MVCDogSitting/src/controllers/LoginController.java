@@ -43,7 +43,6 @@ public class LoginController {
 
 	@RequestMapping(path = "start.do", method = RequestMethod.GET)
 	public ModelAndView login(@ModelAttribute("user") User user) {
-		System.err.println(user);
 		User u = new User();
 		List<Sitter> sitters = dao.indexOfSitters(user);
 		ModelAndView mv = new ModelAndView("welcome.jsp", "user", u);
