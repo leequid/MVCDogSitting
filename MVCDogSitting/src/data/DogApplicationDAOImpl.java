@@ -195,7 +195,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
         User u = em.find(User.class, id);
         System.out.println(u.getBalance()+b);
         u.setBalance(u.getBalance()+b);
-        System.out.println();
         return u;
 	}
 

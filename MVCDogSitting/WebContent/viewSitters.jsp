@@ -71,6 +71,7 @@
 				</td>
 				<td>${sitter.averageRating} Stars!</td>
 				<td>[sitter.availability goes here]</td>
+				<td>${sitter.rate}</td>
 				<td>
 					<form action="setAppointment.do" method="GET">
 						<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
