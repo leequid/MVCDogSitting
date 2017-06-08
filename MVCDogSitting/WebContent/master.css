@@ -2,11 +2,19 @@ body {
     background-image: url("https://images.alphacoders.com/288/288213.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
-    margin: 0px;
+    margin: 20px;
     padding: 0px;
     height: 100%;
     width: 100%;
 
+}
+.sitterlist {
+	    background-color: white;
+        opacity: .8;
+        
+}
+.bottomlist {
+	border-bottom: .2em solid black;
 }
 .doggy {
 height: 1.75em;
@@ -15,7 +23,10 @@ height: 1.75em;
     margin-left: -7.49em;
     margin-top: 0.5em;
 }
-
+.dogpic {
+	border-radius: 8%;
+    border: .2em solid black;
+}
 .col,
 .item {
  padding: 10px;
@@ -99,7 +110,24 @@ a {
 font-family: 'Permanent Marker', cursive;
     font-size: 1.5em;
 }
+.doggysession{
+	height: 1.75em;
+    width: 1.75em;
+    position: absolute;
+    margin-left: -5.15em;
+    margin-top: 1.0em;
+	
+}
+.waglysession{
+    font-family: 'Permanent Marker', cursive;
+    float: left;
+    margin-left: -.3em;
+    font-size: 1.5em;
+    position: absolute;
+    margin-bottom: 0px;
+    margin-top: 0.4em;
 
+}
 
 a:hover{
 	font-size: 1.55em;
@@ -111,4 +139,8 @@ a:hover{
 .grid-row {
   display: grid;
   grid-auto-flow: column;
+}
+
+#balance{
+margin-top: 3%;
 }
