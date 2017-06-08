@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import data.DogApplicationDAO;
 import entities.Appointment;
+import entities.Availability;
 import entities.Dog;
 import entities.Sitter;
 import entities.User;
@@ -24,16 +25,17 @@ public class DogAppController {
 
 	@Autowired
 	private DogApplicationDAO dao;
-	
+
 	public void setDogAppDao(DogApplicationDAO dao) {
 		this.dao = dao;
 	}
+
 	@ModelAttribute("newDog")
 	Dog createDog() {
 		return new Dog();
 	}
 
-	 //still needs to be fixed
+	// still needs to be fixed
 	@RequestMapping(path = "createDog.do", method = RequestMethod.POST)
 	public ModelAndView createNewDog(Dog dog, @ModelAttribute("user") User user) {
 		dog.setUser(user);
@@ -55,6 +57,7 @@ public class DogAppController {
 		mv.addObject("dogObject", dao.updateDog(id, dog)); // not complete
 		return mv;
 	}
+
 	/// Passed Testing
 	@RequestMapping(path = "deleteDog.do", method = RequestMethod.POST)
 	public ModelAndView deleteDog(Dog dog, @ModelAttribute("user") User user) {
@@ -65,29 +68,31 @@ public class DogAppController {
 		return mv;
 	}
 
-    //   ***Passed Junit Testing***
-	@RequestMapping(path= "showDog.do",  method = RequestMethod.GET)
+	// ***Passed Junit Testing***
+	@RequestMapping(path = "showDog.do", method = RequestMethod.GET)
 	public String show(@RequestParam("id") Integer id, Model model) {
 		Dog dog = dao.showDog(id);
 		model.addAttribute("dog", dog);
 		return "profile.jsp";
 	}
-	//****Passed Junit Testing****
-	@RequestMapping(path= "showSitter.do",  method = RequestMethod.GET)
+
+	// ****Passed Junit Testing****
+	@RequestMapping(path = "showSitter.do", method = RequestMethod.GET)
 	public String showSitter(@RequestParam("id") Integer id, Model model) {
 		Sitter sitter = dao.showSitter(id);
 		model.addAttribute("sitter", sitter);
 		return "profile.jsp";
 	}
 
-//		*** Passed Junit Testing *****
-	@RequestMapping(path= "showUser.do",  method = RequestMethod.GET)
+	// *** Passed Junit Testing *****
+	@RequestMapping(path = "showUser.do", method = RequestMethod.GET)
 	public String showUser(@RequestParam("id") Integer id, Model model) {
 		User user = dao.showUser(id);
 		model.addAttribute("user", user);
 		return "profile.jsp";
-		
-	}  
+
+	}
+
 	@RequestMapping(path = "deleteUser.do", method = RequestMethod.POST)
 	public ModelAndView deleteUser(int id) {
 		ModelAndView mv = new ModelAndView("profile.jsp");
@@ -117,11 +122,10 @@ public class DogAppController {
 		dao.cancelAppointment(id); // not complete
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "setRating.do", method = RequestMethod.POST)
-	public ModelAndView setRating(@ModelAttribute("user") User user, 
-			@RequestParam(name="rating") Double rating, 
-			@RequestParam(name="apptId") Integer apptId) {
+	public ModelAndView setRating(@ModelAttribute("user") User user, @RequestParam(name = "rating") Double rating,
+			@RequestParam(name = "apptId") Integer apptId) {
 		ModelAndView mv = new ModelAndView();
 		Appointment a = dao.showAppointment(apptId);
 		a.setRating(rating);
@@ -150,4 +154,30 @@ public class DogAppController {
 		return mv;
 	}
 
+	@RequestMapping(path = "updateSitterStatus.do", method = RequestMethod.POST)
+	public ModelAndView updateSitterStatus(@ModelAttribute("user") User user,
+			@RequestParam(name = "activeSitter") Boolean activeSitter) {
+		ModelAndView mv = new ModelAndView();
+		user.setActiveSitter(activeSitter);
+		user = dao.updateUser(user.getId(), user);
+		mv.addObject("user", user);
+		mv.setViewName("profile.jsp");
+
+		return mv;
+
+	}
+	
+	@RequestMapping(path = "updateSitterAvailability.do", method = RequestMethod.POST)
+	public ModelAndView updateSitterAvailability(@ModelAttribute("user") User user,
+			@RequestParam(name = "availability") Integer availability) {
+		ModelAndView mv = new ModelAndView();
+		Availability a = Availability.valueOf(availability);
+		System.out.println(user);
+		user = dao.updateSitter(user.getSitter().getId(), a);
+		mv.addObject("user", user);
+		mv.setViewName("profile.jsp");
+
+		return mv;
+
+	}
 }

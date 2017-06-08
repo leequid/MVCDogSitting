@@ -10,6 +10,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="master.css">
 <link rel="stylesheet" type="text/css" href="rating.css">
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>View Appointment</title>
 </head>
@@ -18,6 +19,8 @@
 	<div class="grid-row row">
 		<c:if test="${sessionScope.user.userName == null}">
 			<div class="col">
+			<p class="wagly">WAGLY</p>
+			<img class ="doggy" src="https://tailwagphotography.com/images/tailwag-logo.png">
 				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
@@ -29,6 +32,8 @@
 		</c:if>
 		<c:if test="${sessionScope.user.userName != null}">
 			<div class="col">
+			<p class="waglysession">WAGLY</p>
+			<img class ="doggysession" src="https://tailwagphotography.com/images/tailwag-logo.png">
 				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
@@ -36,9 +41,10 @@
 					class="sad"
 					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
 			</div>
-			<div class="col">Hi ${sessionScope.user.userName}!<br/>
+			<div class="col"><div id="balance">Hi ${sessionScope.user.userName}!<br/>
 				Your balance is :
 			<fmt:formatNumber value="${sessionScope.user.balance}" type="currency" /></div>
+			</div>
 			<div class="col">
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>

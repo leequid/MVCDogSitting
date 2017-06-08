@@ -9,6 +9,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="master.css">
 <link rel="stylesheet" type="text/css" href="rating.css">
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
@@ -17,6 +18,8 @@
 	<div class="grid-row row">
 		<c:if test="${sessionScope.user.userName == null}">
 			<div class="col">
+			<p class="wagly">WAGLY</p>
+			<img class ="doggy" src="https://tailwagphotography.com/images/tailwag-logo.png">
 				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
@@ -28,6 +31,8 @@
 		</c:if>
 		<c:if test="${sessionScope.user.userName != null}">
 			<div class="col">
+			<p class="waglysession">WAGLY</p>
+			<img class ="doggysession" src="https://tailwagphotography.com/images/tailwag-logo.png">
 				<a class="button" href="viewSitters.do">Home</a>
 			</div>
 			<div class="col">
@@ -35,9 +40,10 @@
 					class="sad"
 					src="https://s3-us-west-1.amazonaws.com/studyladder-prod/public/cdn/materials-library/sl-plus/800/r265q2634a2639.png" />
 			</div>
-			<div class="col">Hi ${sessionScope.user.userName}!<br/>
+			<div class="col"><div id="balance">Hi ${sessionScope.user.userName}!<br/>
 				Your balance is :
 			<fmt:formatNumber value="${sessionScope.user.balance}" type="currency" /></div>
+			</div>
 			<div class="col">
 				<a class="button" href="profilePage.do">Profile</a>
 			</div>
@@ -64,13 +70,15 @@
 	<a href="goToCreateUser.do">Create New Account</a>
 	<hr>
 	<h1 align="center">Available Dog Sitters</h1>
+	<div class="sitterlist">
 	<c:forEach var="sitter" items="${sitters}">
-		<hr>
-
+		
+		
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street}${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
+		<div class="bottomlist" >
 		<div>
 			<table id="rating_table">
 				<tr>
@@ -90,8 +98,10 @@
 					</td>
 				</tr>
 			</table>
+					
+                   </div>
 		</div>
-		<hr>
+		
 		<%-- 		<div id="Arate">Average Rating:
 		<div class="star-ratings-css">
   <div class="star-ratings-css-top" style="width:${sitter.averageRating*25}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -104,5 +114,6 @@
 		</form>
 		<hr> --%>
 	</c:forEach>
+	</div>
 </body>
 </html>
