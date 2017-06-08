@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `sitter` (
   `size_pref` ENUM('TOY', 'SMALL', 'MEDIUM', 'LARGE', 'GIANT') NULL,
   `user_id` INT NOT NULL,
   `average_rating` DECIMAL(3,1) NOT NULL DEFAULT 0.0,
-  `rate` DECIMAL(6,2) NULL DEFAULT 0.0,
-  `availability` ENUM('ANYTIME', 'WEEKENDS', 'EVENINGS', 'OVERNIGHTS', 'WEEKDAYS') NULL,
+  `rate` DECIMAL(6,2) NOT NULL DEFAULT 30.0,
+  `availability` ENUM('ANYTIME', 'WEEKENDS', 'EVENINGS', 'OVERNIGHTS', 'WEEKDAYS') NULL DEFAULT 'ANYTIME',
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_sitter_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_sitter_user1`
@@ -163,12 +163,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', 'asdf12', true, 1, 0.0);
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', 'asdf12', false, 2, 0.0);
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', 'asdf12', false, 3, 0.0);
 INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', 'asdf12', true, 4, 0.0);
-
 
 COMMIT;
 
@@ -212,3 +210,4 @@ INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`
 INSERT INTO `appointment` (`id`, `start_date`, `end_date`, `dog_id`, `sitter_id`, `rating`) VALUES (6, '2016-02-12 13:12:00', NULL, 4, 2, 4);
 
 COMMIT;
+
