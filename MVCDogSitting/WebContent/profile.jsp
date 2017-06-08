@@ -76,7 +76,7 @@
 				</form>
 				<form action="updateSitterRate.do" method="POST">
 					<label>Set your rate:$ <input type="number" name="rate"/>
-						<input type="submit" value="Set Rate"/>   Current Rate is: $${user.sitter.rate}
+						<input type="submit" value="Set Rate"/>   Current Rate is: $<fmt:formatNumber value="${user.sitter.rate}" type="currency" />
 					</label>
 				</form>
 			<form action="updateSitterStatus.do" method="POST">
