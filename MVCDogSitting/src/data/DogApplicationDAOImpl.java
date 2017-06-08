@@ -190,5 +190,6 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 		
 		return average;
 	}
+
 	
 }

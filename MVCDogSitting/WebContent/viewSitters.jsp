@@ -62,16 +62,20 @@
 							style="width:${sitter.averageRating*25}%"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
-					</span></td>
-					<td>${sitter.averageRating}Stars!</td>
-					<td>
-						<form action="setAppointment.do" method="GET">
-							<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
-								type="submit" value="Set Appointment" />
-						</form>
-					</td>
-				</tr>
-			</table>
+
+					</span>
+				</td>
+				<td>${sitter.averageRating} Stars!</td>
+				<td>[sitter.availability goes here]</td>
+				<td>
+					<form action="setAppointment.do" method="GET">
+						<input type="hidden" value="${sitter.id}" name="sitterId" /> <input
+							type="submit" value="Set Appointment" />
+					</form>
+				</td>
+			</tr>
+		</table>
+
 		</div>
 		<hr>
 	</c:forEach>

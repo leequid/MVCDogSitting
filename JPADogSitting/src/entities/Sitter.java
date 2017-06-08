@@ -61,6 +61,9 @@ public class Sitter {
 	@Enumerated(EnumType.STRING)
 	@Column(name="size_pref")
 	public SizePreference sizePreference;
+	
+	@Enumerated(EnumType.STRING)
+	public Availability availability;
 
 	public void setUser(User user) {
 		this.user = user;
