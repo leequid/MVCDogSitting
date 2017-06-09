@@ -89,7 +89,7 @@
 						</span> <span class="star-ratings-css-bottom"> <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 						</span>
 					</span></td>
-					<td>${sitter.averageRating}Stars!</td>
+					<td>${sitter.averageRating} Stars!</td>
 					<td>${sitter.user.contact.firstName}
 				 ${sitter.user.contact.lastName} is available 
 				 ${sitter.availability}</td>
