@@ -45,7 +45,7 @@ public class DogAppController {
 		dog.setImageUrl(dog.getImageUrl());
 		dao.createDog(dog);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("profile.jsp");
+		mv.setViewName("redirect: profile.jsp");
 		User newUser = dao.showUser(user.getId());
 		mv.addObject("user", newUser);
 		return mv;
