@@ -5,11 +5,15 @@ body {
 	padding: 0;
 	margin: 0;
 }
-
+.dogscroll {
+	    margin-top: -18em;
+        margin-left: 32em;
+}
 body {
     background-image: url("https://images.alphacoders.com/288/288213.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: scroll;
     margin: 20px;
     padding: 0px;
     height: 100%;
@@ -23,6 +27,20 @@ body {
 .bottomlist {
 	border-bottom: .2em solid black;
 }
+thead, tbody { 
+	display: block;
+	}
+.dogheader {
+	font-family: cursive;
+	font-size: 2em;
+}
+
+ tbody {
+    height: 36em;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
 .doggy {
 height: 1.75em;
     width: 1.75em;
