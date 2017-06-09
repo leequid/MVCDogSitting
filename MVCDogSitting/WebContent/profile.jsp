@@ -66,14 +66,14 @@
 			<p>Sitter status: I'm a sitter :-)</p>
 				<form action="updateSitterAvailability.do" method="POST">
 					When are you available to dog-sit?: <select name ="availability">
-						<option value="1" >Any time</option>
+						<option value="1">Any time</option>
 						<option value="2" >Weekends</option>
 						<option value="3" >Weekdays</option>
 						<option value="4" >Evenings</option>
 						<option value="5" >Overnights</option>
 					</select>
 					 <input type="submit" value="Submit" >
-				</form>
+				</form> Currently available: ${user.sitter.availability}
 				<form action="updateSitterRate.do" method="POST">
 					<label>Set your rate:$ <input type="number" name="rate"/>
 						<input type="submit" value="Set Rate"/>   Current Rate is: <fmt:formatNumber value="${user.sitter.rate}" type="currency" />

@@ -151,10 +151,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-1233-2323', 'Eric', 'Lee', 'Aurora');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-444-4555', 'Michael', 'Roschenwimmer', 'Denver');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123=-123-23-32', 'Miles', 'Grandin', 'Highlands Ranch');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '1233-221-1-1-1', 'Ryan', 'Grillo', NULL);
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-123-2323', 'Eric', 'Lee', 'Aurora');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-233-2323', 'Michael', 'Roschenwimmer', 'Denver');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123-233-2323', 'Miles', 'Grandin', 'Highlands Ranch');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '123-233-2323', 'Ryan', 'Grillo', NULL);
 
 COMMIT;
 
