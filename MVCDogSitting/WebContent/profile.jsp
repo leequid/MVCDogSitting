@@ -112,9 +112,6 @@
 	</form>
 
 	<table class="dogscroll">
-		<thead>
-		
-		</thead>
 		<tbody>
 		<tr>
 				<th colspan="3" align="center" class="dogheader">Dogs</th>

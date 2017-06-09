@@ -27,7 +27,7 @@ body {
 .bottomlist {
 	border-bottom: .2em solid black;
 }
-thead, tbody { 
+.dogscroll { 
 	display: block;
 	}
 .dogheader {
@@ -35,7 +35,7 @@ thead, tbody {
 	font-size: 2em;
 }
 
- tbody {
+.dogscroll {
     height: 36em;       /* Just for the demo          */
     overflow-y: auto;    /* Trigger vertical scroll    */
     overflow-x: hidden;  /* Hide the horizontal scroll */

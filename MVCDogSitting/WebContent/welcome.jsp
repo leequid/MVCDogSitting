@@ -68,7 +68,6 @@
 	</form:form>
 
 	<a href="goToCreateUser.do">Create New Account</a> --%>
-	<hr>
 	<h1 align="center">Available Dog Sitters</h1>
 	<div class="sitterlist">
 	<c:forEach var="sitter" items="${sitters}">
