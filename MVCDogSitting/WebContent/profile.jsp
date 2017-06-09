@@ -95,7 +95,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th colspan="3" align="center">Dogs</th>
+				<th colspan="4" align="center">Dogs</th>
 			</tr>
 			<tr>
 				<th>Name</th>
