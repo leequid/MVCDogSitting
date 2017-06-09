@@ -18,7 +18,7 @@ body {
 .sitterlist {
 	    background-color: white;
         opacity: .8;
-        
+        margin: 0 20px;
 }
 .bottomlist {
 	border-bottom: .2em solid black;
