@@ -34,7 +34,6 @@ public class Sitter {
 	private double averageRating;
 
 	
-	
 	public Double getRate() {
 		return rate;
 	}

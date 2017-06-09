@@ -155,11 +155,11 @@ public class DogAppController {
 	}
 
 	@RequestMapping(path = "updateSitterStatus.do", method = RequestMethod.POST)
-	public ModelAndView updateSitterStatus(@ModelAttribute("user") User user,
-			@RequestParam(name = "activeSitter") Boolean activeSitter) {
+	public ModelAndView updateSitterStatus(@ModelAttribute("user") User user) {
 		ModelAndView mv = new ModelAndView();
-		user.setActiveSitter(activeSitter);
+		System.out.println(user.getActiveSitter());
 		user = dao.updateUser(user.getId(), user);
+		System.out.println(user.getActiveSitter());
 		mv.addObject("user", user);
 		mv.setViewName("profile.jsp");
 

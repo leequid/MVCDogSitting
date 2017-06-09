@@ -54,11 +54,10 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
         em.persist(user);
         em.flush();
         if(user.getActiveSitter()) {
-        		
-        	Sitter s = new Sitter();
-        	s.setUser(user);
-        	em.persist(s);
-        	em.flush();
+	        	Sitter s = new Sitter();
+	        	s.setUser(user);
+	        	em.persist(s);
+	        	em.flush();
         }
         return user;
     }
@@ -78,12 +77,12 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
         u.setDogs(user.getDogs());
         u.setPassword(user.getPassword());
         u.setActiveSitter(user.getActiveSitter());
-        if (user.getActiveSitter()==false && user.getSitter() != null) {
-        		Sitter s = em.find(Sitter.class, user.getSitter().getId());
-        		em.remove(s);
-        		u.setSitter(null);
-        }
-        if (user.getActiveSitter() && user.getSitter() == null) {
+        
+//        if (user.getActiveSitter()==false && user.getSitter() != null) {
+//        		Sitter s = em.find(Sitter.class, user.getSitter().getId());
+//        		u.setSitter(null);
+//        }
+        if (u.getActiveSitter() && u.getSitter() == null) {
 	        	Sitter s = new Sitter();
 	        	s.setUser(user);
 	        	u.setSitter(s);
@@ -148,7 +147,7 @@ public class DogApplicationDAOImpl implements DogApplicationDAO {
 	@Override
 	public List<Sitter> indexOfSitters(User user) {
 		
-		String query = "SELECT s FROM Sitter s WHERE s.user.id != :userId";
+		String query = "SELECT s FROM Sitter s JOIN User u ON s.user.id = u.id WHERE s.user.id != :userId AND u.activeSitter = true";
 		List<Sitter> sitters = em.createQuery(query, Sitter.class).setParameter("userId", user.getId()).getResultList();
 		return sitters;
 	}
