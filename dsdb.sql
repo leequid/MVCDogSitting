@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(45) NOT NULL,
   `sitter` TINYINT(1) NOT NULL,
   `contact_id` INT NOT NULL,
-  `balance` DECIMAL(6,2) NOT NULL DEFAULT 0.0,
+  `balance` DECIMAL(6,2) NULL DEFAULT 0.0,
   PRIMARY KEY (`id`),
   INDEX `fk_user_contact1_idx` (`contact_id` ASC),
   CONSTRAINT `fk_user_contact1`
@@ -87,8 +87,9 @@ CREATE TABLE IF NOT EXISTS `sitter` (
   `size_pref` ENUM('TOY', 'SMALL', 'MEDIUM', 'LARGE', 'GIANT') NULL,
   `user_id` INT NOT NULL,
   `average_rating` DECIMAL(3,1) NOT NULL DEFAULT 0.0,
-  `rate` DECIMAL(6,2) NULL DEFAULT 30.0,
+  `rate` DECIMAL(6,2) NULL DEFAULT 0.0,
   `availability` ENUM('ANYTIME', 'WEEKENDS', 'EVENINGS', 'OVERNIGHTS', 'WEEKDAYS') NULL DEFAULT 'ANYTIME',
+  `is_active` TINYINT(1) NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_sitter_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_sitter_user1`
@@ -150,10 +151,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-1233-2323', 'Eric', 'Lee', 'Aurora');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-444-4555', 'Michael', 'Roschenwimmer', 'Denver');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123=-123-23-32', 'Miles', 'Grandin', 'Highlands Ranch');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '1233-221-1-1-1', 'Ryan', 'Grillo', NULL);
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-123-2323', 'Eric', 'Lee', 'Aurora');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-233-2323', 'Michael', 'Roschenwimmer', 'Denver');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123-233-2323', 'Miles', 'Grandin', 'Highlands Ranch');
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '123-233-2323', 'Ryan', 'Grillo', NULL);
 
 COMMIT;
 
@@ -163,10 +164,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', 'asdf12', true, 1, 0.0);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', 'asdf12', false, 2, 0.0);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', 'asdf12', false, 3, 0.0);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', 'asdf12', true, 4, 0.0);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', 'asdf12', true, 1, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', 'asdf12', false, 2, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', 'asdf12', false, 3, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', 'asdf12', true, 4, NULL);
 
 COMMIT;
 
@@ -191,8 +192,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (1, 'SMALL', 1, 3, 30.00, NULL);
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`) VALUES (2, 'LARGE', 4, 3, 100.00, NULL);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`, `is_active`) VALUES (1, 'SMALL', 1, 3, NULL, NULL, NULL);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`, `is_active`) VALUES (2, 'LARGE', 4, 3, NULL, NULL, NULL);
 
 COMMIT;
 
