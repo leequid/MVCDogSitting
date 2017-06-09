@@ -8,8 +8,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-
 <script src="bark.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="master.css">
 <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
