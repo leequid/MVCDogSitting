@@ -154,7 +154,7 @@ USE `dsdb`;
 INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (1, '123123 street', 'co', '23924', 'erwer@asdklj.com', '123-123-2323', 'Eric', 'Lee', 'Aurora');
 INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (2, '12314 street', 'as', '13142', 'test@agsdkg.com', '123-233-2323', 'Michael', 'Roschenwimmer', 'Denver');
 INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (3, '12314 street', 'ew', '12344', '24e@gasdf.com', '123-233-2323', 'Miles', 'Grandin', 'Highlands Ranch');
-INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '5235', 'asdf@gmasd.com', '123-233-2323', 'Ryan', 'Grillo', NULL);
+INSERT INTO `contact` (`id`, `street`, `state`, `zipcode`, `email`, `phone`, `first_name`, `last_name`, `city`) VALUES (4, 'street', 'sd', '52358', 'asdf@gmasd.com', '123-233-2323', 'Ryan', 'Grillo', NULL);
 
 COMMIT;
 
@@ -164,10 +164,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', 'asdf12', true, 1, NULL);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', 'asdf12', false, 2, NULL);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', 'asdf12', false, 3, NULL);
-INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', 'asdf12', true, 4, NULL);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (1, 'Eric', 'asdf12', true, 1, 0);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (2, 'Mike', 'asdf12', false, 2, 0);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (3, 'Miles', 'asdf12', false, 3, 0);
+INSERT INTO `user` (`id`, `user_name`, `password`, `sitter`, `contact_id`, `balance`) VALUES (4, 'Ryan', 'asdf12', true, 4, 0);
 
 COMMIT;
 
@@ -192,8 +192,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `dsdb`;
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`, `is_active`) VALUES (1, 'SMALL', 1, 3, NULL, NULL, NULL);
-INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`, `is_active`) VALUES (2, 'LARGE', 4, 3, NULL, NULL, NULL);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`, `is_active`) VALUES (1, 'SMALL', 1, 3, 30, NULL, NULL);
+INSERT INTO `sitter` (`id`, `size_pref`, `user_id`, `average_rating`, `rate`, `availability`, `is_active`) VALUES (2, 'LARGE', 4, 3, 50, NULL, NULL);
 
 COMMIT;
 
