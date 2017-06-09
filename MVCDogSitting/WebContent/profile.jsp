@@ -112,13 +112,14 @@
 	</form>
 
 	<table class="dogscroll">
+
 		<tbody>
-		<tr>
+			<tr>
 				<th colspan="3" align="center" class="dogheader">Dogs</th>
 			</tr>
 			<tr>
 				<th>Name</th>
-				<th> </th>
+				<th></th>
 				<th>Weight</th>
 				<th></th>
 			</tr>
@@ -138,7 +139,5 @@
 		</tbody>
 
 	</table>
-
-
 </body>
 </html>
