@@ -59,7 +59,7 @@
 	<h1 align="center">Available Dog Sitters</h1>
 	<div class="sitterlist">
 	<c:forEach var="sitter" items="${sitters}">
-		<hr>
+		
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
 		<p>${sitter.user.contact.street}${sitter.user.contact.city},
