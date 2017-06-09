@@ -90,9 +90,7 @@
 						</span>
 					</span></td>
 					<td>${sitter.averageRating} Stars!</td>
-					<td>${sitter.user.contact.firstName}
-				 ${sitter.user.contact.lastName} is available 
-				 ${sitter.availability}</td>
+					<td>${sitter.user.contact.firstName} is available ${sitter.availability}</td>
 					<td>Sitter Rate: <fmt:formatNumber value="${sitter.rate}" type="currency" /> 
 					<td>
 						<form action="goToLogin.do" method="GET">
