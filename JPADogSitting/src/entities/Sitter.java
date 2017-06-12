@@ -32,7 +32,6 @@ public class Sitter {
 	
 	@Column(name="average_rating")
 	private double averageRating;
-
 	
 	public Double getRate() {
 		return rate;

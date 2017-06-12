@@ -56,18 +56,6 @@
 	<br>
 	<br>
 
-<%-- 	<form:form action="login.do" method="POST" modelAttribute="user">
-		<form:label path="userName">User Name:</form:label>
-		<form:input path="userName" />
-		<form:errors path="userName" />
-		<br />
-		<form:label path="password">Password:</form:label>
-		<form:input path="password" />
-		<form:errors path="password" />
-		<input type="submit" value="Login" />
-	</form:form>
-
-	<a href="goToCreateUser.do">Create New Account</a> --%>
 	<h1 align="center">Available Dog Sitters</h1>
 	<div class="sitterlist">
 	<c:forEach var="sitter" items="${sitters}">
@@ -75,7 +63,7 @@
 		
 		<p>${sitter.user.contact.firstName}
 			${sitter.user.contact.lastName}</p>
-		<p>${sitter.user.contact.street}${sitter.user.contact.city},
+		<p>${sitter.user.contact.street} ${sitter.user.contact.city},
 			${sitter.user.contact.state} ${sitter.user.contact.zipCode}</p>
 		<div class="bottomlist" >
 		<div>
