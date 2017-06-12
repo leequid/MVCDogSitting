@@ -67,15 +67,15 @@
 			 value="true"/>
 		</label>
 		<label>When are you available?
-		<form:select path="availability">
+ 		<select name="availability">
 			<option value="ANYTIME">ANYTIME</option>
 			<option value="WEEKENDS">WEEKENDS</option>
 			<option value="WEEKDAYS">WEEKDAYS</option>
 			<option value="EVENINGS">EVENINGS</option>
 			<option value="OVERNIGHTS">OVERNIGHTS</option>
-		</form:select>
+		</select> 
 
-		</label>
+		</label> 
 		<input type="submit" value="Register" />
 	</form:form>
 </body>

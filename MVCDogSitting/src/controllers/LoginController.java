@@ -108,6 +108,7 @@ public class LoginController {
 			mv.setViewName("createUser.jsp");
 			return mv;
 		} else {
+			user.setBalance(0d);
 			User temp = dao.createUser(user);
 			mv.addObject("contactId", temp.getContact().getId());
 			mv.addObject("contact", new Contact());
