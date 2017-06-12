@@ -66,8 +66,8 @@
 		<label>Do you want to be a sitter? <form:checkbox path="activeSitter"
 			 value="true"/>
 		</label>
-		<label>When are you available?
-		<form:select path="availability">
+	<%-- 	<label>When are you available?
+		<form:select path="user.sitter.availability">
 			<option value="ANYTIME">ANYTIME</option>
 			<option value="WEEKENDS">WEEKENDS</option>
 			<option value="WEEKDAYS">WEEKDAYS</option>
@@ -75,7 +75,7 @@
 			<option value="OVERNIGHTS">OVERNIGHTS</option>
 		</form:select>
 
-		</label>
+		</label> --%>
 		<input type="submit" value="Register" />
 	</form:form>
 </body>
