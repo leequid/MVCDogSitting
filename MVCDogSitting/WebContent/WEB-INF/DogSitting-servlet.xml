@@ -11,11 +11,12 @@
 
 <context:component-scan base-package="controllers,data"></context:component-scan>
 
-<bean id="dao" class="data.DogApplicationDAOImpl" />
-<bean id="authDao" class="data.AuthenticationDAOImpl" />
-<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+  <bean id="dao" class="data.DogApplicationDAOImpl" />
+  <bean id="authDao" class="data.AuthenticationDAOImpl" />
+  
+  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
     <property name="basename" value="/WEB-INF/ValidationMessages" />
-</bean>
+  </bean>
 
   <bean id="myEntityManagerFactory" 
     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
