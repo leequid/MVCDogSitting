@@ -10,8 +10,12 @@ JPA
 MySQL
 HTML/CSS
 
-We are building this application to create a virtual dog sitting community
-Our intent is to match up dog owners with other local dog owners and sitters
+Functions
+1.you can make an account to become a user.
+2.All user can become a sitter or quit to be a sitter.
+3.Can make appointment with a sitter and rate their service.
+4.Can add delete edit your dog.
+5.Must add balance to use 
 
 Methodologies used:
 Agile
